@@ -1,0 +1,404 @@
+<section class="flex flex-none flex-wrap items-center gap-2 bg-gray-700">
+  <mat-button-toggle-group
+    class="flex-none opacity-80"
+    [(ngModel)]="currentLayer"
+    (ngModelChange)="resetSelectedPositions()"
+    [hideSingleSelectionIndicator]="true"
+  >
+    @for (layer of layers(); track $index) {
+      <mat-button-toggle
+        [value]="layer.value"
+        [tooltip]="$any(layerToggleTooltip)"
+        contentType="template"
+        placement="bottom"
+      >
+        {{ deviceLayout()?.profile ?? "A" }}{{ layer.value }}
+      </mat-button-toggle>
+      <ng-template #layerToggleTooltip>
+        {{ layer.tooltip | translate | realTitleCase }} <br />
+        <kbd [innerHTML]="layer.hotkey | hotkeysShortcut: ' + '"></kbd>
+      </ng-template>
+    }
+  </mat-button-toggle-group>
+  <mat-button-toggle-group
+    class="flex-none opacity-80"
+    [multiple]="true"
+    [ngModel]="modifiersState()"
+    (ngModelChange)="onModifierStateChanged($event)"
+    [hideMultipleSelectionIndicator]="true"
+  >
+    <mat-button-toggle
+      [value]="Modifier.Shift"
+      [tooltip]="$any(shiftToggleTooltip)"
+      contentType="template"
+      placement="bottom"
+      >Shift</mat-button-toggle
+    >
+    <mat-button-toggle
+      [value]="Modifier.AltGraph"
+      [tooltip]="$any(altGraphToggleTooltip)"
+      contentType="template"
+      placement="bottom"
+    >
+      AltGr
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+  <ng-template #shiftToggleTooltip>
+    {{ "layout-viewer-page.toggle-shift-modifier" | translate | realTitleCase }}
+    <br />
+    <kbd [innerHTML]="'alt+s' | hotkeysShortcut: ' + '"></kbd>
+  </ng-template>
+  <ng-template #altGraphToggleTooltip>
+    {{
+      "layout-viewer-page.toggle-alt-graph-modifier" | translate | realTitleCase
+    }}
+    <br />
+    <kbd [innerHTML]="'alt+a' | hotkeysShortcut: ' + '"></kbd>
+  </ng-template>
+  <div class="flex-[1_0_0]"></div>
+  <mat-form-field class="w-72 flex-[0_1_auto]" [subscriptSizing]="'dynamic'">
+    <mat-label>{{
+      "layout-viewer-page.device-layout.label" | translate | realTitleCase
+    }}</mat-label>
+    <mat-select
+      class="!font-bold !text-formosa-200"
+      [value]="selectedDeviceLayoutId()"
+      (valueChange)="setSelectedDeviceLayoutId($event)"
+    >
+      @for (deviceLayout of translatedDeviceLayouts(); track deviceLayout.id) {
+        <mat-option [value]="deviceLayout.id">{{
+          deviceLayout.name
+        }}</mat-option>
+      }
+    </mat-select>
+    <mat-button-toggle
+      matSuffix
+      [checked]="visibilitySettingStore.layoutThumb3Switch()"
+      (click)="onThumb3SwitchToggleButtonClick($event)"
+      class="relative opacity-80"
+    >
+      <mat-icon class="relative top-1">{{ "thumb_up" | iconGuard }}</mat-icon>
+      <span
+        class="absolute left-1/2 top-1 inline-block h-4 -translate-x-1/2 text-sm"
+        >3rd</span
+      >
+    </mat-button-toggle>
+  </mat-form-field>
+  <mat-form-field class="w-72 flex-[0_1_auto]" [subscriptSizing]="'dynamic'">
+    <mat-label>{{
+      "layout-viewer-page.os-keyboard-layout.label" | translate | realTitleCase
+    }}</mat-label>
+    <mat-select
+      class="!font-bold !text-formosa-200"
+      [value]="selectedKeyboardLayoutId()"
+      (valueChange)="setSelectedKeyboardLayoutId($event)"
+    >
+      <mat-option>
+        <ngx-mat-select-search
+          [ngModel]="keyboardLayoutSearchQuery()"
+          (ngModelChange)="keyboardLayoutSearchQuery.set($event)"
+          [placeholderLabel]="
+            'layout-viewer-page.os-keyboard-layout.search-placeholder'
+              | translate
+          "
+          [noEntriesFoundLabel]="
+            'layout-viewer-page.os-keyboard-layout.search-no-entry' | translate
+          "
+        ></ngx-mat-select-search>
+      </mat-option>
+      @for (
+        keyboardLayout of filteredKeyboardLayouts();
+        track keyboardLayout.id
+      ) {
+        <mat-option [value]="keyboardLayout.id">{{
+          keyboardLayout.name
+        }}</mat-option>
+      }
+    </mat-select>
+    <div matSuffix class="flex">
+      <a
+        [href]="keyboardLayout().reference"
+        target="_blank"
+        rel="noopener noreferrer"
+        (click)="onOpenReferenceButtonClick($event)"
+        [matTooltip]="
+          'layout-viewer-page.os-keyboard-layout.open-reference-button-tooltip'
+            | translate
+            | realTitleCase
+        "
+      >
+        <button mat-icon-button>
+          <mat-icon>{{ "open_in_new" | iconGuard }}</mat-icon>
+        </button>
+      </a>
+      <button
+        mat-icon-button
+        (click)="onResetButtonClick($event)"
+        [disabled]="selectedKeyboardLayoutId() === 'us'"
+        [matTooltip]="
+          'layout-viewer-page.os-keyboard-layout.reset-button-tooltip'
+            | translate
+            | realTitleCase
+        "
+      >
+        <mat-icon>{{ "replay" | iconGuard }}</mat-icon>
+      </button>
+    </div>
+  </mat-form-field>
+  <button
+    mat-icon-button
+    (click)="toggleSearchMenu()"
+    [color]="searchMenuIsOpen() ? 'primary' : null"
+    [matTooltip]="
+      'layout-viewer-page.search-key-button-tooltip' | translate | realTitleCase
+    "
+  >
+    <mat-icon>{{ "search" | iconGuard }}</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    ngxPrint
+    [printTitle]="
+      'layout-viewer-page.print-layout-title'
+        | translate
+          : {
+              deviceLayout: deviceLayoutDisplayName(),
+              keyboardLayout: keyboardLayout().name
+            }
+    "
+    printSectionId="print-section"
+    [useExistingCss]="true"
+    [matTooltip]="
+      'layout-viewer-page.print-layout-button-tooltip'
+        | translate
+        | realTitleCase
+    "
+  >
+    <mat-icon>{{ "print" | iconGuard }}</mat-icon>
+  </button>
+</section>
+@if (keyLabelMap(); as keyLabelMap) {
+  <mat-sidenav-container class="flex-1">
+    <mat-sidenav
+      [(opened)]="searchMenuIsOpen"
+      mode="over"
+      position="end"
+      data-style-dense
+    >
+      <mat-form-field
+        class="w-96 [&_.mat-mdc-form-field-subscript-wrapper]:hidden"
+      >
+        <input
+          [ngModel]="keySearchQuery()"
+          (ngModelChange)="keySearchQuery.set($event)"
+          matInput
+          type="search"
+          [placeholder]="
+            'layout-viewer-page.key-search.placeholder' | translate
+          "
+          [attr.aria-label]="
+            'layout-viewer-page.key-search.aria-label' | translate
+          "
+        />
+        @if (!keySearchQuery()) {
+          <button
+            mat-icon-button
+            matSuffix
+            [attr.aria-label]="
+              'layout-viewer-page.key-search.clear-button-aria-label'
+                | translate
+            "
+          >
+            <mat-icon>{{ "search" | iconGuard }}</mat-icon>
+          </button>
+        }
+      </mat-form-field>
+      <mat-action-list>
+        @if (keySearchQuery()) {
+          @for (key of filteredKeyList(); track $index) {
+            <button mat-list-item (click)="onKeyInSearchResultClick(key)">
+              {{ key.keyName }}
+            </button>
+          } @empty {
+            <button mat-list-item disabled>
+              {{ "layout-viewer-page.key-search.search-no-entry" | translate }}
+            </button>
+          }
+        }
+      </mat-action-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <section class="relative h-full min-h-80 px-5 pb-5">
+        <app-layout
+          class="block h-full overflow-hidden"
+          [alwaysHideLayoutGuides]="true"
+          [alwaysShowLayout]="true"
+          [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
+          [keyLabelMap]="keyLabelMap"
+          [highlightKeyCombination]="{
+            positionCodes: highlightPositionCodes(),
+            score: 0,
+            characterKeyPositionCode: 0,
+            layer: currentLayer(),
+            shiftKey: shiftKey(),
+            altGraphKey: altGraphKey()
+          }"
+          [secondaryHighlightPositions]="selectedPositions()"
+        ></app-layout>
+        <diV
+          class="absolute left-1/2 top-0 flex -translate-x-1/2 items-center justify-center text-gray-100"
+        >
+          @if (holdKeys().length) {
+            {{ "layout-viewer-page.hold-hint.0" | translate }}
+            @for (key of holdKeys(); track $index) {
+              @if ($index > 0) {
+                @if ($index === holdKeys().length - 1) {
+                  {{ "layout-viewer-page.and" | translate }}
+                } @else {
+                  {{ "layout-viewer-page.comma" | translate }}
+                }
+              }
+              @switch (key) {
+                @case ("num-shift") {
+                  <mat-icon class="mx-1 text-formosa-500">{{
+                    "counter_2" | iconGuard
+                  }}</mat-icon>
+                }
+                @case ("fn") {
+                  <mat-icon class="mx-1 text-formosa-500">{{
+                    "counter_3" | iconGuard
+                  }}</mat-icon>
+                }
+                @case ("flag-shift") {
+                  <mat-icon class="mx-1 text-formosa-500">{{
+                    "counter_4" | iconGuard
+                  }}</mat-icon>
+                }
+                @case ("shift") {
+                  <mat-icon class="text-formosa-500">{{
+                    "shift" | iconGuard
+                  }}</mat-icon>
+                }
+                @case ("alt-gr") {
+                  <span class="px-1 text-formosa-500">AltGr</span>
+                }
+              }
+            }
+            {{ "layout-viewer-page.hold-hint.2" | translate }}
+          }
+        </diV>
+        @if (hasDeadKey() || hasWindowsAltCodeKey()) {
+          <div class="absolute bottom-2 right-2 flex flex-col gap-2 text-sm">
+            @if (hasDeadKey()) {
+              <div class="flex items-center gap-2">
+                <div class="size-4 bg-formosa-900"></div>
+                {{ "layout-viewer-page.dead-key-legend" | translate }}
+              </div>
+            }
+            @if (hasWindowsAltCodeKey()) {
+              <div class="flex items-center gap-2">
+                <div class="size-4 bg-yellow-900"></div>
+                {{ "layout-viewer-page.windows-alt-code-legend" | translate }}
+              </div>
+            }
+          </div>
+        }
+      </section>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <div id="print-section" class="hidden">
+    @for (altGraphKey of [false, true]; track $index) {
+      @for (layer of layers(); track $index) {
+        @for (shiftKey of [false, true]; track $index) {
+          <section class="relative h-1/2">
+            <app-layout
+              class="block h-full overflow-hidden"
+              [alwaysHideLayoutGuides]="true"
+              [alwaysShowLayout]="true"
+              [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
+              [keyLabelMap]="keyLabelMap"
+              [highlightKeyCombination]="{
+                positionCodes: getHighlightPositionCodes(
+                  layer.value,
+                  shiftKey,
+                  altGraphKey
+                ),
+                score: 0,
+                characterKeyPositionCode: 0,
+                layer: layer.value,
+                shiftKey: shiftKey,
+                altGraphKey: altGraphKey
+              }"
+            ></app-layout>
+            <diV
+              class="absolute top-20 flex w-full items-center justify-center text-black"
+            >
+              @if (
+                getHoldKeys(layer.value, shiftKey, altGraphKey);
+                as holdKeys
+              ) {
+                @if (holdKeys.length) {
+                  {{ "layout-viewer-page.hold-hint.0" | translate }}
+                  @for (key of holdKeys; track $index) {
+                    @if ($index > 0) {
+                      @if ($index === holdKeys.length - 1) {
+                        {{ "layout-viewer-page.and" | translate }}
+                      } @else {
+                        {{ "layout-viewer-page.comma" | translate }}
+                      }
+                    }
+                    @switch (key) {
+                      @case ("num-shift") {
+                        <mat-icon
+                          class="mx-1 text-formosa-500 print:text-black"
+                          >{{ "counter_2" | iconGuard }}</mat-icon
+                        >
+                      }
+                      @case ("fn") {
+                        <mat-icon
+                          class="mx-1 text-formosa-500 print:text-black"
+                          >{{ "counter_3" | iconGuard }}</mat-icon
+                        >
+                      }
+                      @case ("shift") {
+                        <mat-icon class="text-formosa-500 print:text-black">{{
+                          "shift" | iconGuard
+                        }}</mat-icon>
+                      }
+                      @case ("alt-gr") {
+                        <span class="px-1 text-formosa-500 print:text-black"
+                          >AltGr</span
+                        >
+                      }
+                    }
+                  }
+                  {{ "layout-viewer-page.hold-hint.2" | translate }}
+                }
+              }
+            </diV>
+            @if (hasDeadKey() || hasWindowsAltCodeKey()) {
+              <div
+                class="absolute bottom-2 right-2 flex flex-col gap-2 text-sm"
+              >
+                @if (hasDeadKey()) {
+                  <div class="flex items-center gap-2">
+                    <div class="keep-bg size-4 bg-formosa-200"></div>
+                    {{ "layout-viewer-page.dead-key-legend" | translate }}
+                  </div>
+                }
+                @if (hasWindowsAltCodeKey()) {
+                  <div class="flex items-center gap-2">
+                    <div class="keep-bg size-4 bg-yellow-300"></div>
+                    {{
+                      "layout-viewer-page.windows-alt-code-legend" | translate
+                    }}
+                  </div>
+                }
+              </div>
+            }
+          </section>
+        }
+      }
+    }
+  </div>
+}

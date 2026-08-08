@@ -1,0 +1,362 @@
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  HostBinding,
+  inject,
+  OnDestroy,
+  OnInit,
+  Signal,
+  signal,
+} from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSliderModule } from '@angular/material/slider';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { LayoutSongHelpDialogComponent } from 'src/app/components/layout-song-help-dialog/layout-song-help-dialog.component';
+import { LayoutComponent } from 'src/app/components/layout/layout.component';
+import { LyricsViewComponent } from 'src/app/components/lyrics-view/lyrics-view.component';
+import {
+  LAYOUT_SONG_LYRICS,
+  WORDS_WITH_COMPONENTS_IN_LAYOUT_SONG_LYRICS,
+} from 'src/app/const/lyrics.const';
+import { KEYBOARD_LAYOUTS } from 'src/app/data/keyboard-layouts';
+import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
+import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
+import { INITIAL_HIGHLIGHT_SETTING } from 'src/app/stores/highlight-setting.store';
+import { LayoutSongSettingStore } from 'src/app/stores/layout-song-setting.store';
+import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
+import {
+  convertKeyboardLayoutToCharacterKeyCodeMap,
+  DEFAULT_DEVICE_LAYOUT,
+  getCharacterActionCodesFromCharacterKeyCode,
+  getHighlightKeyCombinationFromKeyCombinations,
+  getKeyCombinationsFromActionCodes,
+  getLayerShiftPositionCodeMap,
+  getModifierKeyPositionCodeMap,
+  HighlightKeyCombination,
+  KeyboardLayout,
+  KeyLabel,
+  KeyLabelType,
+  Layer,
+  nonNullable,
+} from 'tangent-cc-lib';
+
+const AUDIO_URL = './assets/layout.mp3';
+
+const US_KEYBOARD_LAYOUT = KEYBOARD_LAYOUTS.find(
+  (layout) => layout.id === 'us',
+) as KeyboardLayout;
+
+@Component({
+  selector: 'app-layout-song-page',
+  templateUrl: 'layout-song-page.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    IconGuardPipe,
+    MatIconModule,
+    MatSliderModule,
+    MatButtonModule,
+    LyricsViewComponent,
+    LayoutComponent,
+    TranslatePipe,
+    RealTitleCasePipe,
+  ],
+})
+export class LayoutSongPageComponent implements OnInit, OnDestroy {
+  @HostBinding('class') classes =
+    'flex flex-col gap-2 h-full w-full relative overflow-hidden';
+
+  readonly visibilitySettingStore = inject(VisibilitySettingStore);
+  readonly layoutSongSettingStore = inject(LayoutSongSettingStore);
+  readonly translateService = inject(TranslateService);
+
+  isPlaying = signal(false);
+  canPlay = signal(false);
+  currentTime = signal(0);
+  progress = computed(() => {
+    if (!this.audio) {
+      return 0;
+    }
+    return (this.currentTime() / this.audio.duration) * 100;
+  });
+  private audio: HTMLAudioElement | null = null;
+
+  constructor() {
+    effect(() => {
+      const volume = this.layoutSongSettingStore.volume();
+      if (this.audio) {
+        this.audio.volume = volume;
+      }
+    });
+    effect(() => {
+      const muted = this.layoutSongSettingStore.muted();
+      if (this.audio) {
+        this.audio.muted = muted;
+      }
+    });
+    effect(() => {
+      const loop = this.layoutSongSettingStore.loop();
+      if (this.audio) {
+        this.audio.loop = loop;
+      }
+    });
+  }
+
+  ngOnInit() {
+    this.loadAudio();
+  }
+
+  ngOnDestroy(): void {
+    if (this.audio) {
+      this.audio.pause();
+      this.audio.currentTime = 0;
+    }
+  }
+
+  loadAudio() {
+    this.audio?.pause();
+    this.audio = new Audio(AUDIO_URL);
+    this.audio.volume = this.layoutSongSettingStore.volume();
+    this.audio.muted = this.layoutSongSettingStore.muted();
+    this.audio.loop = this.layoutSongSettingStore.loop();
+
+    this.audio.addEventListener('timeupdate', this.updateProgress.bind(this));
+    this.audio.addEventListener('ended', () => {
+      this.isPlaying.set(false);
+    });
+    this.audio.addEventListener('canplay', () => this.canPlay.set(true));
+    this.audio.addEventListener('error', () => {
+      this.canPlay.set(false);
+      this.isPlaying.set(false);
+    });
+  }
+
+  handlePlayPause() {
+    if (this.audio) {
+      if (this.isPlaying()) {
+        this.audio.pause();
+      } else {
+        this.audio.play().catch(() => {
+          this.canPlay.set(false);
+        });
+      }
+      this.isPlaying.set(!this.isPlaying());
+    }
+  }
+
+  handleSeek(value: number) {
+    if (this.audio) {
+      const newTime = (value / 100) * this.audio.duration;
+      this.audio.currentTime = newTime;
+    }
+  }
+
+  updateProgress() {
+    if (this.audio) {
+      const currentTime = this.audio.currentTime;
+      this.currentTime.set(currentTime);
+    }
+  }
+
+  toggleMute() {
+    this.layoutSongSettingStore.setMuted(!this.layoutSongSettingStore.muted());
+  }
+
+  toggleLoop() {
+    this.layoutSongSettingStore.setLoop(!this.layoutSongSettingStore.loop());
+  }
+
+  shownLyricSegments = computed(() => {
+    const currentTime = this.currentTime();
+    let currentLyricIndex = LAYOUT_SONG_LYRICS.segments.findIndex(
+      ({ start, end }) => start <= currentTime && currentTime <= end,
+    );
+    let nextLyricIndex: number | null = null;
+    if (currentLyricIndex === -1) {
+      nextLyricIndex = LAYOUT_SONG_LYRICS.segments.findIndex(
+        ({ start }) => currentTime < start,
+      );
+      if (nextLyricIndex === -1) {
+        currentLyricIndex = LAYOUT_SONG_LYRICS.segments.length - 1;
+      } else if (nextLyricIndex === 0) {
+        currentLyricIndex = 0;
+        nextLyricIndex = 1;
+      } else {
+        currentLyricIndex = nextLyricIndex - 1;
+      }
+    } else {
+      nextLyricIndex = currentLyricIndex + 1;
+      if (nextLyricIndex >= LAYOUT_SONG_LYRICS.segments.length) {
+        nextLyricIndex = null;
+      }
+    }
+    return [
+      LAYOUT_SONG_LYRICS.segments[currentLyricIndex],
+      ...(nextLyricIndex !== null
+        ? [LAYOUT_SONG_LYRICS.segments[nextLyricIndex]]
+        : []),
+    ].filter((v) => !!v);
+  });
+
+  currentLyricWords = computed(() => {
+    const currentTime = this.currentTime();
+    return WORDS_WITH_COMPONENTS_IN_LAYOUT_SONG_LYRICS.filter(
+      (w) =>
+        w.start <= currentTime && w.end + (w.end - w.start) * 0.2 > currentTime,
+    );
+  });
+
+  readonly characterKeyCodeMap =
+    convertKeyboardLayoutToCharacterKeyCodeMap(US_KEYBOARD_LAYOUT);
+
+  readonly lessonCharactersDevicePositionCodes = computed(() => {
+    const characterKeyCodeMap = this.characterKeyCodeMap;
+    const [currentLyricSegment] = this.shownLyricSegments();
+    const deviceLayout = DEFAULT_DEVICE_LAYOUT;
+    return currentLyricSegment.components
+      ?.map((c) => {
+        const characterKeyCodes = characterKeyCodeMap.get(c);
+        if (!characterKeyCodes || characterKeyCodes.length === 0) {
+          return null;
+        }
+        for (const characterKeyCode of characterKeyCodes) {
+          const actionCodes =
+            getCharacterActionCodesFromCharacterKeyCode(characterKeyCode);
+          if (actionCodes.length > 0) {
+            continue;
+          }
+          const keyCombinations = getKeyCombinationsFromActionCodes(
+            actionCodes,
+            deviceLayout,
+          );
+          if (!keyCombinations || keyCombinations.length === 0) {
+            continue;
+          }
+          return {
+            c,
+            characterDeviceKeys: keyCombinations,
+          };
+        }
+        return null;
+      })
+      .filter(nonNullable);
+  });
+
+  readonly layerShiftKeyPositionCodeMap = computed(() => {
+    const deviceLayout = DEFAULT_DEVICE_LAYOUT;
+    if (!deviceLayout) {
+      return null;
+    }
+    return getLayerShiftPositionCodeMap(deviceLayout);
+  });
+
+  readonly modifierKeyPositionCodeMap = computed(() => {
+    const deviceLayout = DEFAULT_DEVICE_LAYOUT;
+    if (!deviceLayout) {
+      return null;
+    }
+    return getModifierKeyPositionCodeMap(deviceLayout);
+  });
+
+  readonly keyLabelMap = computed(() => {
+    const lessonCharactersDevicePositionCodes =
+      this.lessonCharactersDevicePositionCodes();
+    if (!lessonCharactersDevicePositionCodes) {
+      return {};
+    }
+    const modifierKeyPositionCodeMap = this.modifierKeyPositionCodeMap();
+    if (!modifierKeyPositionCodeMap) {
+      return {};
+    }
+    const keyLabelMap: Record<number, KeyLabel[]> = {};
+    lessonCharactersDevicePositionCodes.forEach((v) => {
+      v?.characterDeviceKeys?.forEach(
+        ({ characterKeyPositionCode, layer, shiftKey, altGraphKey }) => {
+          if (layer !== Layer.Primary || shiftKey || altGraphKey) {
+            return;
+          }
+          const d = {
+            type: KeyLabelType.String as const,
+            c: v.c,
+            title: this.translateService.instant('general.character-tooltip', {
+              character: v.c,
+            }),
+            layer,
+            shiftKey,
+            altGraphKey,
+          };
+          if (!keyLabelMap[characterKeyPositionCode]) {
+            keyLabelMap[characterKeyPositionCode] = [d];
+          } else {
+            keyLabelMap[characterKeyPositionCode].push(d);
+          }
+        },
+      );
+    });
+    return keyLabelMap;
+  });
+
+  readonly highlightCharacterKeyCombinationMap: Signal<
+    Record<string, HighlightKeyCombination>
+  > = computed(() => {
+    const lessonCharactersDevicePositionCodes =
+      this.lessonCharactersDevicePositionCodes();
+    const highlightSetting = INITIAL_HIGHLIGHT_SETTING;
+    const deviceLayout = DEFAULT_DEVICE_LAYOUT;
+    if (!lessonCharactersDevicePositionCodes || !deviceLayout) {
+      return {};
+    }
+    const modifierKeyPositionCodeMap = this.modifierKeyPositionCodeMap();
+    const layerShiftKeyPositionCodeMap = this.layerShiftKeyPositionCodeMap();
+    const highlightCharacterKeyMap: Record<string, HighlightKeyCombination> =
+      {};
+    lessonCharactersDevicePositionCodes.forEach((k) => {
+      if (
+        !k?.characterDeviceKeys ||
+        !modifierKeyPositionCodeMap ||
+        !layerShiftKeyPositionCodeMap
+      ) {
+        return;
+      }
+      highlightCharacterKeyMap[k.c] =
+        getHighlightKeyCombinationFromKeyCombinations(
+          k.characterDeviceKeys,
+          layerShiftKeyPositionCodeMap,
+          modifierKeyPositionCodeMap,
+          highlightSetting,
+        );
+    });
+    return highlightCharacterKeyMap;
+  });
+
+  readonly highlightKeyCombination = computed(() => {
+    const currentLyricWords = this.currentLyricWords() ?? [];
+    const components = currentLyricWords
+      .map((w) => w.components)
+      .flat()
+      .filter((v) => !!v) as string[];
+    const highlightCharacterKeyCombinationMap =
+      this.highlightCharacterKeyCombinationMap();
+    const positionCodes = components
+      .map((c) => highlightCharacterKeyCombinationMap[c]?.positionCodes)
+      .flat();
+    return {
+      characterKeyPositionCode: -1,
+      layer: Layer.Primary,
+      shiftKey: false,
+      altGraphKey: false,
+      positionCodes,
+      score: -1,
+    };
+  });
+
+  private readonly matDialog = inject(MatDialog);
+
+  public openLayoutSongHelpDialog() {
+    this.matDialog.open(LayoutSongHelpDialogComponent);
+  }
+}

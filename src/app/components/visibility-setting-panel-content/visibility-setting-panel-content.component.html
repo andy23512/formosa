@@ -1,0 +1,37 @@
+@for (item of visibilitySettingItems(); track item.key) {
+  <div>
+    <mat-checkbox
+      class="small-icon-button-wrapper [&_.mdc-label]:flex [&_.mdc-label]:items-center"
+      [color]="'primary'"
+      [checked]="item.value"
+      (change)="setVisible(item.key, $event.checked)"
+    >
+      {{ item.name | translate | realTitleCase }}
+      @if (item.key === "layoutThumb3Switch") {
+        <button
+          type="button"
+          mat-icon-button
+          [attr.aria-label]="
+            'visibility-setting.thumb-3-switch-help-button-aria-label'
+              | translate
+          "
+          (click)="openThumb3SwitchHelpDialog()"
+        >
+          <mat-icon>{{ "help" | iconGuard }}</mat-icon>
+        </button>
+      }
+      @if (item.key === "layoutKeyNotationGuide") {
+        <button
+          type="button"
+          mat-icon-button
+          [attr.aria-label]="
+            'visibility-setting.key-notation-help-button-aria-label' | translate
+          "
+          (click)="openKeyNotationHelpDialog()"
+        >
+          <mat-icon>{{ "help" | iconGuard }}</mat-icon>
+        </button>
+      }
+    </mat-checkbox>
+  </div>
+}

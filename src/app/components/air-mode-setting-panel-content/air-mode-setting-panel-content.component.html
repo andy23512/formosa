@@ -1,0 +1,53 @@
+<div class="mt-2">
+  <span class="whitespace-pre-wrap">{{
+    "settings.air-mode.description" | translate
+  }}</span>
+</div>
+<div>
+  <mat-checkbox
+    class="small-icon-button-wrapper [&_.mdc-label]:flex [&_.mdc-label]:items-center"
+    [color]="'primary'"
+    [checked]="enabled()"
+    (change)="setEnabled($event.checked)"
+  >
+    {{ "settings.air-mode.checkbox-label" | translate | realTitleCase }}
+  </mat-checkbox>
+</div>
+<div class="mt-2 space-x-1">
+  <mat-form-field>
+    <mat-label>{{
+      "settings.air-mode.character-entry-speed-label"
+        | translate
+        | realTitleCase
+    }}</mat-label>
+    <input
+      matInput
+      type="number"
+      [ngModel]="characterEntrySpeed()"
+      (ngModelChange)="setCharacterEntrySpeed($event)"
+      attr.aria-label="{{
+        'settings.air-mode.character-entry-speed-input-aria-label' | translate
+      }}"
+      [disabled]="!enabled()"
+    />
+    <span matTextSuffix>{{
+      "general.character-entry-speed-unit" | translate
+    }}</span>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{
+      "settings.air-mode.chord-speed-label" | translate | realTitleCase
+    }}</mat-label>
+    <input
+      matInput
+      type="number"
+      [ngModel]="chordSpeed()"
+      (ngModelChange)="setChordSpeed($event)"
+      attr.aria-label="{{
+        'settings.air-mode.chord-speed-input-aria-label' | translate
+      }}"
+      [disabled]="!enabled()"
+    />
+    <span matTextSuffix>{{ "general.chord-speed-unit" | translate }}</span>
+  </mat-form-field>
+</div>

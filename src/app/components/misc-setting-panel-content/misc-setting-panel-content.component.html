@@ -1,0 +1,206 @@
+<mat-form-field>
+  <mat-label>
+    {{ "misc-setting.thumb-rotation-angle.title" | translate | realTitleCase }}
+  </mat-label>
+  <input
+    matInput
+    type="number"
+    [ngModel]="thumbRotationAngle()"
+    (ngModelChange)="setThumbRotationAngle($event)"
+    [attr.aria-label]="
+      'misc-setting.thumb-rotation-angle.input-aria-label' | translate
+    "
+  />
+  <span matTextSuffix>°</span>
+</mat-form-field>
+<mat-form-field>
+  <mat-label>
+    {{
+      "misc-setting.non-thumb-rotation-angle.title" | translate | realTitleCase
+    }}
+  </mat-label>
+  <input
+    matInput
+    type="number"
+    [ngModel]="nonThumbRotationAngle()"
+    (ngModelChange)="setNonThumbRotationAngle($event)"
+    [attr.aria-label]="
+      'misc-setting.non-thumb-rotation-angle.input-aria-label' | translate
+    "
+  />
+  <span matTextSuffix>°</span>
+</mat-form-field>
+<app-layout
+  class="block w-full max-w-[500px]"
+  [alwaysShowLayout]="true"
+  [keyLabelMap]="{
+    '11': [
+      {
+        type: KeyLabelType.String,
+        c: 'direction.E' | translate,
+        title: 'direction.east' | translate | realTitleCase,
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '12': [
+      {
+        type: KeyLabelType.String,
+        c: 'direction.N' | translate,
+        title: 'direction.north' | translate | realTitleCase,
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '13': [
+      {
+        type: KeyLabelType.String,
+        c: 'direction.W' | translate,
+        title: 'direction.west' | translate | realTitleCase,
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '14': [
+      {
+        type: KeyLabelType.String,
+        c: 'direction.S' | translate,
+        title: 'direction.south' | translate | realTitleCase,
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '56': [
+      {
+        type: KeyLabelType.String,
+        c: 'direction.W' | translate,
+        title: 'direction.west' | translate | realTitleCase,
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '57': [
+      {
+        type: KeyLabelType.String,
+        c: 'direction.N' | translate,
+        title: 'direction.north' | translate | realTitleCase,
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '58': [
+      {
+        type: KeyLabelType.String,
+        c: 'direction.E' | translate,
+        title: 'direction.east' | translate | realTitleCase,
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '59': [
+      {
+        type: KeyLabelType.String,
+        c: 'direction.S' | translate,
+        title: 'direction.south' | translate | realTitleCase,
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '16': [
+      {
+        type: KeyLabelType.String,
+        c: 'direction.E' | translate,
+        title: 'direction.east' | translate | realTitleCase,
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '17': [
+      {
+        type: KeyLabelType.String,
+        c: 'direction.N' | translate,
+        title: 'direction.north' | translate | realTitleCase,
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '18': [
+      {
+        type: KeyLabelType.String,
+        c: 'direction.W' | translate,
+        title: 'direction.west' | translate | realTitleCase,
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '19': [
+      {
+        type: KeyLabelType.String,
+        c: 'direction.S' | translate,
+        title: 'direction.south' | translate | realTitleCase,
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '61': [
+      {
+        type: KeyLabelType.String,
+        c: 'direction.W' | translate,
+        title: 'direction.west' | translate | realTitleCase,
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '62': [
+      {
+        type: KeyLabelType.String,
+        c: 'direction.N' | translate,
+        title: 'direction.north' | translate | realTitleCase,
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '63': [
+      {
+        type: KeyLabelType.String,
+        c: 'direction.E' | translate,
+        title: 'direction.east' | translate | realTitleCase,
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '64': [
+      {
+        type: KeyLabelType.String,
+        c: 'direction.S' | translate,
+        title: 'direction.south' | translate | realTitleCase,
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ]
+  }"
+  [highlightKeyCombination]="{
+    positionCodes: [],
+    score: 0,
+    characterKeyPositionCode: -1,
+    layer: Layer.Primary,
+    shiftKey: false,
+    altGraphKey: false
+  }"
+></app-layout>

@@ -1,0 +1,114 @@
+<svg
+  viewBox="0 0 350 350"
+  preserveAspectRatio="xMidYMid meet"
+  class="absolute -z-10 h-full w-full opacity-10"
+>
+  <g
+    appSwitch
+    [center]="{ x: 0, y: 0 }"
+    [rotationDirection]="'cw'"
+    [positionCodeMap]="{ c: 0, e: 1, n: 2, w: 3, s: 4 }"
+    [highlightKeyCombination]="{
+      characterKeyPositionCode: 0,
+      layer: Layer.Primary,
+      shiftKey: false,
+      altGraphKey: false,
+      positionCodes: highlightPositionCodes,
+      score: 0,
+    }"
+  ></g>
+  <g
+    appSwitch
+    [center]="{ x: 350, y: 350 }"
+    [rotationDirection]="'ccw'"
+    [positionCodeMap]="{ c: 5, e: 6, n: 7, w: 8, s: 9 }"
+    [highlightKeyCombination]="{
+      characterKeyPositionCode: 5,
+      layer: Layer.Primary,
+      shiftKey: false,
+      altGraphKey: false,
+      positionCodes: highlightPositionCodes,
+      score: 0,
+    }"
+  ></g>
+</svg>
+<main class="flex h-full flex-col items-center justify-center gap-4 p-4">
+  <header class="text-center">
+    <h1 class="mb-0 text-4xl text-formosa-500">
+      {{ "home-page.website-name" | translate }}
+    </h1>
+  </header>
+  <div class="flex gap-1">
+    <span>{{ "home-page.summary.0" | translate }}</span>
+    <div class="cursor-pointer font-bold" (click)="useAndReplayAnimation()">
+      @if (
+        visibilitySettingStore.homePageChordingAnimation() || useAnimation()
+      ) {
+        <div class="h-6 w-[230px]">
+          {{ typingDeviceName$ | async }}<span>_</span>
+        </div>
+      } @else {
+        {{ "home-page.summary.1" | translate }}
+      }
+    </div>
+    <div>{{ "home-page.summary.2" | translate }}</div>
+  </div>
+  <span
+    >{{ "home-page.lesson-start-instruction.0" | translate
+    }}<kbd>{{ "home-page.lesson-start-instruction.1" | translate }}</kbd
+    >{{ "home-page.lesson-start-instruction.2" | translate }}</span
+  >
+  <div>
+    <a
+      href="https://github.com/andy23512/formosa"
+      target="_blank"
+      rel="noopener"
+    >
+      <button type="button" mat-button>
+        <mat-icon>{{ "code" | iconGuard }}</mat-icon>
+        {{ "home-page.source-code" | translate | realTitleCase }}
+      </button>
+    </a>
+    <a
+      [href]="'home-page.dev-note-url' | translate"
+      target="_blank"
+      rel="noopener"
+    >
+      <button type="button" mat-button>
+        <mat-icon>{{ "article" | iconGuard }}</mat-icon>
+        {{ "home-page.dev-note" | translate | realTitleCase }}
+      </button>
+    </a>
+    <a
+      href="https://andy23512.github.io/alnilam"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <button type="button" mat-button>
+        <mat-icon>{{ "kid_star" | iconGuard }}</mat-icon>
+        {{ "home-page.alnilam" | translate | realTitleCase }}
+      </button>
+    </a>
+  </div>
+  @if (deviceLayoutStore.selectedId() === "default") {
+    <div class="flex items-center text-gray-200">
+      {{ "home-page.current-device-layout-hint.cc1-cc2-default.0" | translate }}
+      <button mat-button color="primary" (click)="switchToM4GDefaultLayout()">
+        {{
+          "home-page.current-device-layout-hint.cc1-cc2-default.1" | translate
+        }}
+      </button>
+    </div>
+  }
+  @if (deviceLayoutStore.selectedId() === "m4g-default") {
+    <div class="flex items-center text-gray-200">
+      {{ "home-page.current-device-layout-hint.m4g-default.0" | translate }}
+      <button mat-button color="primary" (click)="switchToCC1DefaultLayout()">
+        {{ "home-page.current-device-layout-hint.m4g-default.1" | translate }}
+      </button>
+    </div>
+  }
+</main>
+<div class="absolute bottom-0 w-full text-center text-formosa-500 opacity-80">
+  ★ {{ "home-page.remark" | translate }} ★
+</div>

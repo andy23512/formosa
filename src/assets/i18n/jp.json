@@ -1,0 +1,629 @@
+{
+  "hand": {
+    "left": "左手",
+    "right": "右手"
+  },
+  "switch": {
+    "thumb-back": "親指後列",
+    "thumb-middle": "親指中列",
+    "thumb-front": "親指前列",
+    "index": "人差し指",
+    "middle": "中指",
+    "ring": "薬指",
+    "pinky": "小指",
+    "middle-secondary": "中指第二",
+    "ring-secondary": "薬指第二"
+  },
+  "direction": {
+    "E": "東",
+    "S": "南",
+    "W": "西",
+    "N": "北",
+    "east": "東",
+    "south": "南",
+    "west": "西",
+    "north": "北",
+    "down": "下 (押す)"
+  },
+  "device-layout": {
+    "cc1-cc2-default": "CC1/CC2/CCU のデフォルト",
+    "m4g-default": "M4G のデフォルト",
+    "cc1-cc2-right-hand-only": "CC1/CC2/CCU 右手のみ",
+    "cc1-cc2-left-hand-only": "CC1/CC2/CCU 左手のみ"
+  },
+  "general": {
+    "character-entry-speed-unit": "文字数毎分",
+    "chord-speed-unit": "和音毎分",
+    "start-action": "開始",
+    "submit-action": "送信",
+    "character-tooltip": "文字：{{character}}",
+    "action-code-tooltip": "操作コード：{{actionCode}}",
+    "dead-key-tooltip": "デッドキー：{{character}}",
+    "windows-alt-code-tooltip": "Windows Alt コード：{{character}}",
+    "choose-file-action": "ファイルを選択",
+    "combo-unit": "コンボ",
+    "combo-unit-plural": "コンボ",
+    "cancel-action": "キャンセル",
+    "delete-confirm-button": "はい、削除します。",
+    "delete-single-confirm-button": "はい、削除します。",
+    "close-action": "閉じる",
+    "left-side": "左側",
+    "right-side": "右側",
+    "both-sides": "両側",
+    "same-side": "同側",
+    "load-from-device-action": "デバイスから読み込む",
+    "web-serial-api-not-supported-message": "お使いのブラウザは Web Serial API をサポートしていません。デバイスからレイアウトを読み込むには、対応するブラウザを使用してください。"
+  },
+  "nav": {
+    "hotkey": {
+      "title": "ホットキー",
+      "tooltip": "ホットキーのダイアログ・ボックスを開く",
+      "aria-label": "ホットキーのダイアログ・ボックスを開くボタン"
+    },
+    "serial-log": {
+      "title": "シリアルログ",
+      "tooltip": "シリアルログのダイアログ・ボックスを開く",
+      "aria-label": "シリアルログのダイアログ・ボックスを開くボタン"
+    },
+    "page": {
+      "home": {
+        "title": "ホーム",
+        "tooltip": "ホームページへ移動",
+        "aria-label": "ホームページリンク"
+      },
+      "statistics": {
+        "title": "統計",
+        "tooltip": "統計ページへ移動",
+        "aria-label": "統計ページリンク"
+      },
+      "chord": {
+        "title": "和音",
+        "tooltip": "和音ページへ移動",
+        "aria-label": "和音ページリンク"
+      },
+      "layout": {
+        "title": "レイアウト",
+        "tooltip": "レイアウト表示ページへ移動",
+        "aria-label": "レイアウト表示ページリンク"
+      },
+      "song": {
+        "title": "歌曲",
+        "tooltip": "レイアウト記憶歌ページへ移動",
+        "aria-label": "レイアウト記憶歌ページリンク"
+      },
+      "settings": {
+        "title": "設定",
+        "tooltip": "設定ページへ移動",
+        "aria-label": "設定ページリンク"
+      },
+      "information": {
+        "title": "情報",
+        "tooltip": "情報ページへ移動",
+        "aria-label": "情報ページリンク"
+      }
+    },
+    "search-lessons-input": {
+      "placeholder": "レッスンを検索",
+      "aria-label": "レッスン検索ボックス"
+    },
+    "no-result-message": "結果が見つかりませんでした。",
+    "side-menu-toggle": {
+      "aria-label": "サイドメニューの切り替え",
+      "icon-aria-label": "サイドメニュー切り替えアイコン"
+    }
+  },
+  "settings": {
+    "air-mode": {
+      "description": "エアモードは、デバイスなしでも練習できる実験的な練習モードです。設定した速度で文字や和音が自動的に入力されるので、タイピングや和音を弾くときと同じように指を動かしながら練習できます。",
+      "checkbox-label": "エアモードを有効にします",
+      "character-entry-speed-label": "文字入力速度",
+      "chord-speed-label": "和音入力速度",
+      "character-entry-speed-input-aria-label": "エアモードの文字入力速度の入力ボックス",
+      "chord-speed-input-aria-label": "エアモードの和音入力速度の入力ボックス"
+    },
+    "device-layout": {
+      "import-device-layout-file-step": [
+        "（任意）ファイル（",
+        "CharaChorder Device Manager ウェブサイト",
+        "のバックアップファイル）またはデバイスから、デバイスレイアウトをインポートしてください。"
+      ],
+      "file-input-aria-label": "このツールにインポートするデバイスレイアウトファイルを選択するためのファイル入力",
+      "select-device-layout-step": "インポートしたデバイスレイアウトを選択してください。",
+      "single-device-layout-deleted-message": "デバイスレイアウト「{{deviceLayoutName}}」が削除されました。",
+      "device-layout-loading-message": "デバイスレイアウトを読み込んでいます..."
+    },
+    "lesson": {
+      "language-label": "レッスン言語",
+      "os-keyboard-layout-label": "レッスンで使用するOSキーボードレイアウト"
+    }
+  },
+  "chord-page": {
+    "chord-practice": {
+      "title": "和音 - 練習"
+    },
+    "chord-practice-setting": {
+      "title": "和音 - 練習設定",
+      "import-chord-list-file-step": [
+        "和音リストファイル（",
+        "CharaChorder デバイスマネージャーウェブサイト",
+        "サイトのバックアップファイル）をインポートしてください。（初回使用時または和音リストを更新する場合）"
+      ],
+      "file-input-aria-label": "このツールにインポートする和音リストファイルを選択するためのファイル入力",
+      "select-chords-step": "インポートした和音リストから練習したい和音を選択してください。",
+      "click-start-button-step": "以下のボタンをクリックして練習を開始してください。"
+    }
+  },
+  "delete-chords-confirm-dialog": {
+    "description": "インポートした和音をすべて削除してもよろしいですか？"
+  },
+  "delete-device-layouts-confirm-dialog": {
+    "description": "インポートしたデバイスレイアウトをすべて削除してもよろしいですか？\n（削除後、選択されているデバイスレイアウトは CC1/CC2/CCU のデフォルトに変更されます）"
+  },
+  "delete-device-layout-confirm-dialog": {
+    "description": [
+      "デバイスレイアウト「",
+      "{{deviceLayoutName}}",
+      "」を削除してもよろしいですか？\n（削除後、選択されているデバイスレイアウトは CC1/CC2/CCU のデフォルトに変更されます）"
+    ]
+  },
+  "hotkey-dialog": {
+    "title": "ホットキー"
+  },
+  "key-notation-help-dialog": {
+    "title": "キー表記",
+    "key-notation-explanation-paragraph": "このツールでは、キー表記は CharaChorder 3D 入力デバイスのキーの位置を表す実験的な短縮形式です。",
+    "key-notation-example-paragraph": "例えば、「左手親指中列西キー」は「L1bW」と表記され、「右手小指下（押す）」は「R5D」と表記されます。",
+    "first-and-last-letters-explanation-paragraph": "最初の文字と最後の文字は、それぞれ左右（L/R）と方向（N/E/S/W/D）の略称です。",
+    "middle-part-explanation-paragraph": [
+      "中央の部分はスイッチを示します。数字は指を表し（1から5：親指から小指）、",
+      {
+        "url": "https://ja.wikipedia.org/wiki/%E9%81%8B%E6%8C%87#%E9%8D%B5%E7%9B%A4%E6%A5%BD%E5%99%A8",
+        "text": "現代の楽譜の鍵盤楽器の運指表記"
+      },
+      "と同じ方法で表されます。追加の「b」と「bb」は、音楽の",
+      {
+        "url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%A9%E3%83%83%E3%83%88_(%E8%A8%98%E5%8F%B7)",
+        "text": "フラット（♭）とダブルフラット（𝄫）の記号"
+      },
+      "に派生して、指の第二/中列および後列のスイッチを示すために使用されます。"
+    ],
+    "layout-image-explanation-paragraph": "以下は、各スイッチの表記を示すレイアウト画像です。"
+  },
+  "hotkey": {
+    "global": {
+      "name": "全域",
+      "toggle-hotkey-dialog": "ホットキーダイアログの切り替え",
+      "toggle-side-menu": "サイドメニューの切り替え"
+    },
+    "home-page": {
+      "name": "ホームページ",
+      "go-to-the-first-lesson": "最初のレッスンへ移動"
+    },
+    "lesson-page": {
+      "name": "レッスンページ",
+      "go-to-the-previous-lesson": "前のレッスンへ移動",
+      "go-to-the-next-lesson": "次のレッスンへ移動",
+      "start-or-resume-the-lesson": "レッスンを開始または再開",
+      "pause-the-lesson": "レッスンを一時停止"
+    },
+    "chord-practice-page": {
+      "name": "和音練習ページ",
+      "start-or-resume-the-practice": "練習を開始または再開",
+      "pause-the-practice": "練習を一時停止"
+    },
+    "layout-viewer-page": {
+      "name": "レイアウト表示ページ",
+      "switch-to-the-first-layer": "第一（基本）レイヤーに切り替える",
+      "switch-to-the-second-layer": "第二（数字）レイヤーに切り替える",
+      "switch-to-the-third-layer": "第三（機能）レイヤーに切り替える",
+      "switch-to-the-fourth-layer": "第四（フラグ）レイヤーに切り替える",
+      "toggle-shift-modifier": "Shift 修飾キーの切り替え",
+      "toggle-alt-graph-modifier": "Alt Graph 修飾キーの切り替え"
+    }
+  },
+  "layout-highlight-setting": {
+    "shift-layer": "shift レイヤー",
+    "num-shift-layer": "num-shift レイヤー",
+    "shift-num-shift-layer": "shift num-shift レイヤー",
+    "fn-shift-layer": "fn-shift レイヤー",
+    "shift-fn-shift-layer": "shift fn-shift レイヤー",
+    "flag-shift-layer": "flag-shift レイヤー",
+    "shift-flag-shift-layer": "shift flag-shift レイヤー",
+    "key-combination-sides-choice": [
+      "",
+      "{{(両側 / 同側)}}",
+      "からキーの組み合わせを選択する傾向があります。"
+    ],
+    "shift-side-choice": [
+      "",
+      "{{(左側 / 右側)}}",
+      "な Shift キーを選択する傾向があります。"
+    ],
+    "num-shift-side-choice": [
+      "",
+      "{{(左側 / 右側)}}",
+      "な Num-shift キーを選択する傾向があります。"
+    ],
+    "fn-shift-side-choice": [
+      "",
+      "{{(左側 / 右側)}}",
+      "な Fn-shift キーを選択する傾向があります。"
+    ],
+    "flag-shift-side-choice": [
+      "",
+      "{{(左側 / 右側)}}",
+      "な Flag-shift キーを選択する傾向があります。"
+    ],
+    "character-key-side-choice": [
+      "",
+      "{{(左側 / 右側)}}",
+      "な文字キーを選択する傾向があります。"
+    ]
+  },
+  "layout-song-help-dialog": {
+    "title": "レイアウト記憶歌",
+    "summary": "レイアウト記憶歌はAIが生成した英語の歌です。デフォルトのレイアウトで英語の文字キーを覚えるのに役立ちます。",
+    "tool-explanation": "歌詞は Kimi K2 Thinking が、楽曲全体は Suno AI が生成しました。",
+    "license-explanation": "この歌は非商用利用のみ許可されています。",
+    "download-explanation": [
+      "必要に応じて、この歌の",
+      "楽曲",
+      "または",
+      "歌詞",
+      "をダウンロードできます。商用目的での使用はご遠慮ください。"
+    ]
+  },
+  "misc-setting": {
+    "thumb-rotation-angle": {
+      "title": "親指のスイッチの回転角度",
+      "input-aria-label": "レイアウト表示上の親指のスイッチの回転角度を入力するボックス"
+    },
+    "non-thumb-rotation-angle": {
+      "title": "親指以外のスイッチの回転角度",
+      "input-aria-label": "レイアウト表示上の親指以外のスイッチの回転角度を入力するボックス"
+    }
+  },
+  "quick-setting": {
+    "cc1-cc2-default-layout": "CC1/CC2/CCU のデフォルトレイアウト",
+    "m4g-default-layout": "M4G のデフォルトレイアウト",
+    "cc1-cc2-right-hand-only-layout": "CC1/CC2/CCU 右手のみレイアウト"
+  },
+  "thumb-3-switch-help-dialog": {
+    "title": "親指後列スイッチ",
+    "content": "Master Forge には、CharaChorder One、CharaChorder Two および CCU のような親指後列スイッチがありません。Master Forge をご利用の場合、または CharaChorder One、CharaChorder Two または CCU をご利用で親指後列スイッチを使用しない場合は、この設定のチェックを外してレイアウトから非表示にすることができます。"
+  },
+  "visibility-setting": {
+    "thumb-3-switch-help-button-aria-label": "親指後列スイッチのヘルプダイアログを開く",
+    "key-notation-help-button-aria-label": "キー表記のヘルプダイアログを開く",
+    "layout": "レイアウト",
+    "layout-text-guide": "レイアウト - テキストガイド",
+    "layout-key-notation-guide": "レイアウト - キー表記ガイド",
+    "layout-thumb-3-switch": "レイアウト - 親指後列スイッチ",
+    "combo-counter": "コンボカウンター",
+    "speedometer": "スピードメーター",
+    "home-page-chording-animation": "ホームページの和音入力アニメーション",
+    "entry-error-tooltip": "入力エラーのツールチップ"
+  },
+  "topic": {
+    "letters": "アルファベット",
+    "numbers": "数字",
+    "symbols": "記号"
+  },
+  "lesson": {
+    "review-1": "復習 1",
+    "review-2": "復習 2",
+    "review-3": "復習 3",
+    "all-letters": "すべてのアルファベット",
+    "all-numbers": "すべての数字"
+  },
+  "key-label": {
+    "shift": "Shift",
+    "numeric-layer": "数字レイヤー",
+    "function-layer": "機能レイヤー",
+    "flag-layer": "フラグレイヤー",
+    "alt-graph": "Alt Graph",
+    "alt-left": "Alt / Option（左）",
+    "alt-right": "Alt / Option（右）/ Alt Graph",
+    "backspace": "Backspace",
+    "caps-lock": "CapsLock",
+    "context-menu": "Application",
+    "control-left": "Ctrl（左）",
+    "control-right": "Ctrl（右）",
+    "enter": "Enter / Return",
+    "meta-left": "Windows / Command / Super（左）",
+    "meta-right": "Windows / Command / Super（右）",
+    "shift-left": "Shift（左）",
+    "shift-right": "Shift（右）",
+    "space-left": "Space（左）",
+    "space-right": "Space（右）",
+    "tab": "Tab",
+    "esc": "Esc",
+    "f1": "F1",
+    "f2": "F2",
+    "f3": "F3",
+    "f4": "F4",
+    "f5": "F5",
+    "f6": "F6",
+    "f7": "F7",
+    "f8": "F8",
+    "f9": "F9",
+    "f10": "F10",
+    "f11": "F11",
+    "f12": "F12",
+    "f13": "F13",
+    "f14": "F14",
+    "f15": "F15",
+    "f16": "F16",
+    "f17": "F17",
+    "f18": "F18",
+    "f19": "F19",
+    "f20": "F20",
+    "f21": "F21",
+    "f22": "F22",
+    "f23": "F23",
+    "f24": "F24",
+    "print-screen": "Print Screen",
+    "delete": "Delete",
+    "arrow-down": "下方向キー",
+    "arrow-left": "左方向キー",
+    "arrow-right": "右方向キー",
+    "arrow-up": "上方向キー",
+    "page-up": "Page Up",
+    "page-down": "Page Down",
+    "home": "Home",
+    "end": "End",
+    "insert": "Insert",
+    "numpad-divide": "Keypad: /",
+    "numpad-multiply": "Keypad: *",
+    "numpad-subtract": "Keypad: -",
+    "numpad-add": "Keypad: +",
+    "numpad-enter": "Keypad: Enter",
+    "numpad-0": "Keypad: 0",
+    "numpad-1": "Keypad: 1",
+    "numpad-2": "Keypad: 2",
+    "numpad-3": "Keypad: 3",
+    "numpad-4": "Keypad: 4",
+    "numpad-5": "Keypad: 5",
+    "numpad-6": "Keypad: 6",
+    "numpad-7": "Keypad: 7",
+    "numpad-8": "Keypad: 8",
+    "numpad-9": "Keypad: 9",
+    "no-key-pressed": "キー未押下",
+    "restart-input-device": "入力デバイスを再起動する",
+    "mouse-left-click": "マウス左クリック",
+    "mouse-right-click": "マウス右クリック",
+    "mouse-middle-click": "マウス中クリック",
+    "tertiary-keymap-left": "機能レイヤー（左）",
+    "tertiary-keymap-right": "機能レイヤー（右）",
+    "secondary-keymap-left": "数字レイヤー（左）",
+    "secondary-keymap-right": "数字レイヤー（右）",
+    "primary-keymap-left": "基本レイヤー（左）",
+    "primary-keymap-right": "基本レイヤー（右）",
+    "ambidextrous-throwover-left": "レイアウト鏡映（左）",
+    "ambidextrous-throwover-right": "レイアウト鏡映（右）",
+    "mouse-scroll-coast-right": "マウススクロール右",
+    "mouse-scroll-coast-left": "マウススクロール左",
+    "mouse-scroll-coast-down": "マウススクロール下",
+    "mouse-scroll-coast-up": "マウススクロール上",
+    "mouse-move-right": "マウス移動右",
+    "mouse-move-left": "マウス移動左",
+    "mouse-move-down": "マウス移動下",
+    "mouse-move-up": "マウス移動上",
+    "dup": "最後のキーを繰り返す",
+    "gtm": "生成文字メニューを切り替える",
+    "impulse": "リアルタイム和音追加モードを切り替える",
+    "left-hand-thumb-3-center": "擬似アクション 01 / 左手親指後列 3D クリック",
+    "left-hand-thumb-2-center": "擬似アクション 02 / 左手親指中列 3D クリック",
+    "left-hand-thumb-1-center": "擬似アクション 03 / 左手親指前列 3D クリック",
+    "left-hand-index-center": "擬似アクション 04 / 左手人差し指 3D クリック",
+    "left-hand-middle-1-center": "擬似アクション 05 / 左手中指 3D クリック",
+    "left-hand-pinky-center": "擬似アクション 07 / 左手小指 3D クリック",
+    "left-hand-middle-2-center": "擬似アクション 08 / 左手中指第二 3D クリック",
+    "left-hand-ring-2-center": "擬似アクション 09 / 左手薬指第二 3D クリック",
+    "right-hand-thumb-3-center": "擬似アクション 10 / 右手親指後列 3D クリック",
+    "right-hand-thumb-2-center": "擬似アクション 11 / 右手親指中列 3D クリック",
+    "right-hand-thumb-1-center": "擬似アクション 12 / 右手親指前列 3D クリック",
+    "right-hand-index-center": "擬似アクション 13 / 右手人差し指 3D クリック",
+    "right-hand-middle-1-center": "擬似アクション 14 / 右手中指 3D クリック",
+    "right-hand-ring-1-center": "擬似アクション 15 / 右手薬指 3D クリック",
+    "right-hand-pinky-center": "擬似アクション 16 / 右手小指 3D クリック",
+    "right-hand-middle-2-center": "擬似アクション 17 / 右手中指第二 3D クリック",
+    "right-hand-ring-2-center": "擬似アクション 18 / 右手薬指第二 3D クリック",
+    "apple-alt-left": "Option / Alt（左）",
+    "apple-alt-right": "Option / Alt（右）/ Alt Graph",
+    "apple-meta-left": "Command [Windows / Super]（左）",
+    "apple-meta-right": "Command [Windows / Super]（右）",
+    "windows-meta-left": "Windows [Command / Super]（左）",
+    "windows-meta-right": "Windows [Command / Super]（右）",
+    "unix-meta-left": "Super [Windows / Command]（左）",
+    "unix-meta-right": "Super [Windows / Command]（右）",
+    "brightness-up": "明るさを上げる",
+    "brightness-down": "明るさを下げる",
+    "play-pause": "再生/一時停止",
+    "next-track": "次のトラック",
+    "previous-track": "前のトラック",
+    "mute": "消音",
+    "volume-up": "音量を上げる",
+    "volume-down": "音量を下げる",
+    "search": "検索",
+    "back": "戻る",
+    "forward": "進む"
+  },
+  "home-page": {
+    "website-name": "Formosa フォルモサ",
+    "summary": [
+      "",
+      "CharaChorder 3D 入力デバイス",
+      "向けにカスタマイズされた非公式練習ツール"
+    ],
+    "lesson-start-instruction": [
+      "",
+      "space",
+      "キーで最初のレッスンに入るか、左側のリストからレッスンを選択してください。"
+    ],
+    "source-code": "ソースコード",
+    "dev-note": "開発ノート",
+    "dev-note-url": "https://andy23512.github.io/blog/formosa-a-practice-tool-of-charachorder-3d-input-devices-developed-by-tangent/",
+    "alnilam": "Alnilam アルニラム",
+    "current-device-layout-hint": {
+      "cc1-cc2-default": [
+        "デバイスのレイアウトは「CC1/CC2/CCUのデフォルト」に設定されています。",
+        "「M4Gのデフォルト」に切り替えます。"
+      ],
+      "m4g-default": [
+        "デバイスのレイアウトは「M4Gのデフォルト」に設定されています。",
+        "「CC1/CC2/CCUのデフォルト」に切り替えます。"
+      ]
+    },
+    "remark": "Formosa（発音：/fɔːrˈmoʊzə/）、フォルモサ、しし座に位置し地球から約451光年離れた赤色クランプ巨星。台湾がIAU設立100周年を記念したNameExoWorldsキャンペーンで命名した。「Formosa」は17世紀にポルトガル人が台湾を呼んだ歴史的な名称で、「美しい」という意味を持つ。"
+  },
+  "information-page": {
+    "description": "このウェブサイト、「Formosa フォルモサ」は、CharaChorder One、CharaChorder Two、CCU、Master Forge などの CharaChorder 3D 入力デバイス用に設計された非公式の練習ツールです。",
+    "page-introductions-title": "ページ紹介",
+    "key-lesson-page": {
+      "title": "キーレッスンページ",
+      "description": [
+        "キーレッスンページでは、CharaChorder 3D 入力デバイスの数字、アルファベット、記号キーの入力を練習できます。レッスンはサイドメニューにリストされています。",
+        [
+          "練習の目標を立てたい場合は、復習以外のレッスンで 100 コンボと毎分 100 文字数の両方を同時に達成することを目指してください。（",
+          {
+            "url": "https://andy23512.github.io/blog/tangent-s-suggestions-for-learning-english-character-entry-on-charachorder-3d-input-devices/",
+            "text": "CharaChorder 3D 入力デバイスで英語の文字入力を学習するための私のおすすめについては、こちらの記事に書きました"
+          },
+          "。）"
+        ]
+      ]
+    },
+    "statistics-page": {
+      "title": "統計ページ",
+      "description": "統計ページでは、キーレッスンの練習統計を確認できます。タイピング速度やコンボ数の推移を示すグラフも含まれています。"
+    },
+    "chord-page": {
+      "title": "和音ページ",
+      "description": "和音ページでは、和音ライブラリからいくつかの和音を選択して練習できます。"
+    },
+    "layout-viewer-page": {
+      "title": "レイアウト表示ページ",
+      "description": "レイアウト表示ページでは、特定のOSキーボードレイアウトと修飾キー（Shift キーと Alt Graph キー）の状態におけるデバイスの実際の出力レイアウトを確認できます。また、キー検索機能とレイアウト印刷機能も備えています。"
+    },
+    "layout-song-page": {
+      "title": "レイアウト記憶歌ページ",
+      "description": "レイアウト記憶歌ページでは、デフォルトレイアウトで英語の文字キーを覚えるのに役立つAI生成した英語の歌があります。"
+    },
+    "settings-page": {
+      "title": "設定ページ",
+      "description": "設定ページでは、このツールのいくつかの設定を調整できます。例えば、いくつかのコンポーネントの表示、レイアウトプレビューのハイライトロジック、デバイスレイアウト、エアモードなどです。"
+    },
+    "disclaimers": {
+      "title": "免責事項",
+      "description": [
+        [
+          "このサイトは、CharaChorder と提携、関連、認可、推奨、またはいかなる形でも公式な関係を有していません。CharaChorder の公式サイトは、 ",
+          "{{charachorder url}}",
+          " でご覧いただけます。"
+        ],
+        [
+          "このツールにおける入力統計情報と設定は、ブラウザの ",
+          "IndexedDB",
+          " と ",
+          "localStorage",
+          " にローカルに保存されます。このツールを介して他の場所に送信されることはありません。"
+        ]
+      ]
+    }
+  },
+  "layout-song-page": {
+    "title": "レイアウト記憶歌",
+    "mute-button-aria-label": "レイアウトソングのミュートを切り替えます",
+    "help-button-aria-label": "レイアウトソングのヘルプダイアログを開きます"
+  },
+  "layout-viewer-page": {
+    "toggle-shift-modifier": "Shift 修飾キーの切り替え",
+    "toggle-alt-graph-modifier": "Alt Graph 修飾キーの切り替え",
+    "device-layout": {
+      "label": "デバイスレイアウト"
+    },
+    "os-keyboard-layout": {
+      "label": "OSキーボードレイアウト",
+      "search-placeholder": "レイアウトを検索...",
+      "search-no-entry": "一致するレイアウトが見つかりませんでした。",
+      "open-reference-button-tooltip": "このレイアウトの参照サイトを開く",
+      "reset-button-tooltip": "リセット"
+    },
+    "search-key-button-tooltip": "キーを検索",
+    "print-layout-button-tooltip": "レイアウトを印刷",
+    "print-layout-title": "{{deviceLayout}} デバイスレイアウト（{{keyboardLayout}} OSレイアウト下）",
+    "key-search": {
+      "placeholder": "キーを検索...",
+      "aria-label": "キーの検索ボックス",
+      "clear-button-aria-label": "検索クエリをクリア",
+      "search-no-entry": "一致するキーが見つかりませんでした。"
+    },
+    "hold-hint": [
+      "（このレイヤーにアクセスするには",
+      "{{keys}}",
+      "を押したままにしてください）"
+    ],
+    "and": "と",
+    "comma": "、",
+    "layer": {
+      "1": "基本レイヤー",
+      "2": "数字レイヤー",
+      "3": "機能レイヤー",
+      "4": "フラグレイヤー"
+    },
+    "dead-key-legend": "デッドキー",
+    "windows-alt-code-legend": "Windows Alt コード"
+  },
+  "lesson-page": {
+    "input-box-title": "レッスン練習用入力ボックス",
+    "pause-action": "一時停止",
+    "start-action": "開始",
+    "previous-lesson-link": {
+      "aria-label": "前のレッスンへのリンク",
+      "tooltip": "前のレッスンへ移動"
+    },
+    "next-lesson-link": {
+      "aria-label": "次のレッスンへのリンク",
+      "tooltip": "次のレッスンへ移動"
+    }
+  },
+  "settings-page": {
+    "title": "設定",
+    "panel-header": {
+      "quick-setting": "クイック設定",
+      "visibility": "表示",
+      "layout-highlight": "レイアウトハイライト",
+      "device-layout": "デバイスレイアウト",
+      "lesson": "レッスン",
+      "air-mode": "エアモード",
+      "data-deletion": "データ削除",
+      "misc": "その他",
+      "ui-language": "UI 言語"
+    },
+    "button": {
+      "delete-all-imported-device-layouts": "すべてのインポート済みデバイスレイアウトを削除",
+      "delete-all-imported-chords": "すべてのインポート済み和音を削除"
+    },
+    "message": {
+      "device-layout-deleted": "すべてのインポート済みデバイスレイアウトが削除されました。",
+      "chords-deleted": "すべてのインポート済み和音が削除されました。"
+    }
+  },
+  "statistics-page": {
+    "metric": "メトリック"
+  },
+  "layout-text-guide": "{{hand}}{{switch}}{{direction}}キー",
+  "device-layout-import-dialog": {
+    "title": "デバイスレイアウトのインポート",
+    "name-label": "プロファイル {{profile}}"
+  },
+  "lesson-not-found-page": {
+    "title": "レッスンが見つかりません",
+    "description": "アクセスしようとしたレッスンは見つかりませんでした。削除された可能性があります。または、URLが間違っている可能性があります。サイドメニューからレッスンを選択してください。"
+  },
+  "serial-log-dialog": {
+    "title": "シリアルログ",
+    "no-data-message": "利用可能なシリアルログデータはありません。"
+  }
+}

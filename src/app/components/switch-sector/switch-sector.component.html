@@ -1,0 +1,32 @@
+<svg:path
+  [attr.d]="sectorPath()"
+  fill="transparent"
+  class="stroke-white print:stroke-black"
+  [attr.stroke-width]="strokeWidth()"
+/>
+<svg:path
+  class="fill-formosa-500 print:fill-black"
+  [attr.d]="sectorPath() + ' Z'"
+  [attr.opacity]="
+    highlightKeyCombination()?.positionCodes?.includes(positionCode())
+      ? highlightOpacity()
+      : 0
+  "
+/>
+<svg:path
+  class="fill-red-500"
+  [attr.d]="sectorPath() + ' Z'"
+  [attr.opacity]="
+    secondaryHighlightPositions().includes(positionCode())
+      ? highlightOpacity()
+      : 0
+  "
+/>
+<svg:g
+  appKeyLabel
+  [x]="textX()"
+  [y]="textY()"
+  [fontSize]="fontSize()"
+  [highlightKeyCombination]="highlightKeyCombination()"
+  [labels]="keyLabel()"
+></svg:g>

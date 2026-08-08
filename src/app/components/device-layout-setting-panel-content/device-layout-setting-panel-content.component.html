@@ -1,0 +1,98 @@
+<ol class="list-inside list-decimal">
+  <li>
+    {{ "settings.device-layout.import-device-layout-file-step.0" | translate }}
+    <a
+      class="underline"
+      href="https://charachorder.io/"
+      target="_blank"
+      rel="noopener"
+      >{{
+        "settings.device-layout.import-device-layout-file-step.1" | translate
+      }}</a
+    >
+    {{ "settings.device-layout.import-device-layout-file-step.2" | translate }}
+    <div class="my-2 flex items-center gap-2">
+      <button
+        class="my-2"
+        type="button"
+        [color]="'primary'"
+        mat-flat-button
+        (click)="fileInput.click()"
+      >
+        <mat-icon>{{ "upload" | iconGuard }}</mat-icon>
+        {{ "general.choose-file-action" | translate | realTitleCase }}
+      </button>
+      <input
+        hidden
+        #fileInput
+        type="file"
+        accept=".json"
+        [attr.aria-label]="
+          'settings.device-layout.file-input-aria-label' | translate
+        "
+        (change)="loadDeviceLayoutFile()"
+      />
+      or
+      <div
+        [matTooltip]="
+          'general.web-serial-api-not-supported-message' | translate
+        "
+        [matTooltipDisabled]="isWebSerialApiSupported"
+      >
+        <button
+          class="!bg-yellow-500 !text-black"
+          [class.opacity-30]="!isWebSerialApiSupported"
+          type="button"
+          mat-flat-button
+          [disabled]="!isWebSerialApiSupported"
+          (click)="loadDeviceLayoutFromDevice()"
+        >
+          <mat-icon>{{ "developer_board" | iconGuard }}</mat-icon>
+          {{ "general.load-from-device-action" | translate | realTitleCase }}
+        </button>
+      </div>
+    </div>
+  </li>
+  <li>
+    {{ "settings.device-layout.select-device-layout-step" | translate }}
+    <div class="my-2 flex">
+      <mat-form-field class="w-96 flex-none">
+        <mat-select
+          class="!font-bold !text-formosa-500"
+          [value]="selectedDeviceLayoutId()"
+          (valueChange)="setSelectedDeviceLayoutId($event)"
+        >
+          @for (
+            deviceLayout of translatedDeviceLayouts();
+            track deviceLayout.id
+          ) {
+            <mat-option [value]="deviceLayout.id">{{
+              deviceLayout.name
+            }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <button
+        class="flex-none"
+        mat-icon-button
+        matSuffix
+        aria-label="Download selected device layout"
+        (click)="onDownloadDeviceLayoutButtonClick($event)"
+      >
+        <mat-icon>{{ "download" | iconGuard }}</mat-icon>
+      </button>
+      @if (!selectedDeviceLayoutIsDefault()) {
+        <button
+          class="flex-none"
+          mat-icon-button
+          matSuffix
+          aria-label="Delete selected device layout"
+          (click)="onDeleteDeviceLayoutButtonClick($event)"
+          color="warn"
+        >
+          <mat-icon>{{ "delete" | iconGuard }}</mat-icon>
+        </button>
+      }
+    </div>
+  </li>
+</ol>

@@ -1,0 +1,60 @@
+import { NavLink } from '../models/nav-link.models';
+
+export const NAV_LINKS: NavLink[] = [
+  {
+    title: 'nav.page.home.title',
+    routerLink: '/',
+    routerLinkActiveOptions: { exact: true },
+    ariaLabel: 'nav.page.home.aria-label',
+    tooltipMessage: 'nav.page.home.tooltip',
+    icon: 'home',
+  },
+  {
+    title: 'nav.page.statistics.title',
+    routerLink: '/statistics',
+    routerLinkActiveOptions: { exact: false },
+    ariaLabel: 'nav.page.statistics.aria-label',
+    tooltipMessage: 'nav.page.statistics.tooltip',
+    icon: 'trending_up',
+  },
+  {
+    title: 'nav.page.chord.title',
+    routerLink: '/chord',
+    routerLinkActiveOptions: { exact: false },
+    ariaLabel: 'nav.page.chord.aria-label',
+    tooltipMessage: 'nav.page.chord.tooltip',
+    icon: 'piano',
+  },
+  {
+    title: 'nav.page.layout.title',
+    routerLink: '/layout-viewer',
+    routerLinkActiveOptions: { exact: false },
+    ariaLabel: 'nav.page.layout.aria-label',
+    tooltipMessage: 'nav.page.layout.tooltip',
+    icon: 'map',
+  },
+  {
+    title: 'nav.page.song.title',
+    routerLink: '/layout-song',
+    routerLinkActiveOptions: { exact: false },
+    ariaLabel: 'nav.page.song.aria-label',
+    tooltipMessage: 'nav.page.song.tooltip',
+    icon: 'music_note_2',
+  },
+  {
+    title: 'nav.page.settings.title',
+    routerLink: '/settings',
+    routerLinkActiveOptions: { exact: false },
+    ariaLabel: 'nav.page.settings.aria-label',
+    tooltipMessage: 'nav.page.settings.tooltip',
+    icon: 'settings',
+  },
+  {
+    title: 'nav.page.information.title',
+    routerLink: '/information',
+    routerLinkActiveOptions: { exact: false },
+    ariaLabel: 'nav.page.information.aria-label',
+    tooltipMessage: 'nav.page.information.tooltip',
+    icon: 'info',
+  },
+];

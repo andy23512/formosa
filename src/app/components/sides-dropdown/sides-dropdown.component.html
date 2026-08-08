@@ -1,0 +1,13 @@
+<mat-select
+  class="!w-auto !font-bold !text-formosa-500"
+  [value]="value()"
+  [panelWidth]="null"
+  (valueChange)="select.emit($event)"
+>
+  <mat-option [value]="'both'">
+    {{ "general.both-sides" | translate }}
+  </mat-option>
+  <mat-option [value]="'same'">
+    {{ "general.same-side" | translate }}
+  </mat-option>
+</mat-select>

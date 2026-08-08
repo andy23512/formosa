@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "formosa-dev",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["start"],
+      "port": 8315
+    }
+  ]
+}

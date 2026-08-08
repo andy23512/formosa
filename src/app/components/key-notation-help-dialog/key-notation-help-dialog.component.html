@@ -1,0 +1,262 @@
+<h2 mat-dialog-title class="!text-xl">
+  {{ "key-notation-help-dialog.title" | translate | realTitleCase }}
+</h2>
+<mat-dialog-content>
+  <p>
+    {{
+      "key-notation-help-dialog.key-notation-explanation-paragraph" | translate
+    }}
+  </p>
+  <br />
+  <p>
+    {{ "key-notation-help-dialog.key-notation-example-paragraph" | translate }}
+  </p>
+  <br />
+  <p>
+    {{
+      "key-notation-help-dialog.first-and-last-letters-explanation-paragraph"
+        | translate
+    }}
+  </p>
+  <br />
+  <p>
+    {{
+      "key-notation-help-dialog.middle-part-explanation-paragraph.0"
+        | translate
+    }}<a
+      class="underline"
+      target="_blank"
+      rel="noopener"
+      [href]="
+        'key-notation-help-dialog.middle-part-explanation-paragraph.1.url'
+          | translate
+      "
+      >{{
+        "key-notation-help-dialog.middle-part-explanation-paragraph.1.text"
+          | translate
+      }}</a
+    >{{
+      "key-notation-help-dialog.middle-part-explanation-paragraph.2"
+        | translate
+    }}<a
+      class="underline"
+      target="_blank"
+      rel="noopener"
+      [href]="
+        'key-notation-help-dialog.middle-part-explanation-paragraph.3.url'
+          | translate
+      "
+      >{{
+        "key-notation-help-dialog.middle-part-explanation-paragraph.3.text"
+          | translate
+      }}</a
+    >{{
+      "key-notation-help-dialog.middle-part-explanation-paragraph.4" | translate
+    }}
+  </p>
+  <br />
+  <p>
+    {{
+      "key-notation-help-dialog.layout-image-explanation-paragraph" | translate
+    }}
+  </p>
+  <br />
+  <app-layout
+    [alwaysShowLayout]="true"
+    [keyLabelMap]="{
+      '0': [
+        {
+          type: KeyLabelType.String,
+          c: 'L1bb',
+          title: 'L1bb',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null
+        }
+      ],
+      '5': [
+        {
+          type: KeyLabelType.String,
+          c: 'L1b',
+          title: 'L1b',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null
+        }
+      ],
+      '10': [
+        {
+          type: KeyLabelType.String,
+          c: 'L1',
+          title: 'L1',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null
+        }
+      ],
+      '15': [
+        {
+          type: KeyLabelType.String,
+          c: 'L2',
+          title: 'L2',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null
+        }
+      ],
+      '20': [
+        {
+          type: KeyLabelType.String,
+          c: 'L3',
+          title: 'L3',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null
+        }
+      ],
+      '25': [
+        {
+          type: KeyLabelType.String,
+          c: 'L4',
+          title: 'L4',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null
+        }
+      ],
+      '30': [
+        {
+          type: KeyLabelType.String,
+          c: 'L5',
+          title: 'L5',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null
+        }
+      ],
+      '35': [
+        {
+          type: KeyLabelType.String,
+          c: 'L3b',
+          title: 'L3b',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null
+        }
+      ],
+      '40': [
+        {
+          type: KeyLabelType.String,
+          c: 'L4b',
+          title: 'L4b',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null
+        }
+      ],
+      '45': [
+        {
+          type: KeyLabelType.String,
+          c: 'R1bb',
+          title: 'R1bb',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null
+        }
+      ],
+      '50': [
+        {
+          type: KeyLabelType.String,
+          c: 'R1b',
+          title: 'R1b',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null
+        }
+      ],
+      '55': [
+        {
+          type: KeyLabelType.String,
+          c: 'R1',
+          title: 'R1',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null
+        }
+      ],
+      '60': [
+        {
+          type: KeyLabelType.String,
+          c: 'R2',
+          title: 'R2',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null
+        }
+      ],
+      '65': [
+        {
+          type: KeyLabelType.String,
+          c: 'R3',
+          title: 'R3',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null
+        }
+      ],
+      '70': [
+        {
+          type: KeyLabelType.String,
+          c: 'R4',
+          title: 'R4',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null
+        }
+      ],
+      '75': [
+        {
+          type: KeyLabelType.String,
+          c: 'R5',
+          title: 'R5',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null
+        }
+      ],
+      '80': [
+        {
+          type: KeyLabelType.String,
+          c: 'R3b',
+          title: 'R3b',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null
+        }
+      ],
+      '85': [
+        {
+          type: KeyLabelType.String,
+          c: 'R4b',
+          title: 'R4b',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null
+        }
+      ]
+    }"
+    [highlightKeyCombination]="{
+      positionCodes: [],
+      score: 0,
+      characterKeyPositionCode: -1,
+      layer: Layer.Primary,
+      shiftKey: false,
+      altGraphKey: false
+    }"
+  ></app-layout>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button type="button" mat-button [mat-dialog-close]="true">
+    {{ "general.close-action" | translate | realTitleCase }}
+  </button>
+</mat-dialog-actions>

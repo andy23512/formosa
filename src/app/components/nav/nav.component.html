@@ -1,0 +1,135 @@
+<mat-sidenav-container class="h-full" autosize>
+  <mat-sidenav
+    #drawer
+    class="!w-[240px] !bg-gray-450"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+    [disableClose]="!(isHandset$ | async)"
+    data-style-dense
+  >
+    <header class="sticky top-0 z-10 bg-gray-450 shadow">
+      <div class="flex w-44 flex-wrap">
+        @for (navLink of navLinks; track $index) {
+          <a
+            class="w-1/2"
+            [routerLink]="navLink.routerLink"
+            routerLinkActive
+            [routerLinkActiveOptions]="navLink.routerLinkActiveOptions"
+            #rla="routerLinkActive"
+            [attr.aria-label]="navLink.ariaLabel | translate"
+            [matTooltip]="navLink.tooltipMessage | translate"
+            (click)="onNavLinkClick()"
+          >
+            <button
+              type="button"
+              mat-flat-button
+              class="whitespace-nowrap"
+              [color]="rla.isActive ? 'primary' : null"
+            >
+              <mat-icon>{{ navLink.icon | iconGuard }}</mat-icon>
+              {{ navLink.title | translate | realTitleCase }}
+            </button>
+          </a>
+        }
+        <a class="w-1/2">
+          <button
+            class="whitespace-nowrap"
+            type="button"
+            mat-flat-button
+            [attr.aria-label]="'nav.hotkey.aria-label' | translate"
+            (click)="openHotkeyDialog()"
+            [matTooltip]="'nav.hotkey.tooltip' | translate"
+          >
+            <mat-icon>{{ "keyboard" | iconGuard }}</mat-icon>
+            {{ "nav.hotkey.title" | translate | realTitleCase }}
+          </button></a
+        >
+        @if (isWebSerialApiSupported) {
+          <a class="w-1/2">
+            <button
+              class="whitespace-nowrap"
+              type="button"
+              mat-flat-button
+              [attr.aria-label]="'nav.serial-log.aria-label' | translate"
+              (click)="openSerialLogDialog()"
+              [matTooltip]="'nav.serial-log.tooltip' | translate"
+            >
+              <mat-icon>{{ "article" | iconGuard }}</mat-icon>
+              {{ "nav.serial-log.title" | translate | realTitleCase }}
+            </button></a
+          >
+        }
+      </div>
+      <mat-form-field
+        class="w-full [&_.mat-mdc-form-field-subscript-wrapper]:hidden"
+      >
+        <input
+          [ngModel]="searchQuery()"
+          (ngModelChange)="searchQuery.set($event)"
+          matInput
+          type="search"
+          [attr.placeholder]="
+            'nav.search-lessons-input.placeholder' | translate | realTitleCase
+          "
+          [attr.aria-label]="'nav.search-lessons-input.aria-label' | translate"
+        />
+        @if (!searchQuery()) {
+          <button mat-icon-button matSuffix>
+            <mat-icon>{{ "search" | iconGuard }}</mat-icon>
+          </button>
+        }
+      </mat-form-field>
+    </header>
+    <mat-nav-list class="!p-0">
+      @if (searchQuery()) {
+        @for (lesson of searchResult(); track lesson.id) {
+          <a
+            mat-list-item
+            routerLink="/topic/{{ lesson.topic.id }}/lesson/{{ lesson.id }}"
+            routerLinkActive="list-item-active"
+            (click)="onNavLinkClick()"
+            >{{ lesson.topic.name | translate }} -
+            {{ lesson.name | translate }}</a
+          >
+        } @empty {
+          <a mat-list-item>{{ "nav.no-result-message" | translate }}</a>
+        }
+      } @else {
+        @for (topic of topics; track topic.id) {
+          <h4 class="flex items-center gap-1 font-bold" matSubheader>
+            <mat-icon>{{ topic.iconName || "topic" | iconGuard }}</mat-icon
+            >{{ topic.name | translate }}
+          </h4>
+          @for (lesson of topic.lessons; track lesson.id) {
+            <a
+              mat-list-item
+              routerLink="/topic/{{ topic.id }}/lesson/{{ lesson.id }}"
+              routerLinkActive="list-item-active"
+              (click)="onNavLinkClick()"
+              >{{ lesson.name | translate }}</a
+            >
+          }
+        }
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    @if (!drawer.opened) {
+      <button
+        type="button"
+        class="!fixed left-1 top-1/2 !z-10 -translate-y-1/2 cursor-pointer opacity-80 hover:text-formosa-500"
+        [attr.aria-label]="'nav.side-menu-toggle.aria-label' | translate"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon
+          [attr.aria-label]="'nav.side-menu-toggle.icon-aria-label' | translate"
+          >{{ "left_panel_open" | iconGuard }}</mat-icon
+        >
+      </button>
+    }
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

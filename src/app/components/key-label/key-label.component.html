@@ -1,0 +1,42 @@
+@for (label of labels(); track $index) {
+  @if (isLabelActive(label)) {
+    <svg:g [matTooltip]="label.title | translate">
+      @if (label.type === KeyLabelType.String && label.isDeadKey) {
+        <svg:line
+          [attr.x1]="x()"
+          [attr.y1]="y() - 40"
+          [attr.x2]="x()"
+          [attr.y2]="y() + 40"
+          class="stroke-formosa-900 stroke-[40] print:stroke-formosa-200"
+        ></svg:line>
+      }
+      @if (label.type === KeyLabelType.String && label.isWindowsAltCode) {
+        <svg:line
+          [attr.x1]="x()"
+          [attr.y1]="y() - 40"
+          [attr.x2]="x()"
+          [attr.y2]="y() + 40"
+          class="stroke-yellow-900 stroke-[40] print:stroke-yellow-300"
+        ></svg:line>
+      }
+      <svg:text
+        [attr.x]="x()"
+        [attr.y]="y()"
+        dominant-baseline="central"
+        text-anchor="middle"
+        [style.font-size.px]="getFontSize(label)"
+        [class.material-icons]="label.type === KeyLabelType.Icon"
+        [class.font-logos]="label.type === KeyLabelType.Logo"
+        [class.fill-current]="label.type !== KeyLabelType.ActionCode"
+        [class.fill-red-500]="label.type === KeyLabelType.ActionCode"
+        [ngClass]="label.type === KeyLabelType.Logo ? label.c : null"
+      >
+        @if (label.type === KeyLabelType.ActionCode) {
+          ({{ label.c }})
+        } @else {
+          {{ label.c }}
+        }
+      </svg:text>
+    </svg:g>
+  }
+}

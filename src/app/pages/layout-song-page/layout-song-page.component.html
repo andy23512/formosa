@@ -1,0 +1,74 @@
+<section
+  class="flex h-12 flex-none items-center justify-center bg-gray-700 px-3"
+>
+  <h2 class="flex-none text-lg">
+    {{ "layout-song-page.title" | translate | realTitleCase }}
+  </h2>
+  <button
+    mat-icon-button
+    class="flex-none"
+    (click)="handlePlayPause()"
+    [disabled]="!canPlay()"
+  >
+    <mat-icon>
+      {{ (isPlaying() ? "pause" : "play_arrow") | iconGuard }}
+    </mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    class="flex-none"
+    (click)="toggleLoop()"
+    [class.!text-formosa-500]="layoutSongSettingStore.loop()"
+    [class.!text-gray-200]="!layoutSongSettingStore.loop()"
+  >
+    <mat-icon>
+      {{ "repeat" | iconGuard }}
+    </mat-icon>
+  </button>
+  <mat-slider class="flex-1" min="0" max="100">
+    <input
+      matSliderThumb
+      [value]="progress()"
+      (valueChange)="handleSeek($event)"
+    />
+  </mat-slider>
+  <button
+    type="button"
+    mat-icon-button
+    [attr.aria-label]="'layout-song-page.mute-button-aria-label' | translate"
+    (click)="toggleMute()"
+  >
+    <mat-icon>{{
+      (layoutSongSettingStore.displayMuted() ? "volume_off" : "volume_up")
+        | iconGuard
+    }}</mat-icon>
+  </button>
+  <mat-slider class="w-28 flex-none" min="0" max="1" step="0.05">
+    <input
+      matSliderThumb
+      [value]="layoutSongSettingStore.displayVolume()"
+      (valueChange)="layoutSongSettingStore.setVolume($event)"
+    />
+  </mat-slider>
+  <button
+    type="button"
+    mat-icon-button
+    [attr.aria-label]="'layout-song-page.help-button-aria-label' | translate"
+    (click)="openLayoutSongHelpDialog()"
+  >
+    <mat-icon>{{ "help" | iconGuard }}</mat-icon>
+  </button>
+</section>
+<app-layout
+  class="block flex-1 overflow-hidden px-5 pb-5"
+  [alwaysShowLayout]="true"
+  [alwaysHideLayoutGuides]="true"
+  [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
+  [keyLabelMap]="keyLabelMap()"
+  [highlightKeyCombination]="highlightKeyCombination()"
+></app-layout>
+<app-lyrics-view
+  class="absolute left-1/2 top-14 h-12 w-full max-w-[30rem] -translate-x-1/2"
+  [currentTime]="currentTime()"
+  [shownLyricSegments]="shownLyricSegments()"
+></app-lyrics-view>
