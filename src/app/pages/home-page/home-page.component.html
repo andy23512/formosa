@@ -14,28 +14,33 @@
     <circle cx="105" cy="255" r="0.7" opacity="0.12" />
   </g>
   <g class="stroke-formosa-500" fill="none">
-    <path d="M 34 58 Q 54 22 86 40" stroke-width="0.75" opacity="0.14" />
-    <path d="M 222 268 Q 267 197 270 242" stroke-width="0.75" opacity="0.14" />
-    <path d="M 312 278 Q 325 320 290 312" stroke-width="0.75" opacity="0.14" />
+    @for (link of backgroundScene.links; track $index) {
+      <path [attr.d]="link.d" stroke-width="0.75" opacity="0.14" />
+    }
   </g>
   <g class="fill-formosa-500">
-    <circle cx="34" cy="58" r="1.2" opacity="0.28" />
-    <circle cx="86" cy="40" r="1.2" opacity="0.28" />
-    <circle cx="222" cy="268" r="1.2" opacity="0.28" />
-    <circle cx="270" cy="242" r="1.2" opacity="0.28" />
-    <circle cx="312" cy="278" r="1.2" opacity="0.28" />
-    <circle cx="290" cy="312" r="1.2" opacity="0.28" />
-    <circle cx="128" cy="68" r="4.5" opacity="0.07" />
-    <circle cx="128" cy="68" r="1.6" opacity="0.32" />
+    @for (marker of backgroundScene.markers; track $index) {
+      @if (marker.lone) {
+        <circle [attr.cx]="marker.x" [attr.cy]="marker.y" r="4.5" opacity="0.07" />
+        <circle [attr.cx]="marker.x" [attr.cy]="marker.y" r="1.6" opacity="0.32" />
+      } @else {
+        <circle [attr.cx]="marker.x" [attr.cy]="marker.y" r="1.2" opacity="0.28" />
+      }
+    }
   </g>
   <g class="fill-formosa-500">
-    <text x="34" y="58" font-size="36" opacity="0.22" transform="rotate(-8 34 58)">ㄈ</text>
-    <text x="86" y="40" font-size="28" opacity="0.20" transform="rotate(6 86 40)">ㄨ</text>
-    <text x="128" y="68" font-size="32" opacity="0.22" transform="rotate(-4 128 68)">ㄦ</text>
-    <text x="222" y="268" font-size="38" opacity="0.24" transform="rotate(5 222 268)">ㄇ</text>
-    <text x="270" y="242" font-size="26" opacity="0.20" transform="rotate(-7 270 242)">ㄛ</text>
-    <text x="312" y="278" font-size="34" opacity="0.22" transform="rotate(4 312 278)">ㄕ</text>
-    <text x="290" y="312" font-size="24" opacity="0.20" transform="rotate(-10 290 312)">ㄚ</text>
+    @for (glyph of backgroundScene.glyphs; track $index) {
+      <text
+        [attr.x]="glyph.x"
+        [attr.y]="glyph.y"
+        [attr.font-size]="glyph.size"
+        [attr.opacity]="glyph.opacity"
+        [attr.transform]="
+          'rotate(' + glyph.rotation + ' ' + glyph.x + ' ' + glyph.y + ')'
+        "
+        >{{ glyph.glyph }}</text
+      >
+    }
   </g>
   <g class="fill-formosa-500" opacity="0.08">
     <text x="16" y="132" font-size="20">ㄅ</text>

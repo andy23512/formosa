@@ -15,11 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatFormField, MatSuffix } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
-import {
-  MatListItem,
-  MatListSubheaderCssMatStyler,
-  MatNavList,
-} from '@angular/material/list';
+import { MatListItem, MatNavList } from '@angular/material/list';
 import {
   MatSidenav,
   MatSidenavContainer,
@@ -36,10 +32,10 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { filter, map, shareReplay, take } from 'rxjs/operators';
 import { NAV_LINKS } from 'src/app/data/nav-links';
-import { Lesson } from 'src/app/models/topic.models';
+import { Lesson } from 'src/app/models/lesson.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
-import { LESSON_DATA_FOR_SEARCH, TOPICS } from '../../data/topics';
+import { LESSON_DATA_FOR_SEARCH, LESSONS } from '../../data/lessons';
 
 function searchLessons(query: string): Lesson[] {
   const normalizedQuery = query.trim().toLowerCase();
@@ -72,7 +68,6 @@ function searchLessons(query: string): Lesson[] {
     MatButton,
     MatInput,
     MatListItem,
-    MatListSubheaderCssMatStyler,
     MatNavList,
     MatSidenav,
     MatSidenavContainer,
@@ -87,7 +82,7 @@ function searchLessons(query: string): Lesson[] {
   ],
 })
 export class NavComponent implements OnInit, OnDestroy {
-  public topics = TOPICS;
+  public lessons = LESSONS;
   public navLinks = NAV_LINKS;
   public toggleSideMenuShortcut = 'meta.b';
 

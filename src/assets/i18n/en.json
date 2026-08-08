@@ -41,8 +41,6 @@
     "dead-key-tooltip": "Dead Key: {{character}}",
     "windows-alt-code-tooltip": "Windows Alt Code: {{character}}",
     "choose-file-action": "choose file",
-    "combo-unit": "combo",
-    "combo-unit-plural": "combos",
     "cancel-action": "cancel",
     "delete-confirm-button": "Yes. Delete them.",
     "delete-single-confirm-button": "Yes. Delete it.",
@@ -261,15 +259,8 @@
     "layout-text-guide": "layout - text guide",
     "layout-key-notation-guide": "layout - key notation guide",
     "layout-thumb-3-switch": "layout - thumb 3 switch",
-    "combo-counter": "combo counter",
     "speedometer": "speedometer",
-    "home-page-chording-animation": "home page chording animation",
-    "entry-error-tooltip": "entry error tooltip"
-  },
-  "topic": {
-    "letters": "Letters",
-    "numbers": "Numbers",
-    "symbols": "Symbols"
+    "home-page-chording-animation": "home page chording animation"
   },
   "lesson": {
     "review-1": "Review 1",
@@ -441,7 +432,7 @@
       "description": [
         "At key lesson page, you can practice typing the number, letter, or symbol keys on your CharaChorder 3D input device. The accessible lessons are listed in the side menu.",
         [
-          "If you want a goal for your practice, you can try to achieve both 100 combos and 100 CPM at the same time under each non-review lesson. (I wrote ",
+          "If you want a goal for your practice, you can try to achieve 100 CPM under each non-review lesson. (I wrote ",
           {
             "url": "https://andy23512.github.io/blog/tangent-s-suggestions-for-learning-english-character-entry-on-charachorder-3d-input-devices/",
             "text": "my suggestions for learning English character entry on CharaChorder 3D input devices in this article"
@@ -516,7 +507,7 @@
     }
   },
   "statistics-page": {
-    "metric": "metric"
+    "overall": "overall"
   },
   "layout-text-guide": "{{hand}} {{switch}} {{direction}}",
   "device-layout-import-dialog": {

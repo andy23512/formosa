@@ -11,10 +11,8 @@ const INITIAL_VISIBILITY_SETTING: VisibilitySetting = {
   layoutTextGuide: true,
   layoutKeyNotationGuide: false,
   layoutThumb3Switch: true,
-  comboCounter: true,
   speedometer: true,
   homePageChordingAnimation: false,
-  entryErrorTooltip: true,
 };
 
 export const VisibilitySettingStore = signalStore(

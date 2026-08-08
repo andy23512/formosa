@@ -30,11 +30,6 @@ const VISIBILITY_SETTING_ITEMS: {
     name: 'visibility-setting.layout-thumb-3-switch',
     key: 'layoutThumb3Switch',
   },
-  {
-    name: 'visibility-setting.entry-error-tooltip',
-    key: 'entryErrorTooltip',
-  },
-  { name: 'visibility-setting.combo-counter', key: 'comboCounter' },
   { name: 'visibility-setting.speedometer', key: 'speedometer' },
   {
     name: 'visibility-setting.home-page-chording-animation',

@@ -72,30 +72,23 @@
         @for (lesson of searchResult(); track lesson.id) {
           <a
             mat-list-item
-            routerLink="/topic/{{ lesson.topic.id }}/lesson/{{ lesson.id }}"
+            routerLink="/lesson/{{ lesson.id }}"
             routerLinkActive="list-item-active"
             (click)="onNavLinkClick()"
-            >{{ lesson.topic.name | translate }} -
-            {{ lesson.name | translate }}</a
+            >{{ lesson.name | translate }}</a
           >
         } @empty {
           <a mat-list-item>{{ "nav.no-result-message" | translate }}</a>
         }
       } @else {
-        @for (topic of topics; track topic.id) {
-          <h4 class="flex items-center gap-1 font-bold" matSubheader>
-            <mat-icon>{{ topic.iconName || "topic" | iconGuard }}</mat-icon
-            >{{ topic.name | translate }}
-          </h4>
-          @for (lesson of topic.lessons; track lesson.id) {
-            <a
-              mat-list-item
-              routerLink="/topic/{{ topic.id }}/lesson/{{ lesson.id }}"
-              routerLinkActive="list-item-active"
-              (click)="onNavLinkClick()"
-              >{{ lesson.name | translate }}</a
-            >
-          }
+        @for (lesson of lessons; track lesson.id) {
+          <a
+            mat-list-item
+            routerLink="/lesson/{{ lesson.id }}"
+            routerLinkActive="list-item-active"
+            (click)="onNavLinkClick()"
+            >{{ lesson.name | translate }}</a
+          >
         }
       }
     </mat-nav-list>

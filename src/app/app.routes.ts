@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, Route, Router } from '@angular/router';
-import { ResolvedLesson } from './models/topic.models';
+import { ResolvedLesson } from './models/lesson.models';
 
 export const APP_ROUTES: Route[] = [
   {
@@ -26,7 +26,7 @@ export const APP_ROUTES: Route[] = [
       ),
   },
   {
-    path: 'topic/:topicId/lesson/:lessonId',
+    path: 'lesson/:lessonId',
     loadComponent: () =>
       import('./pages/lesson-page/lesson-page.component').then(
         (m) => m.LessonPageComponent,
@@ -36,11 +36,10 @@ export const APP_ROUTES: Route[] = [
         route: ActivatedRouteSnapshot,
       ): Promise<ResolvedLesson | null> => {
         const router = inject(Router);
-        const { LESSONS } = await import('./data/topics');
-        const topicId = route.paramMap.get('topicId');
+        const { LESSONS } = await import('./data/lessons');
         const lessonId = route.paramMap.get('lessonId');
         const lessonIndex = LESSONS.findIndex(
-          (lesson) => lesson.id === lessonId && lesson.topic.id === topicId,
+          (lesson) => lesson.id === lessonId,
         );
 
         if (lessonIndex === -1) {
@@ -55,12 +54,8 @@ export const APP_ROUTES: Route[] = [
 
         return {
           ...lesson,
-          previousLessonUrl: previous
-            ? `/topic/${previous.topic.id}/lesson/${previous.id}`
-            : null,
-          nextLessonUrl: next
-            ? `/topic/${next.topic.id}/lesson/${next.id}`
-            : null,
+          previousLessonUrl: previous ? `/lesson/${previous.id}` : null,
+          nextLessonUrl: next ? `/lesson/${next.id}` : null,
         };
       },
     },

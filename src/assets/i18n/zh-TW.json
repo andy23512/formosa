@@ -41,7 +41,6 @@
     "dead-key-tooltip": "死鍵：{{character}}",
     "windows-alt-code-tooltip": "Windows Alt 碼：{{character}}",
     "choose-file-action": "選擇檔案",
-    "combo-unit": "連擊",
     "cancel-action": "取消",
     "delete-confirm-button": "是，我確定要刪除。",
     "delete-single-confirm-button": "是，我確定要刪除。",
@@ -249,15 +248,8 @@
     "layout-text-guide": "佈局 - 文字指引",
     "layout-key-notation-guide": "佈局 - 按鍵表示法指引",
     "layout-thumb-3-switch": "佈局 - 拇指第三搖桿",
-    "combo-counter": "連擊計數器",
     "speedometer": "速度計",
-    "home-page-chording-animation": "首頁的和弦動畫",
-    "entry-error-tooltip": "錯誤輸入提示"
-  },
-  "topic": {
-    "letters": "字母",
-    "numbers": "數字",
-    "symbols": "符號"
+    "home-page-chording-animation": "首頁的和弦動畫"
   },
   "lesson": {
     "review-1": "複習一",
@@ -423,7 +415,7 @@
       "description": [
         "在按鍵課程頁面，您可以練習在您的 CharaChorder 3D 輸入裝置上輸入數字、字母或符號鍵。在側邊欄中有課程列表。",
         [
-          "如果您想要有一個練習目標，您可以嘗試在每個非複習課程中同時達成 100 連擊和 100 字元/分鐘。（我在",
+          "如果您想要有一個練習目標，您可以嘗試在每個非複習課程中達成 100 字元/分鐘。（我在",
           {
             "url": "https://andy23512.github.io/blog-zh-tw/2025/07/12/tangent-%E5%B0%8D%E5%AD%B8%E7%BF%92%E4%BD%BF%E7%94%A8-charachorder-3d-%E8%BC%B8%E5%85%A5%E8%A3%9D%E7%BD%AE%E8%8B%B1%E6%89%93%EF%BC%88%E9%80%90%E5%AD%97%E8%BC%B8%E5%85%A5%EF%BC%89%E7%9A%84%E5%BB%BA%E8%AD%B0/",
             "text": "這篇文章中寫了關於如何在 CharaChorder 3D 輸入裝置上學習英文逐字打字的建議"
@@ -498,7 +490,7 @@
     }
   },
   "statistics-page": {
-    "metric": "指標"
+    "overall": "整體"
   },
   "layout-text-guide": "{{hand}}{{switch}}{{direction}}鍵",
   "device-layout-import-dialog": {

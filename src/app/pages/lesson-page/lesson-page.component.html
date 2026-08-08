@@ -11,31 +11,22 @@
   />
   @if (isFocus()) {
     <span class="whitespace-pre font-mono text-2xl text-gray-300">{{
-      lessonStore.history().join("")
+      lessonStore.history().join(" ")
     }}</span>
-    <span
-      class="pointer-events-none relative font-mono text-2xl before:absolute before:-top-[0.5ch] before:block before:h-0 before:w-0 before:border-x-[0.5ch] before:border-t-[0.5ch] before:border-solid before:border-x-transparent before:border-t-white after:absolute after:block after:h-0 after:w-0 after:border-x-[0.5ch] after:border-b-[0.5ch] after:border-solid after:border-x-transparent after:border-b-white"
-      [ngClass]="
-        lessonStore.error()
-          ? 'before:!border-t-red-500 after:!border-b-red-500'
-          : null
-      "
-      #errorTooltip="matTooltip"
-      matTooltip="You typed: {{ lessonStore.lastErrorComponent() }}"
-      matTooltipPosition="below"
-      [matTooltipDisabled]="!visibilitySettingStore.entryErrorTooltip()"
-    >
+    <span class="whitespace-pre font-mono text-2xl text-formosa-300"
+      >{{ lessonStore.bufferText()
+      }}<span
+        class="animate-ping border-l border-solid border-formosa-300"
+      ></span
+    ></span>
+    <span class="font-mono text-2xl">
       @for (character of lessonStore.queue(); track $index) {
-        <span [ngClass]="lessonStore.error() ? 'first:text-red-500 ' : null">{{
-          character
-        }}</span>
+        <span class="mr-1">{{ character }}</span>
       }
       <span class="text-gray-300">...</span>
     </span>
   } @else {
-    <span>{{ lesson().topic.name | translate }}</span>
-    <mat-icon>{{ "arrow_right" | iconGuard }}</mat-icon>
-    <span> {{ lesson().name | translate }}</span>
+    <span>{{ lesson().name | translate }}</span>
   }
 </section>
 <div class="absolute right-0 top-0 h-12 content-center">
@@ -84,19 +75,11 @@
   </div>
 }
 <app-layout
-  class="opacity-1 block flex-1 overflow-hidden px-5 pb-5 transition-[opacity] ease-in-out"
-  [class.opacity-0]="lessonStore.combo() > 20 && !airModeSettingStore.enabled()"
-  [style.transition-duration]="(lessonStore.combo() >= 20 ? 10000 : 100) + 'ms'"
+  class="block flex-1 overflow-hidden px-5 pb-5"
   [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
   [keyLabelMap]="keyLabelMap()"
   [highlightKeyCombination]="isFocus() ? highlightKeyCombination() : null"
 ></app-layout>
-<app-combo-counter
-  *appVisible="'comboCounter'"
-  class="absolute bottom-4 left-4"
-  [class.opacity-50]="isFocus()"
-  [combo]="lessonStore.combo()"
-></app-combo-counter>
 <app-speedometer
   *appVisible="'speedometer'"
   class="absolute bottom-4 right-4 h-24 w-24 opacity-50"

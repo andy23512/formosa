@@ -3,8 +3,6 @@ export interface VisibilitySetting {
   layoutTextGuide: boolean;
   layoutKeyNotationGuide: boolean;
   layoutThumb3Switch: boolean;
-  comboCounter: boolean;
   speedometer: boolean;
   homePageChordingAnimation: boolean;
-  entryErrorTooltip: boolean;
 }

@@ -13,11 +13,12 @@ import { HotkeysService } from '@ngneat/hotkeys';
 import { TranslatePipe } from '@ngx-translate/core';
 import { BehaviorSubject, concatMap, exhaustMap, from } from 'rxjs';
 import { CHORDING_TIMING } from 'src/app/data/chord-timing';
+import { HOME_PAGE_BACKGROUND_SCENES } from 'src/app/data/home-page-background-scenes';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import { chordAnimationEventsToObservable } from 'src/app/utils/chord-animation.utils';
-import { shuffle } from 'src/app/utils/random.utils';
+import { pickRandomItem, shuffle } from 'src/app/utils/random.utils';
 
 @Component({
   selector: 'app-home-page',
@@ -36,7 +37,8 @@ import { shuffle } from 'src/app/utils/random.utils';
 export class HomePageComponent {
   readonly router = inject(Router);
   readonly visibilitySettingStore = inject(VisibilitySettingStore);
-  firstLessonUrl = '/topic/number/lesson/123';
+  firstLessonUrl = '/lesson/b';
+  backgroundScene = pickRandomItem(HOME_PAGE_BACKGROUND_SCENES);
   animationStartSubject = new BehaviorSubject(1);
   typingDeviceName$ = this.animationStartSubject.pipe(
     exhaustMap(() =>

@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -14,7 +13,6 @@ import {
   input,
   signal,
   untracked,
-  viewChild,
 } from '@angular/core';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -27,12 +25,11 @@ import { getState } from '@ngrx/signals';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { liveQuery } from 'dexie';
 import { interval } from 'rxjs';
-import { ComboCounterComponent } from 'src/app/components/combo-counter/combo-counter.component';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { SpeedometerComponent } from 'src/app/components/speedometer/speedometer.component';
 import { db } from 'src/app/db';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
-import { ResolvedLesson } from 'src/app/models/topic.models';
+import { ResolvedLesson } from 'src/app/models/lesson.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { AirModeSettingStore } from 'src/app/stores/air-mode-setting.store';
@@ -71,9 +68,6 @@ function normalizeInputData(data: string): string {
   selector: 'app-lesson-page',
   standalone: true,
   imports: [
-    ComboCounterComponent,
-    NgClass,
-    LayoutComponent,
     LayoutComponent,
     LetDirective,
     MatButton,
@@ -102,7 +96,6 @@ export class LessonPageComponent implements OnInit, OnDestroy {
   readonly isFocus = signal(false);
 
   @HostBinding('class') classes = 'flex flex-col gap-2 h-full relative';
-  readonly errorTooltip = viewChild<MatTooltip>('errorTooltip');
 
   readonly shortcuts = {
     goToPreviousLesson: 'meta.left',
@@ -335,18 +328,6 @@ export class LessonPageComponent implements OnInit, OnDestroy {
         }
       });
     });
-    effect(() => {
-      const errorTooltip = this.errorTooltip();
-      const error = this.lessonStore.error();
-      if (!errorTooltip) {
-        return;
-      }
-      if (error) {
-        errorTooltip.show();
-      } else {
-        errorTooltip.hide();
-      }
-    });
   }
 
   ngOnInit(): void {
@@ -387,11 +368,16 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     ]);
   }
 
-  onInput({ data }: InputEvent) {
+  onInput(event: InputEvent) {
     const airModeEnabled = this.airModeSettingStore.enabled();
     if (airModeEnabled) {
       return;
     }
+    if (event.inputType === 'deleteContentBackward') {
+      this.lessonStore.backspace();
+      return;
+    }
+    const data = event.data;
     if (data?.length === 1) {
       this.lessonStore.type(normalizeInputData(data));
     }

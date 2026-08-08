@@ -41,8 +41,6 @@
     "dead-key-tooltip": "デッドキー：{{character}}",
     "windows-alt-code-tooltip": "Windows Alt コード：{{character}}",
     "choose-file-action": "ファイルを選択",
-    "combo-unit": "コンボ",
-    "combo-unit-plural": "コンボ",
     "cancel-action": "キャンセル",
     "delete-confirm-button": "はい、削除します。",
     "delete-single-confirm-button": "はい、削除します。",
@@ -262,15 +260,8 @@
     "layout-text-guide": "レイアウト - テキストガイド",
     "layout-key-notation-guide": "レイアウト - キー表記ガイド",
     "layout-thumb-3-switch": "レイアウト - 親指後列スイッチ",
-    "combo-counter": "コンボカウンター",
     "speedometer": "スピードメーター",
-    "home-page-chording-animation": "ホームページの和音入力アニメーション",
-    "entry-error-tooltip": "入力エラーのツールチップ"
-  },
-  "topic": {
-    "letters": "アルファベット",
-    "numbers": "数字",
-    "symbols": "記号"
+    "home-page-chording-animation": "ホームページの和音入力アニメーション"
   },
   "lesson": {
     "review-1": "復習 1",
@@ -439,7 +430,7 @@
       "description": [
         "キーレッスンページでは、CharaChorder 3D 入力デバイスの数字、アルファベット、記号キーの入力を練習できます。レッスンはサイドメニューにリストされています。",
         [
-          "練習の目標を立てたい場合は、復習以外のレッスンで 100 コンボと毎分 100 文字数の両方を同時に達成することを目指してください。（",
+          "練習の目標を立てたい場合は、復習以外のレッスンで毎分 100 文字数を達成することを目指してください。（",
           {
             "url": "https://andy23512.github.io/blog/tangent-s-suggestions-for-learning-english-character-entry-on-charachorder-3d-input-devices/",
             "text": "CharaChorder 3D 入力デバイスで英語の文字入力を学習するための私のおすすめについては、こちらの記事に書きました"
@@ -514,7 +505,7 @@
     }
   },
   "statistics-page": {
-    "metric": "メトリック"
+    "overall": "全体"
   },
   "layout-text-guide": "{{hand}}{{switch}}{{direction}}キー",
   "device-layout-import-dialog": {

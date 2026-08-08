@@ -10,6 +10,9 @@ export class AppDB extends Dexie {
     this.version(1).stores({
       keyRecords: '++id, timestamp, topicId, lessonId, isCorrect',
     });
+    this.version(2).stores({
+      keyRecords: '++id, timestamp, lessonId, isCorrect',
+    });
   }
 }
 
