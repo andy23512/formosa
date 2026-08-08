@@ -1,6 +1,6 @@
 # Formosa
 
-An unofficial practice tool for typing Bopomofo (Zhuyin) chords on CharaChorder devices — CharaChorder One, CharaChorder Two, CCU and Master Forge, as well as flat keyboards using the TanChord 36 layout.
+A practice tool for typing Bopomofo (Zhuyin) chords on CharaChorder devices — CharaChorder One, CharaChorder Two, CCU and Master Forge, as well as flat keyboards using the TanChord 36 layout.
 
 ## Links
 
