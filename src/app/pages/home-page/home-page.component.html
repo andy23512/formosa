@@ -66,9 +66,7 @@
   <div class="flex gap-1">
     <span>{{ "home-page.summary.0" | translate }}</span>
     <div class="cursor-pointer font-bold" (click)="useAndReplayAnimation()">
-      @if (
-        visibilitySettingStore.homePageChordingAnimation() || useAnimation()
-      ) {
+      @if (useAnimation()) {
         <div class="h-6 w-[230px]">
           {{ typingDeviceName$ | async }}<span>_</span>
         </div>

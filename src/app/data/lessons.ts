@@ -1,4 +1,5 @@
 import { Lesson } from '../models/lesson.models';
+import { BOPOMOFO_CHORDS } from './bopomofo-chords';
 
 // Grouped by 聲母 (initial consonant); the last three cover zero-initial
 // syllables led directly by a 介音 (medial ㄧ/ㄨ/ㄩ).
@@ -547,9 +548,10 @@ export const LESSONS: Lesson[] = [
     components: ['ㄩㄝ', 'ㄩㄢ', 'ㄩㄣ', 'ㄩㄥ'],
     componentNames: [],
   },
+  {
+    id: 'all-chords',
+    name: 'lesson.all-chords',
+    components: BOPOMOFO_CHORDS,
+    componentNames: [],
+  },
 ];
-export const LESSON_DATA_FOR_SEARCH = LESSONS.map((lesson) =>
-  lesson.components
-    .map((c) => ({ key: c, lesson }))
-    .concat(lesson.componentNames.map((n) => ({ key: n, lesson }))),
-).flat();

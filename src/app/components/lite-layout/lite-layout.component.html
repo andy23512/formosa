@@ -1,0 +1,25 @@
+<svg
+  class="overflow-visible"
+  width="100%"
+  height="100%"
+  shape-rendering="crispEdges"
+  text-rendering="geometricPrecision"
+  preserveAspectRatio="xMidYMid meet"
+  [attr.viewBox]="'0 0 ' + keyboard.width + ' ' + keyboard.height"
+>
+  <ng-container *appVisible="alwaysShowLayout() ? null : 'layout'">
+    @for (key of keyboard.keys; track key.positionCode) {
+      <g
+        appLiteLayoutKey
+        [x]="key.x"
+        [y]="key.y"
+        [width]="key.width"
+        [height]="key.height"
+        [positionCode]="key.positionCode"
+        [highlightKeyCombination]="highlightKeyCombination()"
+        [secondaryHighlightPositions]="secondaryHighlightPositions()"
+        [keyLabel]="keyLabelMap()[key.positionCode]"
+      ></g>
+    }
+  </ng-container>
+</svg>

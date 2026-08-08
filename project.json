@@ -21,6 +21,7 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "src/favicon.ico",
+          "src/favicon.svg",
           "src/assets",
           "src/googlef5d600e4a2cd82e1.html"
         ],
@@ -80,7 +81,7 @@
         "polyfills": ["zone.js", "zone.js/testing"],
         "tsConfig": "tsconfig.spec.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["src/favicon.ico", "src/assets"],
+        "assets": ["src/favicon.ico", "src/favicon.svg", "src/assets"],
         "styles": ["src/styles.scss"],
         "scripts": []
       }

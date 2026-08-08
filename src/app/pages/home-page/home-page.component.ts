@@ -16,7 +16,6 @@ import { CHORDING_TIMING } from 'src/app/data/chord-timing';
 import { HOME_PAGE_BACKGROUND_SCENES } from 'src/app/data/home-page-background-scenes';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
-import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import { chordAnimationEventsToObservable } from 'src/app/utils/chord-animation.utils';
 import { pickRandomItem, shuffle } from 'src/app/utils/random.utils';
 
@@ -36,7 +35,6 @@ import { pickRandomItem, shuffle } from 'src/app/utils/random.utils';
 })
 export class HomePageComponent {
   readonly router = inject(Router);
-  readonly visibilitySettingStore = inject(VisibilitySettingStore);
   firstLessonUrl = '/lesson/b';
   backgroundScene = pickRandomItem(HOME_PAGE_BACKGROUND_SCENES);
   animationStartSubject = new BehaviorSubject(1);

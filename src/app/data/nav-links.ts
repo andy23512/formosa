@@ -18,14 +18,6 @@ export const NAV_LINKS: NavLink[] = [
     icon: 'trending_up',
   },
   {
-    title: 'nav.page.chord.title',
-    routerLink: '/chord',
-    routerLinkActiveOptions: { exact: false },
-    ariaLabel: 'nav.page.chord.aria-label',
-    tooltipMessage: 'nav.page.chord.tooltip',
-    icon: 'piano',
-  },
-  {
     title: 'nav.page.settings.title',
     routerLink: '/settings',
     routerLinkActiveOptions: { exact: false },

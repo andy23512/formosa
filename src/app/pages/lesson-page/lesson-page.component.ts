@@ -21,11 +21,11 @@ import { Router, RouterLinkWithHref } from '@angular/router';
 import { HotkeysService } from '@ngneat/hotkeys';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { LetDirective } from '@ngrx/component';
-import { getState } from '@ngrx/signals';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { liveQuery } from 'dexie';
 import { interval } from 'rxjs';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
+import { LiteLayoutComponent } from 'src/app/components/lite-layout/lite-layout.component';
 import { SpeedometerComponent } from 'src/app/components/speedometer/speedometer.component';
 import { db } from 'src/app/db';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
@@ -33,21 +33,27 @@ import { ResolvedLesson } from 'src/app/models/lesson.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { AirModeSettingStore } from 'src/app/stores/air-mode-setting.store';
-import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
-import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
-import { LessonSettingStore } from 'src/app/stores/lesson-setting.store';
+import { LayoutSettingStore } from 'src/app/stores/layout-setting.store';
 import { LessonStore } from 'src/app/stores/lesson.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import {
+  TANCHORD_36_CONSONANT_PAIRS,
+  TANCHORD_36_RHYME_PAIRS,
+} from 'src/app/utils/tanchord-36.utils';
+import {
   ALT_GRAPH_KEY_LABEL,
+  CharacterKeyCode,
+  CharacterKeyCodeMap,
   FLAG_SHIFT_KEY_LABEL,
   FN_SHIFT_KEY_LABEL,
   HighlightKeyCombination,
+  HighlightSetting,
   KeyLabel,
   KeyLabelType,
   Layer,
   NUM_SHIFT_KEY_LABEL,
   SHIFT_KEY_LABEL,
+  WSKCode,
   getCharacterActionCodesFromCharacterKeyCode,
   getHighlightKeyCombinationFromKeyCombinations,
   getKeyCombinationsFromActionCodes,
@@ -56,11 +62,57 @@ import {
   nonNullable,
 } from 'tangent-cc-lib';
 
-function normalizeInputData(data: string): string {
-  if (data === ' ̃') {
-    return '~';
+// Fixed tendency for picking among equally-valid key combinations when
+// highlighting a target (e.g. both-side Shift layer characters), now that
+// the Layout Highlight setting panel has been removed.
+const HIGHLIGHT_SETTING: HighlightSetting = {
+  shiftLayer: {
+    preferSides: 'both',
+    preferShiftSide: 'left',
+  },
+  numShiftLayer: {
+    preferSides: 'both',
+    preferNumShiftSide: 'left',
+  },
+  shiftAndNumShiftLayer: {
+    preferShiftSide: 'right',
+    preferCharacterKeySide: 'right',
+  },
+  fnShiftLayer: {
+    preferSides: 'both',
+    preferFnShiftSide: 'left',
+  },
+  shiftAndFnShiftLayer: {
+    preferShiftSide: 'right',
+    preferCharacterKeySide: 'right',
+  },
+  flagShiftLayer: {
+    preferSides: 'both',
+    preferFlagShiftSide: 'left',
+  },
+  shiftAndFlagShiftLayer: {
+    preferShiftSide: 'right',
+    preferCharacterKeySide: 'right',
+  },
+};
+
+// TanChord 36's 5 ambiguous keys are indexed in the OS keyboard layout by
+// their combined pair string (e.g. "ㄍㄐ"), not by the individual symbols —
+// so looking up where to find "ㄍ" falls back to whichever pair contains it.
+const TANCHORD_36_PAIRS = [
+  ...TANCHORD_36_CONSONANT_PAIRS,
+  ...TANCHORD_36_RHYME_PAIRS,
+];
+function lookupCharacterKeyCodes(
+  symbol: string,
+  characterKeyCodeMap: CharacterKeyCodeMap,
+): CharacterKeyCode[] | undefined {
+  const direct = characterKeyCodeMap.get(symbol);
+  if (direct && direct.length > 0) {
+    return direct;
   }
-  return data;
+  const pair = TANCHORD_36_PAIRS.find((p) => p.includes(symbol));
+  return pair ? characterKeyCodeMap.get(pair) : undefined;
 }
 
 @UntilDestroy()
@@ -69,6 +121,7 @@ function normalizeInputData(data: string): string {
   standalone: true,
   imports: [
     LayoutComponent,
+    LiteLayoutComponent,
     LetDirective,
     MatButton,
     MatIconButton,
@@ -88,7 +141,6 @@ function normalizeInputData(data: string): string {
 export class LessonPageComponent implements OnInit, OnDestroy {
   readonly lesson = input.required<ResolvedLesson>();
 
-  readonly highlightSettingStore = inject(HighlightSettingStore);
   readonly visibilitySettingStore = inject(VisibilitySettingStore);
   readonly airModeSettingStore = inject(AirModeSettingStore);
   readonly translateService = inject(TranslateService);
@@ -107,15 +159,35 @@ export class LessonPageComponent implements OnInit, OnDestroy {
   @ViewChild('input', { static: true })
   public input!: ElementRef<HTMLInputElement>;
 
-  readonly characterKeyCodeMap = inject(LessonSettingStore).characterKeyCodeMap;
-  readonly deviceLayout = inject(DeviceLayoutStore).selectedEntity;
-  readonly lessonCharactersDevicePositionCodes = computed(() => {
+  readonly layoutSettingStore = inject(LayoutSettingStore);
+  readonly characterKeyCodeMap = this.layoutSettingStore.characterKeyCodeMap;
+  readonly keyboardLayout = this.layoutSettingStore.keyboardLayout;
+  readonly deviceLayout = this.layoutSettingStore.deviceLayout;
+  readonly layoutType = this.layoutSettingStore.layoutType;
+
+  // Every distinct Bopomofo symbol used anywhere in the lesson (each lesson
+  // component is a full chord string, e.g. "ㄉㄨㄛ", not a single symbol).
+  readonly lessonSymbols = computed(() => {
     const lesson = this.lesson();
+    const symbols = new Set<string>();
+    lesson?.components.forEach((component) => {
+      for (const symbol of component) {
+        symbols.add(symbol);
+      }
+    });
+    return Array.from(symbols);
+  });
+
+  readonly lessonCharactersDevicePositionCodes = computed(() => {
+    const symbols = this.lessonSymbols();
     const characterKeyCodeMap = this.characterKeyCodeMap();
     const deviceLayout = this.deviceLayout();
-    return lesson?.components
+    return symbols
       .map((c) => {
-        const characterKeyCodes = characterKeyCodeMap.get(c);
+        const characterKeyCodes = lookupCharacterKeyCodes(
+          c,
+          characterKeyCodeMap,
+        );
         if (!characterKeyCodes || characterKeyCodes.length === 0) {
           return null;
         }
@@ -280,7 +352,6 @@ export class LessonPageComponent implements OnInit, OnDestroy {
   > = computed(() => {
     const lessonCharactersDevicePositionCodes =
       this.lessonCharactersDevicePositionCodes();
-    const highlightSetting = getState(this.highlightSettingStore);
     const deviceLayout = this.deviceLayout();
     if (!lessonCharactersDevicePositionCodes || !deviceLayout) {
       return {};
@@ -302,18 +373,36 @@ export class LessonPageComponent implements OnInit, OnDestroy {
           k.characterDeviceKeys,
           layerShiftKeyPositionMap,
           modifierKeyPositionCodeMap,
-          highlightSetting,
+          HIGHLIGHT_SETTING,
         );
     });
     return highlightCharacterKeyMap;
   });
 
   readonly lessonStore = inject(LessonStore);
+
+  // The current target may be a multi-symbol chord (e.g. "ㄉㄨㄛ"); since
+  // slots can be filled in any order, every symbol's key lights up at once —
+  // the first drives the primary highlight (and per-label active state), the
+  // rest ride along as secondary highlights.
+  readonly targetSymbols = computed(() => [...this.lessonStore.queue()[0]]);
   readonly highlightKeyCombination = computed(() => {
-    const currentCharacter = this.lessonStore.queue()[0];
+    const [primarySymbol] = this.targetSymbols();
     const highlightCharacterKeyCombinationMap =
       this.highlightCharacterKeyCombinationMap();
-    return highlightCharacterKeyCombinationMap[currentCharacter];
+    return (
+      (primarySymbol && highlightCharacterKeyCombinationMap[primarySymbol]) ||
+      null
+    );
+  });
+  readonly secondaryHighlightPositions = computed(() => {
+    const [, ...restSymbols] = this.targetSymbols();
+    const highlightCharacterKeyCombinationMap =
+      this.highlightCharacterKeyCombinationMap();
+    return restSymbols.flatMap(
+      (symbol) =>
+        highlightCharacterKeyCombinationMap[symbol]?.positionCodes ?? [],
+    );
   });
 
   readonly hotkeysService = inject(HotkeysService);
@@ -368,19 +457,32 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     ]);
   }
 
-  onInput(event: InputEvent) {
+  // Reads the physical key directly (via event.code, which is layout-
+  // independent) and converts it ourselves through the selected OS keyboard
+  // layout data, rather than trusting the browser's own OS-decoded
+  // InputEvent.data. This is required for TanChord 36: its 5 ambiguous keys
+  // (e.g. ㄍ/ㄐ) are only ambiguous in *our* data model — a real OS-level
+  // keyboard layout can only ever emit one fixed symbol per physical key, so
+  // reading already-decoded text would always see whichever symbol the OS
+  // happened to pick and never the pair marker LessonStore.type() needs to
+  // resolve the symbol live against the rest of the buffer.
+  onKeyDown(event: KeyboardEvent) {
     const airModeEnabled = this.airModeSettingStore.enabled();
     if (airModeEnabled) {
       return;
     }
-    if (event.inputType === 'deleteContentBackward') {
+    if (event.code === 'Backspace') {
+      event.preventDefault();
       this.lessonStore.backspace();
       return;
     }
-    const data = event.data;
-    if (data?.length === 1) {
-      this.lessonStore.type(normalizeInputData(data));
+    const key = this.keyboardLayout().layout[event.code as WSKCode];
+    const output = event.shiftKey ? key?.withShift : key?.unmodified;
+    if (!output || output.type !== 'text') {
+      return;
     }
+    event.preventDefault();
+    this.lessonStore.type(output.value);
   }
 
   startLesson() {

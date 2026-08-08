@@ -10,10 +10,10 @@
     data-style-dense
   >
     <header class="sticky top-0 z-10 bg-gray-450 shadow">
-      <div class="flex w-44 flex-wrap">
+      <div class="grid w-full grid-cols-2">
         @for (navLink of navLinks; track $index) {
           <a
-            class="w-1/2"
+            class="w-full"
             [routerLink]="navLink.routerLink"
             routerLinkActive
             [routerLinkActiveOptions]="navLink.routerLinkActiveOptions"
@@ -25,7 +25,7 @@
             <button
               type="button"
               mat-flat-button
-              class="whitespace-nowrap"
+              class="w-full whitespace-nowrap"
               [color]="rla.isActive ? 'primary' : null"
             >
               <mat-icon>{{ navLink.icon | iconGuard }}</mat-icon>
@@ -33,9 +33,9 @@
             </button>
           </a>
         }
-        <a class="w-1/2">
+        <a class="w-full">
           <button
-            class="whitespace-nowrap"
+            class="w-full whitespace-nowrap"
             type="button"
             mat-flat-button
             [attr.aria-label]="'nav.hotkey.aria-label' | translate"
@@ -47,49 +47,32 @@
           </button></a
         >
       </div>
-      <mat-form-field
-        class="w-full [&_.mat-mdc-form-field-subscript-wrapper]:hidden"
-      >
-        <input
-          [ngModel]="searchQuery()"
-          (ngModelChange)="searchQuery.set($event)"
-          matInput
-          type="search"
-          [attr.placeholder]="
-            'nav.search-lessons-input.placeholder' | translate | realTitleCase
-          "
-          [attr.aria-label]="'nav.search-lessons-input.aria-label' | translate"
-        />
-        @if (!searchQuery()) {
-          <button mat-icon-button matSuffix>
-            <mat-icon>{{ "search" | iconGuard }}</mat-icon>
-          </button>
-        }
-      </mat-form-field>
     </header>
     <mat-nav-list class="!p-0">
-      @if (searchQuery()) {
-        @for (lesson of searchResult(); track lesson.id) {
-          <a
-            mat-list-item
-            routerLink="/lesson/{{ lesson.id }}"
-            routerLinkActive="list-item-active"
-            (click)="onNavLinkClick()"
-            >{{ lesson.name | translate }}</a
-          >
-        } @empty {
-          <a mat-list-item>{{ "nav.no-result-message" | translate }}</a>
+      <div class="grid grid-cols-4">
+        @for (lesson of lessonTableCells; track $index) {
+          @if (lesson) {
+            <a
+              mat-list-item
+              class="!justify-start"
+              routerLink="/lesson/{{ lesson.id }}"
+              routerLinkActive="list-item-active"
+              (click)="onNavLinkClick()"
+              >{{ lesson.name | translate }}</a
+            >
+          } @else {
+            <span></span>
+          }
         }
-      } @else {
-        @for (lesson of lessons; track lesson.id) {
-          <a
-            mat-list-item
-            routerLink="/lesson/{{ lesson.id }}"
-            routerLinkActive="list-item-active"
-            (click)="onNavLinkClick()"
-            >{{ lesson.name | translate }}</a
-          >
-        }
+      </div>
+      @for (lesson of otherLessons; track lesson.id) {
+        <a
+          mat-list-item
+          routerLink="/lesson/{{ lesson.id }}"
+          routerLinkActive="list-item-active"
+          (click)="onNavLinkClick()"
+          >{{ lesson.name | translate }}</a
+        >
       }
     </mat-nav-list>
   </mat-sidenav>

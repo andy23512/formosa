@@ -8,11 +8,8 @@ import { prefixStorageKey } from '../utils/store.utils';
 
 const INITIAL_VISIBILITY_SETTING: VisibilitySetting = {
   layout: true,
-  layoutTextGuide: true,
-  layoutKeyNotationGuide: false,
   layoutThumb3Switch: true,
   speedometer: true,
-  homePageChordingAnimation: false,
 };
 
 export const VisibilitySettingStore = signalStore(

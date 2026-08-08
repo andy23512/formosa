@@ -1,35 +1,48 @@
-<section class="flex h-12 flex-none items-center justify-center bg-gray-700">
+<section class="relative h-16 flex-none overflow-hidden bg-gray-700">
   <input
-    class="h-0 w-0 opacity-0"
+    class="block h-0 w-0 opacity-0"
     [attr.title]="'lesson-page.input-box-title' | translate"
     #input
     type="text"
     inputmode="none"
-    (input)="onInput($any($event))"
+    (keydown)="onKeyDown($event)"
     (focus)="isFocus.set(true)"
     (blur)="isFocus.set(false); pauseLesson()"
   />
   @if (isFocus()) {
-    <span class="whitespace-pre font-mono text-2xl text-gray-300">{{
-      lessonStore.history().join(" ")
-    }}</span>
-    <span class="whitespace-pre font-mono text-2xl text-formosa-300"
-      >{{ lessonStore.bufferText()
-      }}<span
-        class="animate-ping border-l border-solid border-formosa-300"
-      ></span
-    ></span>
-    <span class="font-mono text-2xl">
+    <!-- History, queue and buffer are pinned to a fixed left offset (not
+    centered) so the current target — the boundary between history and
+    queue, where the buffer sits — stays at a constant, always-visible
+    position regardless of how long the surrounding text gets; only history
+    (growing left) and the far end of the queue (growing right) scroll out
+    under overflow-hidden. -->
+    <div
+      class="absolute top-2 whitespace-nowrap font-mono text-2xl text-gray-300"
+      style="right: calc(100% - 6rem)"
+    >
+      {{ lessonStore.history().join(" ") }}
+    </div>
+    <div class="absolute left-24 top-2 whitespace-nowrap font-mono text-2xl">
       @for (character of lessonStore.queue(); track $index) {
         <span class="mr-1">{{ character }}</span>
       }
       <span class="text-gray-300">...</span>
-    </span>
+    </div>
+    <div
+      class="absolute bottom-2 left-24 whitespace-nowrap font-mono text-2xl text-formosa-300"
+    >
+      {{ lessonStore.bufferText()
+      }}<span
+        class="animate-ping border-l border-solid border-formosa-300"
+      ></span>
+    </div>
   } @else {
-    <span>{{ lesson().name | translate }}</span>
+    <div class="flex h-full items-center justify-center">
+      {{ lesson().name | translate }}
+    </div>
   }
 </section>
-<div class="absolute right-0 top-0 h-12 content-center">
+<div class="absolute right-0 top-0 h-16 content-center">
   @if (isFocus()) {
     <button mat-flat-button (click)="pauseLesson()">
       <mat-icon class="text-white">{{ "pause" | iconGuard }}</mat-icon>
@@ -45,7 +58,7 @@
   }
 </div>
 @if (!isFocus()) {
-  <div class="absolute left-0 top-0 h-12 content-center">
+  <div class="absolute left-0 top-0 h-16 content-center">
     <a
       class="text-inherit"
       *ngrxLet="lesson().previousLessonUrl as previousLessonUrl"
@@ -74,12 +87,26 @@
     </a>
   </div>
 }
-<app-layout
-  class="block flex-1 overflow-hidden px-5 pb-5"
-  [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
-  [keyLabelMap]="keyLabelMap()"
-  [highlightKeyCombination]="isFocus() ? highlightKeyCombination() : null"
-></app-layout>
+@if (layoutType() === 'lite') {
+  <app-lite-layout
+    class="block flex-1 overflow-hidden px-5 pb-5"
+    [keyLabelMap]="keyLabelMap()"
+    [highlightKeyCombination]="isFocus() ? highlightKeyCombination() : null"
+    [secondaryHighlightPositions]="
+      isFocus() ? secondaryHighlightPositions() : []
+    "
+  ></app-lite-layout>
+} @else {
+  <app-layout
+    class="block flex-1 overflow-hidden px-5 pb-5"
+    [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
+    [keyLabelMap]="keyLabelMap()"
+    [highlightKeyCombination]="isFocus() ? highlightKeyCombination() : null"
+    [secondaryHighlightPositions]="
+      isFocus() ? secondaryHighlightPositions() : []
+    "
+  ></app-layout>
+}
 <app-speedometer
   *appVisible="'speedometer'"
   class="absolute bottom-4 right-4 h-24 w-24 opacity-50"

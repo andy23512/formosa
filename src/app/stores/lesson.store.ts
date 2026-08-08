@@ -15,6 +15,12 @@ import {
 import { Lesson } from '../models/lesson.models';
 import { KeyRecordService } from '../services/key-record.service';
 import { pickRandomItem, pickRandomItemNTimes } from '../utils/random.utils';
+import {
+  resolveTanChord36Consonant,
+  resolveTanChord36Rhyme,
+  TANCHORD_36_CONSONANT_PAIRS,
+  TANCHORD_36_RHYME_PAIRS,
+} from '../utils/tanchord-36.utils';
 
 const QUEUE_SIZE = 20;
 
@@ -30,8 +36,18 @@ const EMPTY_BUFFER: LessonBuffer = {
   rhyme: null,
 };
 
+// Slots may hold either a resolved single symbol or, under TanChord 36, one
+// of the 5 raw ambiguous-pair strings (e.g. "ㄍㄐ") — resolved here on every
+// read so the displayed/matched symbol stays correct as the rest of the
+// buffer changes (see utils/tanchord-36.utils.ts).
 function assembleBuffer(buffer: LessonBuffer): string {
-  return [buffer.consonant, buffer.medial, buffer.rhyme]
+  const consonant = resolveTanChord36Consonant(buffer.consonant, buffer.medial);
+  const rhyme = resolveTanChord36Rhyme(
+    buffer.rhyme,
+    buffer.consonant,
+    buffer.medial,
+  );
+  return [consonant, buffer.medial, rhyme]
     .filter((symbol): symbol is string => symbol !== null)
     .join('');
 }
@@ -110,11 +126,17 @@ export const LessonStore = signalStore(
           return {};
         }
         let buffer: LessonBuffer;
-        if (BOPOMOFO_CONSONANTS.includes(component)) {
+        if (
+          BOPOMOFO_CONSONANTS.includes(component) ||
+          TANCHORD_36_CONSONANT_PAIRS.includes(component)
+        ) {
           buffer = { ...state.buffer, consonant: component };
         } else if (BOPOMOFO_MEDIALS.includes(component)) {
           buffer = { ...state.buffer, medial: component };
-        } else if (BOPOMOFO_RHYMES.includes(component)) {
+        } else if (
+          BOPOMOFO_RHYMES.includes(component) ||
+          TANCHORD_36_RHYME_PAIRS.includes(component)
+        ) {
           buffer = { ...state.buffer, rhyme: component };
         } else {
           return {};

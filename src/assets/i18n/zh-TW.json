@@ -1,19 +1,4 @@
 {
-  "hand": {
-    "left": "左手",
-    "right": "右手"
-  },
-  "switch": {
-    "thumb-back": "拇指後面",
-    "thumb-middle": "拇指中間",
-    "thumb-front": "拇指前面",
-    "index": "食指",
-    "middle": "中指",
-    "ring": "無名指",
-    "pinky": "小指",
-    "middle-secondary": "中指第二搖桿",
-    "ring-secondary": "無名指第二搖桿"
-  },
   "direction": {
     "E": "東",
     "S": "南",
@@ -22,8 +7,7 @@
     "east": "東",
     "south": "南",
     "west": "西",
-    "north": "北",
-    "down": "下壓"
+    "north": "北"
   },
   "device-layout": {
     "cc1-cc2-default": "CC1/CC2/CCU 預設",
@@ -32,8 +16,7 @@
     "cc1-cc2-left-hand-only": "CC1/CC2/CCU 僅用左手"
   },
   "general": {
-    "character-entry-speed-unit": "字元/分鐘",
-    "chord-speed-unit": "和弦/分鐘",
+    "character-entry-speed-unit": "和弦/分鐘",
     "start-action": "開始",
     "submit-action": "送出",
     "character-tooltip": "字元：{{character}}",
@@ -69,11 +52,6 @@
         "tooltip": "前往統計頁面",
         "aria-label": "統計頁面連結"
       },
-      "chord": {
-        "title": "和弦",
-        "tooltip": "前往和弦頁面",
-        "aria-label": "和弦頁面連結"
-      },
       "settings": {
         "title": "設定",
         "tooltip": "前往設定頁面",
@@ -85,92 +63,13 @@
         "aria-label": "資訊頁面連結"
       }
     },
-    "search-lessons-input": {
-      "placeholder": "搜尋課程",
-      "aria-label": "課程搜尋框"
-    },
-    "no-result-message": "沒有找到任何結果。",
     "side-menu-toggle": {
       "aria-label": "開啟/關閉側邊欄",
       "icon-aria-label": "側邊欄開關圖標"
     }
   },
-  "settings": {
-    "air-mode": {
-      "description": "隔空模式是即使你沒有裝置也能練習的一個實驗性的練習模式。\n字元或者和弦會用你所設定的速度自動輸入，因此你可以跟著它，像在真的裝置上打字一般移動你的手指。",
-      "checkbox-label": "啟動隔空模式",
-      "character-entry-speed-label": "逐字輸入速度",
-      "chord-speed-label": "和弦輸入速度",
-      "character-entry-speed-input-aria-label": "隔空模式的逐字輸入速度輸入框",
-      "chord-speed-input-aria-label": "隔空模式的和弦輸入速度輸入框"
-    },
-    "device-layout": {
-      "import-device-layout-file-step": [
-        "（非必要）透過匯入檔案（來自",
-        "CharaChorder 裝置管理工具",
-        "的備份檔案）或從輸入裝置讀取，以新增裝置佈局。"
-      ],
-      "file-input-aria-label": "選擇要匯入到此工具的裝置佈局檔案用的檔案輸入框",
-      "select-device-layout-step": "選擇一個已匯入的裝置佈局。",
-      "single-device-layout-deleted-message": "裝置佈局「{{deviceLayoutName}}」已被刪除。",
-      "device-layout-loading-message": "載入裝置佈局中..."
-    },
-    "lesson": {
-      "language-label": "課程語言",
-      "os-keyboard-layout-label": "課程中所使用的作業系統鍵盤佈局"
-    }
-  },
-  "chord-page": {
-    "chord-practice": {
-      "title": "和弦 - 練習"
-    },
-    "chord-practice-setting": {
-      "title": "和弦 - 練習設定",
-      "import-chord-list-file-step": [
-        "匯入你的和弦清單檔案（來自",
-        "CharaChorder 裝置管理工具",
-        "的備份檔案）。（給初次使用或更新和弦清單用）"
-      ],
-      "file-input-aria-label": "選擇要匯入到此工具的和弦清單檔案用的檔案輸入框",
-      "select-chords-step": "從底下的已匯入的和弦清單中，選擇你想練習的和弦。",
-      "click-start-button-step": "按下底下的按鍵來開始練習。"
-    }
-  },
-  "delete-chords-confirm-dialog": {
-    "description": "你確定要刪除所有已匯入的和弦嗎？"
-  },
-  "delete-device-layouts-confirm-dialog": {
-    "description": "你確定要刪除所有已匯入的裝置佈局嗎？\n（刪除之後，裝置佈局設定會改為 CC1/CC2/CCU 的預設佈局。）"
-  },
-  "delete-device-layout-confirm-dialog": {
-    "description": [
-      "你確定要刪除裝置佈局「",
-      "{{deviceLayoutName}}",
-      "」嗎？\n(刪除之後，所選的裝置佈局會改為 CC1/CC2/CCU 的預設佈局。)"
-    ]
-  },
   "hotkey-dialog": {
     "title": "快捷鍵"
-  },
-  "key-notation-help-dialog": {
-    "title": "按鍵表示法",
-    "key-notation-explanation-paragraph": "在本工具中，按鍵表示法是一個表示 CharaChorder 3D 輸入裝置上的按鍵位置的實驗性的簡寫。",
-    "key-notation-example-paragraph": "舉例來說，「左手拇指中央的西鍵」就表示成「L1bW」、「右手小指下壓（3D 按壓）」就表示成「R5D」。",
-    "first-and-last-letters-explanation-paragraph": "第一個和最後一個字母分別是左右手（L/R）和方向（北 N / 東 E / 南 S/ 西 W/ 下壓 D）的簡寫。",
-    "middle-part-explanation-paragraph": [
-      "中間的部分用來指定搖桿。數字表示手指（從 1 到 5 為從拇指到小指），跟",
-      {
-        "url": "https://en.wikipedia.org/wiki/Fingering_(music)#Keyboard_instruments",
-        "text": "現代樂譜中鍵盤樂器的指法記號"
-      },
-      "一樣。額外加上去的「b」或「bb」，則來自音樂中的",
-      {
-        "url": "https://zh.wikipedia.org/wiki/%E9%99%8D%E8%99%9F",
-        "text": "降號（♭）和重降號（𝄫）"
-      },
-      "，分別用來表示那個手指的副/中間和後面的搖桿。"
-    ],
-    "layout-image-explanation-paragraph": "下圖會展示每個搖桿的表示法。"
   },
   "hotkey": {
     "global": {
@@ -188,39 +87,12 @@
       "go-to-the-next-lesson": "前往下一個課程",
       "start-or-resume-the-lesson": "開始或繼續課程",
       "pause-the-lesson": "暫停課程"
-    },
-    "chord-practice-page": {
-      "name": "和弦練習頁面",
-      "start-or-resume-the-practice": "開始或繼續練習",
-      "pause-the-practice": "暫停練習"
     }
   },
-  "layout-highlight-setting": {
-    "shift-layer": "Shift 層",
-    "num-shift-layer": "num-shift 層",
-    "shift-num-shift-layer": "shift num-shift 層",
-    "fn-shift-layer": "fn-shift 層",
-    "shift-fn-shift-layer": "shift fn-shift 層",
-    "flag-shift-layer": "flag-shift 層",
-    "shift-flag-shift-layer": "shift flag-shift 層",
-    "key-combination-sides-choice": [
-      "傾向從",
-      "{{兩邊 / 同一邊}}",
-      "選擇按鍵組合。"
-    ],
-    "shift-side-choice": ["傾向選擇", "{{左邊 / 右邊}}", "的 Shift 鍵。"],
-    "num-shift-side-choice": [
-      "傾向選擇",
-      "{{左邊 / 右邊}}",
-      "的 Num-shift 鍵。"
-    ],
-    "fn-shift-side-choice": ["傾向選擇", "{{左邊 / 右邊}}", "的 Fn-shift 鍵。"],
-    "flag-shift-side-choice": [
-      "傾向選擇",
-      "{{左邊 / 右邊}}",
-      "的 Flag-shift 鍵。"
-    ],
-    "character-key-side-choice": ["傾向選擇", "{{左邊 / 右邊}}", "的字元鍵。"]
+  "layout-setting": {
+    "label": "佈局",
+    "standard-bopomofo": "標準注音",
+    "tanchord-36-v2": "天弦 36 鍵 V2"
   },
   "misc-setting": {
     "thumb-rotation-angle": {
@@ -232,31 +104,18 @@
       "input-aria-label": "佈局顯示上的非拇指搖桿旋轉角度的輸入框"
     }
   },
-  "quick-setting": {
-    "cc1-cc2-default-layout": "CC1/CC2/CCU 預設佈局",
-    "m4g-default-layout": "M4G 預設佈局",
-    "cc1-cc2-right-hand-only-layout": "CC1/CC2/CCU 僅用右手佈局"
-  },
   "thumb-3-switch-help-dialog": {
     "title": "拇指第三搖桿",
     "content": "Master Forge 不像 CharaChorder One、CharaChorder Two 及 CCU 有拇指第三搖桿。如果你使用的是 Master Forge，或你使用的是 CharaChorder One、CharaChorder Two 或 CCU 但沒有用到拇指第三搖桿的話，你可以取消勾選這個設定來在佈局顯示上隱藏它們。"
   },
   "visibility-setting": {
     "thumb-3-switch-help-button-aria-label": "開啟拇指第三搖桿的幫助視窗",
-    "key-notation-help-button-aria-label": "開啟按鍵表示法的幫助視窗",
     "layout": "佈局",
-    "layout-text-guide": "佈局 - 文字指引",
-    "layout-key-notation-guide": "佈局 - 按鍵表示法指引",
     "layout-thumb-3-switch": "佈局 - 拇指第三搖桿",
-    "speedometer": "速度計",
-    "home-page-chording-animation": "首頁的和弦動畫"
+    "speedometer": "速度計"
   },
   "lesson": {
-    "review-1": "複習一",
-    "review-2": "複習二",
-    "review-3": "複習三",
-    "all-letters": "所有字母鍵",
-    "all-numbers": "所有數字鍵"
+    "all-chords": "所有注音和弦"
   },
   "key-label": {
     "shift": "Shift",
@@ -404,37 +263,26 @@
     "remark": "Formosa（發音：/fɔːrˈmoʊzə/）是位於獅子座、距離地球約 451 光年的紅群聚巨星。"
   },
   "information-page": {
-    "description": "本網站，Formosa 麗星，是專為 CharaChorder One、CharaChorder Two 和 Master Forge 等 CharaChorder 3D 輸入裝置所設計的一個非官方練習工具。",
+    "description": "Formosa 麗星是一個非官方的練習工具，讓你能在 CharaChorder 裝置上練習輸入注音和弦——包括 CharaChorder One、CharaChorder Two、CCU、Master Forge 等 3D 輸入裝置，以及使用天弦 36 鍵佈局的一般平面鍵盤。",
     "about-the-name": {
       "title": "關於名稱",
       "description": "Formosa（發音：/fɔːrˈmoʊzə/）是位於獅子座、距離地球約 451 光年的紅群聚巨星。此名稱由台灣在國際天文聯合會（IAU）百週年 NameExoWorlds 命名活動中提出，「Formosa」是十七世紀葡萄牙人對台灣的稱呼，意為「美麗」。"
     },
     "page-introductions-title": "頁面介紹",
     "key-lesson-page": {
-      "title": "按鍵課程頁面",
+      "title": "課程頁面",
       "description": [
-        "在按鍵課程頁面，您可以練習在您的 CharaChorder 3D 輸入裝置上輸入數字、字母或符號鍵。在側邊欄中有課程列表。",
-        [
-          "如果您想要有一個練習目標，您可以嘗試在每個非複習課程中達成 100 字元/分鐘。（我在",
-          {
-            "url": "https://andy23512.github.io/blog-zh-tw/2025/07/12/tangent-%E5%B0%8D%E5%AD%B8%E7%BF%92%E4%BD%BF%E7%94%A8-charachorder-3d-%E8%BC%B8%E5%85%A5%E8%A3%9D%E7%BD%AE%E8%8B%B1%E6%89%93%EF%BC%88%E9%80%90%E5%AD%97%E8%BC%B8%E5%85%A5%EF%BC%89%E7%9A%84%E5%BB%BA%E8%AD%B0/",
-            "text": "這篇文章中寫了關於如何在 CharaChorder 3D 輸入裝置上學習英文逐字打字的建議"
-          },
-          "。）"
-        ]
+        "在課程頁面，您可以在 CharaChorder 裝置上練習輸入注音和弦——像「ㄅㄧㄥ」這樣一次輸入多個符號的組合。側邊欄中的課程依聲母或介音分類，另外還有一個包含所有注音和弦的「所有注音和弦」課程。",
+        "如果您想要有一個練習目標，可以試著在每個課程中達成 100 字元/分鐘（ChPM）。"
       ]
     },
     "statistics-page": {
       "title": "統計頁面",
-      "description": "在統計頁面，您可以查看您在按鍵課程中的練習統計數據，包括顯示您打字速度和連擊數隨時間變化的圖表。"
-    },
-    "chord-page": {
-      "title": "和弦頁面",
-      "description": "在和弦頁面，您可以從您的和弦庫中選擇多個和弦進行練習。"
+      "description": "在統計頁面，您可以查看您的練習統計數據，包括顯示您打字速度（ChPM）隨時間變化的圖表。"
     },
     "settings-page": {
       "title": "設定頁面",
-      "description": "在設定頁面，您可以調整此工具的一些設定，例如某些元件的可見性、佈局預覽上的點亮邏輯、裝置佈局、隔空模式等。"
+      "description": "在設定頁面，您可以選擇佈局（裝置和作業系統鍵盤的組合，例如標準注音或天弦 36 鍵 V2）、切換佈局元件的可見性、調整佈局預覽的旋轉角度，以及切換介面語言。"
     },
     "disclaimers": {
       "title": "免責聲明",
@@ -470,32 +318,14 @@
   "settings-page": {
     "title": "設定",
     "panel-header": {
-      "quick-setting": "快速設定",
+      "layout": "佈局",
       "visibility": "顯示",
-      "layout-highlight": "佈局點亮",
-      "device-layout": "裝置佈局",
-      "lesson": "課程",
-      "air-mode": "隔空模式",
-      "data-deletion": "資料刪除",
       "misc": "其他",
       "ui-language": "介面語言"
-    },
-    "button": {
-      "delete-all-imported-device-layouts": "刪除所有已匯入的裝置佈局",
-      "delete-all-imported-chords": "刪除所有已匯入的和弦"
-    },
-    "message": {
-      "device-layout-deleted": "所有已匯入的裝置佈局已被刪除。",
-      "chords-deleted": "所有已匯入的和弦已被刪除。"
     }
   },
   "statistics-page": {
     "overall": "整體"
-  },
-  "layout-text-guide": "{{hand}}{{switch}}{{direction}}鍵",
-  "device-layout-import-dialog": {
-    "title": "匯入裝置佈局",
-    "name-label": "設定檔 {{profile}}"
   },
   "lesson-not-found-page": {
     "title": "找不到課程",

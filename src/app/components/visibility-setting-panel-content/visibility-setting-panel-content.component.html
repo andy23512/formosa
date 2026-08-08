@@ -20,18 +20,6 @@
           <mat-icon>{{ "help" | iconGuard }}</mat-icon>
         </button>
       }
-      @if (item.key === "layoutKeyNotationGuide") {
-        <button
-          type="button"
-          mat-icon-button
-          [attr.aria-label]="
-            'visibility-setting.key-notation-help-button-aria-label' | translate
-          "
-          (click)="openKeyNotationHelpDialog()"
-        >
-          <mat-icon>{{ "help" | iconGuard }}</mat-icon>
-        </button>
-      }
     </mat-checkbox>
   </div>
 }

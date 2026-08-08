@@ -4,10 +4,10 @@
 <mat-accordion>
   <mat-expansion-panel [expanded]="true">
     <mat-expansion-panel-header class="!text-xl">{{
-      "settings-page.panel-header.quick-setting" | translate | realTitleCase
+      "settings-page.panel-header.layout" | translate | realTitleCase
     }}</mat-expansion-panel-header>
     <ng-template matExpansionPanelContent>
-      <app-quick-setting-panel-content></app-quick-setting-panel-content>
+      <app-layout-setting-panel-content></app-layout-setting-panel-content>
     </ng-template>
   </mat-expansion-panel>
   <mat-expansion-panel>
@@ -16,73 +16,6 @@
     }}</mat-expansion-panel-header>
     <ng-template matExpansionPanelContent>
       <app-visibility-setting-panel-content></app-visibility-setting-panel-content>
-    </ng-template>
-  </mat-expansion-panel>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header class="!text-xl">{{
-      "settings-page.panel-header.layout-highlight" | translate | realTitleCase
-    }}</mat-expansion-panel-header>
-    <ng-template matExpansionPanelContent>
-      <app-layout-highlight-setting-panel-content></app-layout-highlight-setting-panel-content>
-    </ng-template>
-  </mat-expansion-panel>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header class="!text-xl">{{
-      "settings-page.panel-header.device-layout" | translate | realTitleCase
-    }}</mat-expansion-panel-header>
-    <ng-template matExpansionPanelContent>
-      <app-device-layout-setting-panel-content></app-device-layout-setting-panel-content>
-    </ng-template>
-  </mat-expansion-panel>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header class="!text-xl">{{
-      "settings-page.panel-header.lesson" | translate | realTitleCase
-    }}</mat-expansion-panel-header>
-    <ng-template matExpansionPanelContent>
-      <app-lesson-setting-panel-content></app-lesson-setting-panel-content>
-    </ng-template>
-  </mat-expansion-panel>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header class="!text-xl">{{
-      "settings-page.panel-header.air-mode" | translate | realTitleCase
-    }}</mat-expansion-panel-header>
-    <ng-template matExpansionPanelContent>
-      <app-air-mode-setting-panel-content></app-air-mode-setting-panel-content>
-    </ng-template>
-  </mat-expansion-panel>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header class="!text-xl">{{
-      "settings-page.panel-header.data-deletion" | translate | realTitleCase
-    }}</mat-expansion-panel-header>
-    <ng-template matExpansionPanelContent>
-      <div class="flex flex-col items-start gap-3">
-        <button
-          type="button"
-          [color]="'warn'"
-          mat-flat-button
-          (click)="openDeleteDeviceLayoutsConfirmDialog()"
-        >
-          <mat-icon>{{ "delete" | iconGuard }}</mat-icon>
-          {{
-            "settings-page.button.delete-all-imported-device-layouts"
-              | translate
-              | realTitleCase
-          }}
-        </button>
-        <button
-          type="button"
-          [color]="'warn'"
-          mat-flat-button
-          (click)="openDeleteChordsConfirmDialog()"
-        >
-          <mat-icon>{{ "delete" | iconGuard }}</mat-icon>
-          {{
-            "settings-page.button.delete-all-imported-chords"
-              | translate
-              | realTitleCase
-          }}
-        </button>
-      </div>
     </ng-template>
   </mat-expansion-panel>
   <mat-expansion-panel>

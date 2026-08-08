@@ -1,0 +1,16 @@
+<mat-form-field class="w-96 flex-none">
+  <mat-label>{{
+    "layout-setting.label" | translate | realTitleCase
+  }}</mat-label>
+  <mat-select
+    class="!text-formosa-500 !font-bold"
+    [value]="layoutSettingStore.presetId()"
+    (valueChange)="setPresetId($event)"
+  >
+    @for (preset of layoutPresets; track preset.id) {
+      <mat-option [value]="preset.id">{{
+        preset.name | translate
+      }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>

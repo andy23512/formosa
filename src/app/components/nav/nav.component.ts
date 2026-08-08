@@ -1,20 +1,9 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AsyncPipe } from '@angular/common';
-import {
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-  computed,
-  inject,
-  signal,
-} from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
-import { MatFormField, MatSuffix } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
-import { MatInput } from '@angular/material/input';
 import { MatListItem, MatNavList } from '@angular/material/list';
 import {
   MatSidenav,
@@ -35,25 +24,21 @@ import { NAV_LINKS } from 'src/app/data/nav-links';
 import { Lesson } from 'src/app/models/lesson.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
-import { LESSON_DATA_FOR_SEARCH, LESSONS } from '../../data/lessons';
+import { LESSONS } from '../../data/lessons';
 
-function searchLessons(query: string): Lesson[] {
-  const normalizedQuery = query.trim().toLowerCase();
-  if (!normalizedQuery) {
-    return [];
-  }
-
-  const matchedById = new Map<string, Lesson>();
-  for (const entry of LESSON_DATA_FOR_SEARCH) {
-    if (!entry.key.toLowerCase().includes(normalizedQuery)) {
-      continue;
-    }
-    if (!matchedById.has(entry.lesson.id)) {
-      matchedById.set(entry.lesson.id, entry.lesson);
-    }
-  }
-  return Array.from(matchedById.values());
-}
+// Traditional Zhuyin chart grouping, by manner of articulation: bilabial,
+// alveolar, velar, palatal, retroflex, dental sibilant, then the 3
+// no-initial medial lessons. Rows are padded to 4 columns (null = empty
+// cell) so every row lines up in the same grid.
+const LESSON_TABLE_ROW_IDS: (string | null)[][] = [
+  ['b', 'p', 'm', 'f'],
+  ['d', 't', 'n', 'l'],
+  ['g', 'k', 'h', null],
+  ['j', 'q', 'x', null],
+  ['zh', 'ch', 'sh', 'r'],
+  ['z', 'c', 's', null],
+  ['no-initial-i', 'no-initial-u', 'no-initial-yu', null],
+];
 
 @Component({
   selector: 'app-nav',
@@ -61,12 +46,8 @@ function searchLessons(query: string): Lesson[] {
   standalone: true,
   imports: [
     AsyncPipe,
-    FormsModule,
-    MatFormField,
-    MatSuffix,
     MatIcon,
     MatButton,
-    MatInput,
     MatListItem,
     MatNavList,
     MatSidenav,
@@ -82,19 +63,14 @@ function searchLessons(query: string): Lesson[] {
   ],
 })
 export class NavComponent implements OnInit, OnDestroy {
-  public lessons = LESSONS;
+  public readonly lessonTableCells: (Lesson | null)[] = LESSON_TABLE_ROW_IDS.flat().map(
+    (id) => LESSONS.find((lesson) => lesson.id === id) ?? null,
+  );
+  public readonly otherLessons: Lesson[] = LESSONS.filter(
+    (lesson) => !LESSON_TABLE_ROW_IDS.flat().includes(lesson.id),
+  );
   public navLinks = NAV_LINKS;
   public toggleSideMenuShortcut = 'meta.b';
-
-  public readonly searchQuery = signal('');
-
-  public readonly searchResult = computed(() => {
-    const searchQuery = this.searchQuery();
-    if (!searchQuery) {
-      return null;
-    }
-    return searchLessons(searchQuery);
-  });
 
   private readonly breakpointObserver = inject(BreakpointObserver);
   private readonly matDialog = inject(MatDialog);
@@ -121,7 +97,6 @@ export class NavComponent implements OnInit, OnDestroy {
   }
 
   onNavLinkClick() {
-    this.cleanSearchQuery();
     this.isHandset$
       .pipe(
         take(1),
@@ -137,9 +112,5 @@ export class NavComponent implements OnInit, OnDestroy {
       '../hotkey-dialog/hotkey-dialog.component'
     );
     this.matDialog.open(HotkeyDialogComponent);
-  }
-
-  private cleanSearchQuery() {
-    this.searchQuery.set('');
   }
 }

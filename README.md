@@ -1,6 +1,6 @@
 # Formosa
 
-An unofficial practice tool of CharaChorder 3D input devices (CharaChorder One, CharaChorder Two, CCU and Master Forge)
+An unofficial practice tool for typing Bopomofo (Zhuyin) chords on CharaChorder devices — CharaChorder One, CharaChorder Two, CCU and Master Forge, as well as flat keyboards using the TanChord 36 layout.
 
 ## Links
 
@@ -10,27 +10,20 @@ An unofficial practice tool of CharaChorder 3D input devices (CharaChorder One, 
 
 ## Features
 
-- Layout Lesson
-  - 3~4 keys in a small lesson
-  - lessons for numbers, letters, and symbols
-- Device Layout View
-  - only show the labels of keys in the current lesson
-  - highlight the current key(s) required to type out the character
-  - can load the custom layout from a file (backup file from device manager website) or from a device
-- Widgets
-  - combo counter that counts the number of consecutive correct input
-  - speedometer that shows the current typing speed
-- Chord Practice
-  - can load the chord list via the backup json file from device manager website
-  - can select chords to practice from the chord list
-  - only show the labels of keys from the input of the selected chords
-  - highlight the keys of current chord
-- Layout Viewer
-  - can view the final layout (actual output under the selected OS keyboard layout) by layers and modifier keyss (Shift and Alt Graph)
-  - search for a key in the layout
-  - print the final layout (or generate a pdf file of it)
-- Layout Song
-  - an AI generated song that can help you that can help you memorize the letter keys on the default layout.
+- Bopomofo Chord Lessons
+  - 24 lessons grouped by initial consonant (聲母) or medial (介音)
+  - an "All Bopomofo Chords" lesson covering every chord
+  - symbols in a chord can be typed in any order; a live buffer shows your progress against the current target
+- Layout Setting
+  - Standard Bopomofo — CharaChorder Lite (or a flat keyboard) with a standard Zhuyin keyboard layout
+  - TanChord 36 V2 — CharaChorder 3D input device with the TanChord 36 layout
+  - the device layout preview highlights the key(s) needed for the current chord
+- Statistics
+  - track your typing speed (chords per minute) over time
+- Settings
+  - toggle the visibility of layout components
+  - adjust the rotation angle of the layout preview
+  - switch the UI language (English, 繁體中文, 日本語)
 
 ## Disclaimer
 

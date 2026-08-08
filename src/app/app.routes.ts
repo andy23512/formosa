@@ -75,13 +75,6 @@ export const APP_ROUTES: Route[] = [
       ),
   },
   {
-    path: 'chord',
-    loadComponent: () =>
-      import('./pages/chord-page/chord-page.component').then(
-        (m) => m.ChordPageComponent,
-      ),
-  },
-  {
     path: 'layout-schematic',
     loadComponent: () =>
       import(

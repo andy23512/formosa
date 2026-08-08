@@ -42,19 +42,6 @@ export const HOTKEY_GROUPS = [
       { key: 'escape', description: 'hotkey.lesson-page.pause-the-lesson' },
     ],
   },
-  {
-    name: 'hotkey.chord-practice-page.name',
-    hotkeys: [
-      {
-        key: 'space',
-        description: 'hotkey.chord-practice-page.start-or-resume-the-practice',
-      },
-      {
-        key: 'escape',
-        description: 'hotkey.chord-practice-page.pause-the-practice',
-      },
-    ],
-  },
 ];
 
 @Component({

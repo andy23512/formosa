@@ -13,7 +13,6 @@ import { VisibilitySetting } from 'src/app/models/visibility-setting.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
-import { KeyNotationHelpDialogComponent } from '../key-notation-help-dialog/key-notation-help-dialog.component';
 import { Thumb3SwitchHelpDialogComponent } from '../thumb-3-switch-help-dialog/thumb-3-switch-help-dialog.component';
 
 const VISIBILITY_SETTING_ITEMS: {
@@ -21,20 +20,11 @@ const VISIBILITY_SETTING_ITEMS: {
   key: keyof VisibilitySetting;
 }[] = [
   { name: 'visibility-setting.layout', key: 'layout' },
-  { name: 'visibility-setting.layout-text-guide', key: 'layoutTextGuide' },
-  {
-    name: 'visibility-setting.layout-key-notation-guide',
-    key: 'layoutKeyNotationGuide',
-  },
   {
     name: 'visibility-setting.layout-thumb-3-switch',
     key: 'layoutThumb3Switch',
   },
   { name: 'visibility-setting.speedometer', key: 'speedometer' },
-  {
-    name: 'visibility-setting.home-page-chording-animation',
-    key: 'homePageChordingAnimation',
-  },
 ];
 
 @Component({
@@ -68,9 +58,5 @@ export class VisibilitySettingPanelContentComponent {
 
   openThumb3SwitchHelpDialog() {
     this.matDialog.open(Thumb3SwitchHelpDialogComponent);
-  }
-
-  openKeyNotationHelpDialog() {
-    this.matDialog.open(KeyNotationHelpDialogComponent);
   }
 }
