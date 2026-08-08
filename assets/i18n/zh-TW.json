@@ -1,0 +1,603 @@
+{
+  "hand": {
+    "left": "左手",
+    "right": "右手"
+  },
+  "switch": {
+    "thumb-back": "拇指後面",
+    "thumb-middle": "拇指中間",
+    "thumb-front": "拇指前面",
+    "index": "食指",
+    "middle": "中指",
+    "ring": "無名指",
+    "pinky": "小指",
+    "middle-secondary": "中指第二搖桿",
+    "ring-secondary": "無名指第二搖桿"
+  },
+  "direction": {
+    "E": "東",
+    "S": "南",
+    "W": "西",
+    "N": "北",
+    "east": "東",
+    "south": "南",
+    "west": "西",
+    "north": "北",
+    "down": "下壓"
+  },
+  "device-layout": {
+    "cc1-cc2-default": "CC1/CC2/CCU 預設",
+    "m4g-default": "M4G 預設",
+    "cc1-cc2-right-hand-only": "CC1/CC2/CCU 僅用右手",
+    "cc1-cc2-left-hand-only": "CC1/CC2/CCU 僅用左手"
+  },
+  "general": {
+    "character-entry-speed-unit": "字元/分鐘",
+    "chord-speed-unit": "和弦/分鐘",
+    "start-action": "開始",
+    "submit-action": "送出",
+    "character-tooltip": "字元：{{character}}",
+    "action-code-tooltip": "操作代碼：{{actionCode}}",
+    "dead-key-tooltip": "死鍵：{{character}}",
+    "windows-alt-code-tooltip": "Windows Alt 碼：{{character}}",
+    "choose-file-action": "選擇檔案",
+    "combo-unit": "連擊",
+    "cancel-action": "取消",
+    "delete-confirm-button": "是，我確定要刪除。",
+    "delete-single-confirm-button": "是，我確定要刪除。",
+    "close-action": "關閉",
+    "left-side": "左邊",
+    "right-side": "右邊",
+    "both-sides": "兩邊",
+    "same-side": "同一邊",
+    "load-from-device-action": "從裝置讀取",
+    "web-serial-api-not-supported-message": "您的瀏覽器不支援 Web Serial API。請使用相容的瀏覽器從您的裝置讀取佈局。"
+  },
+  "nav": {
+    "hotkey": {
+      "title": "熱鍵",
+      "tooltip": "開啟熱鍵對話框",
+      "aria-label": "開啟熱鍵對話框的按鈕"
+    },
+    "serial-log": {
+      "title": "序列埠日誌",
+      "tooltip": "開啟序列埠日誌對話框",
+      "aria-label": "開啟序列埠日誌對話框的按鈕"
+    },
+    "page": {
+      "home": {
+        "title": "首頁",
+        "tooltip": "前往首頁",
+        "aria-label": "首頁連結"
+      },
+      "statistics": {
+        "title": "統計",
+        "tooltip": "前往統計頁面",
+        "aria-label": "統計頁面連結"
+      },
+      "chord": {
+        "title": "和弦",
+        "tooltip": "前往和弦頁面",
+        "aria-label": "和弦頁面連結"
+      },
+      "layout": {
+        "title": "佈局",
+        "tooltip": "前往佈局檢視頁面",
+        "aria-label": "佈局檢視頁面連結"
+      },
+      "song": {
+        "title": "歌曲",
+        "tooltip": "前往佈局記憶歌頁面",
+        "aria-label": "佈局記憶歌頁面連結"
+      },
+      "settings": {
+        "title": "設定",
+        "tooltip": "前往設定頁面",
+        "aria-label": "設定頁面連結"
+      },
+      "information": {
+        "title": "資訊",
+        "tooltip": "前往資訊頁面",
+        "aria-label": "資訊頁面連結"
+      }
+    },
+    "search-lessons-input": {
+      "placeholder": "搜尋課程",
+      "aria-label": "課程搜尋框"
+    },
+    "no-result-message": "沒有找到任何結果。",
+    "side-menu-toggle": {
+      "aria-label": "開啟/關閉側邊欄",
+      "icon-aria-label": "側邊欄開關圖標"
+    }
+  },
+  "settings": {
+    "air-mode": {
+      "description": "隔空模式是即使你沒有裝置也能練習的一個實驗性的練習模式。\n字元或者和弦會用你所設定的速度自動輸入，因此你可以跟著它，像在真的裝置上打字一般移動你的手指。",
+      "checkbox-label": "啟動隔空模式",
+      "character-entry-speed-label": "逐字輸入速度",
+      "chord-speed-label": "和弦輸入速度",
+      "character-entry-speed-input-aria-label": "隔空模式的逐字輸入速度輸入框",
+      "chord-speed-input-aria-label": "隔空模式的和弦輸入速度輸入框"
+    },
+    "device-layout": {
+      "import-device-layout-file-step": [
+        "（非必要）透過匯入檔案（來自",
+        "CharaChorder 裝置管理工具",
+        "的備份檔案）或從輸入裝置讀取，以新增裝置佈局。"
+      ],
+      "file-input-aria-label": "選擇要匯入到此工具的裝置佈局檔案用的檔案輸入框",
+      "select-device-layout-step": "選擇一個已匯入的裝置佈局。",
+      "single-device-layout-deleted-message": "裝置佈局「{{deviceLayoutName}}」已被刪除。",
+      "device-layout-loading-message": "載入裝置佈局中..."
+    },
+    "lesson": {
+      "language-label": "課程語言",
+      "os-keyboard-layout-label": "課程中所使用的作業系統鍵盤佈局"
+    }
+  },
+  "chord-page": {
+    "chord-practice": {
+      "title": "和弦 - 練習"
+    },
+    "chord-practice-setting": {
+      "title": "和弦 - 練習設定",
+      "import-chord-list-file-step": [
+        "匯入你的和弦清單檔案（來自",
+        "CharaChorder 裝置管理工具",
+        "的備份檔案）。（給初次使用或更新和弦清單用）"
+      ],
+      "file-input-aria-label": "選擇要匯入到此工具的和弦清單檔案用的檔案輸入框",
+      "select-chords-step": "從底下的已匯入的和弦清單中，選擇你想練習的和弦。",
+      "click-start-button-step": "按下底下的按鍵來開始練習。"
+    }
+  },
+  "delete-chords-confirm-dialog": {
+    "description": "你確定要刪除所有已匯入的和弦嗎？"
+  },
+  "delete-device-layouts-confirm-dialog": {
+    "description": "你確定要刪除所有已匯入的裝置佈局嗎？\n（刪除之後，裝置佈局設定會改為 CC1/CC2/CCU 的預設佈局。）"
+  },
+  "delete-device-layout-confirm-dialog": {
+    "description": [
+      "你確定要刪除裝置佈局「",
+      "{{deviceLayoutName}}",
+      "」嗎？\n(刪除之後，所選的裝置佈局會改為 CC1/CC2/CCU 的預設佈局。)"
+    ]
+  },
+  "hotkey-dialog": {
+    "title": "快捷鍵"
+  },
+  "key-notation-help-dialog": {
+    "title": "按鍵表示法",
+    "key-notation-explanation-paragraph": "在本工具中，按鍵表示法是一個表示 CharaChorder 3D 輸入裝置上的按鍵位置的實驗性的簡寫。",
+    "key-notation-example-paragraph": "舉例來說，「左手拇指中央的西鍵」就表示成「L1bW」、「右手小指下壓（3D 按壓）」就表示成「R5D」。",
+    "first-and-last-letters-explanation-paragraph": "第一個和最後一個字母分別是左右手（L/R）和方向（北 N / 東 E / 南 S/ 西 W/ 下壓 D）的簡寫。",
+    "middle-part-explanation-paragraph": [
+      "中間的部分用來指定搖桿。數字表示手指（從 1 到 5 為從拇指到小指），跟",
+      {
+        "url": "https://en.wikipedia.org/wiki/Fingering_(music)#Keyboard_instruments",
+        "text": "現代樂譜中鍵盤樂器的指法記號"
+      },
+      "一樣。額外加上去的「b」或「bb」，則來自音樂中的",
+      {
+        "url": "https://zh.wikipedia.org/wiki/%E9%99%8D%E8%99%9F",
+        "text": "降號（♭）和重降號（𝄫）"
+      },
+      "，分別用來表示那個手指的副/中間和後面的搖桿。"
+    ],
+    "layout-image-explanation-paragraph": "下圖會展示每個搖桿的表示法。"
+  },
+  "hotkey": {
+    "global": {
+      "name": "全域共通",
+      "toggle-hotkey-dialog": "開啟或關閉快捷鍵對話框",
+      "toggle-side-menu": "開啟或關閉側邊欄"
+    },
+    "home-page": {
+      "name": "首頁",
+      "go-to-the-first-lesson": "前往第一個課程"
+    },
+    "lesson-page": {
+      "name": "課程頁面",
+      "go-to-the-previous-lesson": "回到上一個課程",
+      "go-to-the-next-lesson": "前往下一個課程",
+      "start-or-resume-the-lesson": "開始或繼續課程",
+      "pause-the-lesson": "暫停課程"
+    },
+    "chord-practice-page": {
+      "name": "和弦練習頁面",
+      "start-or-resume-the-practice": "開始或繼續練習",
+      "pause-the-practice": "暫停練習"
+    },
+    "layout-viewer-page": {
+      "name": "佈局檢視頁面",
+      "switch-to-the-first-layer": "切換到第一（主要）層",
+      "switch-to-the-second-layer": "切換到第二（數字）層",
+      "switch-to-the-third-layer": "切換到第三（功能）層",
+      "switch-to-the-fourth-layer": "切換到第四（旗標）層",
+      "toggle-shift-modifier": "開啟或關閉 Shift 修飾鍵",
+      "toggle-alt-graph-modifier": "開啟或關閉 Alt Graph 修飾鍵"
+    }
+  },
+  "layout-highlight-setting": {
+    "shift-layer": "Shift 層",
+    "num-shift-layer": "num-shift 層",
+    "shift-num-shift-layer": "shift num-shift 層",
+    "fn-shift-layer": "fn-shift 層",
+    "shift-fn-shift-layer": "shift fn-shift 層",
+    "flag-shift-layer": "flag-shift 層",
+    "shift-flag-shift-layer": "shift flag-shift 層",
+    "key-combination-sides-choice": [
+      "傾向從",
+      "{{兩邊 / 同一邊}}",
+      "選擇按鍵組合。"
+    ],
+    "shift-side-choice": ["傾向選擇", "{{左邊 / 右邊}}", "的 Shift 鍵。"],
+    "num-shift-side-choice": [
+      "傾向選擇",
+      "{{左邊 / 右邊}}",
+      "的 Num-shift 鍵。"
+    ],
+    "fn-shift-side-choice": ["傾向選擇", "{{左邊 / 右邊}}", "的 Fn-shift 鍵。"],
+    "flag-shift-side-choice": [
+      "傾向選擇",
+      "{{左邊 / 右邊}}",
+      "的 Flag-shift 鍵。"
+    ],
+    "character-key-side-choice": ["傾向選擇", "{{左邊 / 右邊}}", "的字元鍵。"]
+  },
+  "layout-song-help-dialog": {
+    "title": "佈局記憶歌",
+    "summary": "佈局記憶歌是一首由 AI 生成、能幫助你記憶預設佈局上的字母鍵的英文歌。",
+    "tool-explanation": "歌詞是由 Kimi K2 Thinking 生成，而整首歌是由 Suno AI 生成。",
+    "license-explanation": "這首歌僅授權用於非商業用途。",
+    "download-explanation": [
+      "如果你有需要，你可以下載這首歌的",
+      "音檔",
+      "或",
+      "歌詞",
+      "。請勿用於任何商業用途！"
+    ]
+  },
+  "misc-setting": {
+    "thumb-rotation-angle": {
+      "title": "拇指搖桿旋轉角度",
+      "input-aria-label": "佈局顯示上的拇指搖桿旋轉角度的輸入框"
+    },
+    "non-thumb-rotation-angle": {
+      "title": "非拇指搖桿旋轉角度",
+      "input-aria-label": "佈局顯示上的非拇指搖桿旋轉角度的輸入框"
+    }
+  },
+  "quick-setting": {
+    "cc1-cc2-default-layout": "CC1/CC2/CCU 預設佈局",
+    "m4g-default-layout": "M4G 預設佈局",
+    "cc1-cc2-right-hand-only-layout": "CC1/CC2/CCU 僅用右手佈局"
+  },
+  "thumb-3-switch-help-dialog": {
+    "title": "拇指第三搖桿",
+    "content": "Master Forge 不像 CharaChorder One、CharaChorder Two 及 CCU 有拇指第三搖桿。如果你使用的是 Master Forge，或你使用的是 CharaChorder One、CharaChorder Two 或 CCU 但沒有用到拇指第三搖桿的話，你可以取消勾選這個設定來在佈局顯示上隱藏它們。"
+  },
+  "visibility-setting": {
+    "thumb-3-switch-help-button-aria-label": "開啟拇指第三搖桿的幫助視窗",
+    "key-notation-help-button-aria-label": "開啟按鍵表示法的幫助視窗",
+    "layout": "佈局",
+    "layout-text-guide": "佈局 - 文字指引",
+    "layout-key-notation-guide": "佈局 - 按鍵表示法指引",
+    "layout-thumb-3-switch": "佈局 - 拇指第三搖桿",
+    "combo-counter": "連擊計數器",
+    "speedometer": "速度計",
+    "home-page-chording-animation": "首頁的和弦動畫",
+    "entry-error-tooltip": "錯誤輸入提示"
+  },
+  "topic": {
+    "letters": "字母",
+    "numbers": "數字",
+    "symbols": "符號"
+  },
+  "lesson": {
+    "review-1": "複習一",
+    "review-2": "複習二",
+    "review-3": "複習三",
+    "all-letters": "所有字母鍵",
+    "all-numbers": "所有數字鍵"
+  },
+  "key-label": {
+    "shift": "Shift",
+    "numeric-layer": "數字層",
+    "function-layer": "功能層",
+    "flag-layer": "旗標層",
+    "alt-graph": "Alt Graph",
+    "alt-left": "Alt / Option（左）",
+    "alt-right": "Alt / Option（右）/ Alt Graph",
+    "backspace": "退格鍵",
+    "caps-lock": "大寫鎖定",
+    "context-menu": "應用程式選單",
+    "control-left": "Ctrl（左）",
+    "control-right": "Ctrl（右）",
+    "enter": "確認鍵 / 歸位鍵",
+    "meta-left": "Windows / Command / Super（左）",
+    "meta-right": "Windows / Command / Super（右）",
+    "shift-left": "Shift（左）",
+    "shift-right": "Shift（右）",
+    "space-left": "空白鍵（左）",
+    "space-right": "空白鍵（右）",
+    "tab": "Tab",
+    "esc": "Esc",
+    "f1": "F1",
+    "f2": "F2",
+    "f3": "F3",
+    "f4": "F4",
+    "f5": "F5",
+    "f6": "F6",
+    "f7": "F7",
+    "f8": "F8",
+    "f9": "F9",
+    "f10": "F10",
+    "f11": "F11",
+    "f12": "F12",
+    "f13": "F13",
+    "f14": "F14",
+    "f15": "F15",
+    "f16": "F16",
+    "f17": "F17",
+    "f18": "F18",
+    "f19": "F19",
+    "f20": "F20",
+    "f21": "F21",
+    "f22": "F22",
+    "f23": "F23",
+    "f24": "F24",
+    "print-screen": "Print Screen",
+    "delete": "刪除鍵",
+    "arrow-down": "向下鍵",
+    "arrow-left": "向左鍵",
+    "arrow-right": "向右鍵",
+    "arrow-up": "向上鍵",
+    "page-up": "上一頁鍵",
+    "page-down": "下一頁鍵",
+    "home": "首頁鍵",
+    "end": "結尾鍵",
+    "insert": "插入鍵",
+    "numpad-divide": "小鍵盤：/",
+    "numpad-multiply": "小鍵盤：*",
+    "numpad-subtract": "小鍵盤：-",
+    "numpad-add": "小鍵盤：+",
+    "numpad-enter": "小鍵盤：確認鍵",
+    "numpad-0": "小鍵盤：0",
+    "numpad-1": "小鍵盤：1",
+    "numpad-2": "小鍵盤：2",
+    "numpad-3": "小鍵盤：3",
+    "numpad-4": "小鍵盤：4",
+    "numpad-5": "小鍵盤：5",
+    "numpad-6": "小鍵盤：6",
+    "numpad-7": "小鍵盤：7",
+    "numpad-8": "小鍵盤：8",
+    "numpad-9": "小鍵盤：9",
+    "no-key-pressed": "不按下任何鍵",
+    "restart-input-device": "重新啟動輸入裝置",
+    "mouse-left-click": "滑鼠左鍵點擊",
+    "mouse-right-click": "滑鼠右鍵點擊",
+    "mouse-middle-click": "滑鼠中鍵點擊",
+    "tertiary-keymap-left": "功能層（左）",
+    "tertiary-keymap-right": "功能層（右）",
+    "secondary-keymap-left": "數字層（左）",
+    "secondary-keymap-right": "數字層（右）",
+    "primary-keymap-left": "主要層（左）",
+    "primary-keymap-right": "主要層（右）",
+    "ambidextrous-throwover-left": "佈局鏡射鍵（左）",
+    "ambidextrous-throwover-right": "佈局鏡射鍵（右）",
+    "mouse-scroll-coast-right": "滑鼠滾輪向右滑動",
+    "mouse-scroll-coast-left": "滑鼠滾輪向左滑動",
+    "mouse-scroll-coast-down": "滑鼠滾輪向下滑動",
+    "mouse-scroll-coast-up": "滑鼠滾輪向上滑動",
+    "mouse-move-right": "滑鼠向右移動",
+    "mouse-move-left": "滑鼠向左移動",
+    "mouse-move-down": "滑鼠向下移動",
+    "mouse-move-up": "滑鼠向上移動",
+    "dup": "重覆上一個鍵",
+    "gtm": "切換生成文字選單",
+    "impulse": "切換即時添加和弦模式",
+    "left-hand-thumb-3-center": "偽動作 01 / 左手拇指第三搖桿 3D 點擊",
+    "left-hand-thumb-2-center": "偽動作 02 / 左手拇指第二搖桿 3D 點擊",
+    "left-hand-thumb-1-center": "偽動作 03 / 左手拇指第一搖桿 3D 點擊",
+    "left-hand-index-center": "偽動作 04 / 左手食指 3D 點擊",
+    "left-hand-middle-1-center": "偽動作 05 / 左手中指 1 3D 點擊",
+    "left-hand-ring-1-center": "偽動作 06 / 左手無名指 1 3D 點擊",
+    "left-hand-pinky-center": "偽動作 07 / 左手小指 3D 點擊",
+    "left-hand-middle-2-center": "偽動作 08 / 左手中指 2 3D 點擊",
+    "left-hand-ring-2-center": "偽動作 09 / 左手無名指 2 3D 點擊",
+    "right-hand-thumb-3-center": "偽動作 10 / 右手拇指第三搖桿 3D 點擊",
+    "right-hand-thumb-2-center": "偽動作 11 / 右手拇指第二搖桿 3D 點擊",
+    "right-hand-thumb-1-center": "偽動作 12 / 右手拇指第一搖桿 3D 點擊",
+    "right-hand-index-center": "偽動作 13 / 右手食指 3D 點擊",
+    "right-hand-middle-1-center": "偽動作 14 / 右手中指 1 3D 點擊",
+    "right-hand-ring-1-center": "偽動作 15 / 右手無名指 1 3D 點擊",
+    "right-hand-pinky-center": "偽動作 16 / 右手小指 3D 點擊",
+    "right-hand-middle-2-center": "偽動作 17 / 右手中指 2 3D 點擊",
+    "right-hand-ring-2-center": "偽動作 18 / 右手無名指 2 3D 點擊",
+    "apple-alt-left": "Option / Alt（左）",
+    "apple-alt-right": "Option / Alt（右）/ Alt Graph",
+    "apple-meta-left": "Command [Windows / Super] （左）",
+    "apple-meta-right": "Command [Windows / Super] （右）",
+    "windows-meta-left": "Windows [Command / Super] （左）",
+    "windows-meta-right": "Windows [Command / Super] （右）",
+    "unix-meta-left": "Super [Windows / Command] （左）",
+    "unix-meta-right": "Super [Windows / Command] （右）",
+    "brightness-up": "調亮亮度",
+    "brightness-down": "調低亮度",
+    "play-pause": "播放/暫停",
+    "next-track": "下一首歌曲",
+    "previous-track": "上一首歌曲",
+    "mute": "靜音",
+    "volume-up": "調高音量",
+    "volume-down": "調低音量",
+    "search": "搜尋",
+    "back": "返回",
+    "forward": "前進"
+  },
+  "home-page": {
+    "website-name": "Formosa 福爾摩沙",
+    "summary": ["專為", "CharaChorder 3D 輸入裝置", "量身打造的非官方練習工具"],
+    "lesson-start-instruction": [
+      "使用 ",
+      "space",
+      " 鍵進入第一個課程，或從左側列表中選擇一個課程。"
+    ],
+    "source-code": "原始碼",
+    "dev-note": "開發筆記",
+    "dev-note-url": "https://andy23512.github.io/blog-zh-tw/2024/05/01/formosa-%E5%8F%83%E5%AE%BF%E4%B8%80-tangent-%E6%89%80%E9%96%8B%E7%99%BC%E7%9A%84-charachorder-3d-%E8%BC%B8%E5%85%A5%E8%A3%9D%E7%BD%AE%E7%B7%B4%E7%BF%92%E5%B7%A5%E5%85%B7/",
+    "alnilam": "Alnilam 參宿二",
+    "current-device-layout-hint": {
+      "cc1-cc2-default": [
+        "裝置佈局目前是設定為「CC1/CC2/CCU 預設」。",
+        "切換到「M4G 預設」"
+      ],
+      "m4g-default": [
+        "裝置佈局目前是設定為「M4G 預設」。",
+        "切換到「CC1/CC2/CCU 預設」"
+      ]
+    },
+    "remark": "Formosa（發音：/fɔːrˈmoʊzə/）是位於獅子座、距離地球約 451 光年的紅群聚巨星。此名稱由台灣在國際天文聯合會（IAU）百週年 NameExoWorlds 命名活動中提出，「Formosa」是十七世紀葡萄牙人對台灣的稱呼，意為「美麗」。"
+  },
+  "information-page": {
+    "description": "本網站，Formosa 福爾摩沙，是專為 CharaChorder One、CharaChorder Two 和 Master Forge 等 CharaChorder 3D 輸入裝置所設計的一個非官方練習工具。",
+    "page-introductions-title": "頁面介紹",
+    "key-lesson-page": {
+      "title": "按鍵課程頁面",
+      "description": [
+        "在按鍵課程頁面，您可以練習在您的 CharaChorder 3D 輸入裝置上輸入數字、字母或符號鍵。在側邊欄中有課程列表。",
+        [
+          "如果您想要有一個練習目標，您可以嘗試在每個非複習課程中同時達成 100 連擊和 100 字元/分鐘。（我在",
+          {
+            "url": "https://andy23512.github.io/blog-zh-tw/2025/07/12/tangent-%E5%B0%8D%E5%AD%B8%E7%BF%92%E4%BD%BF%E7%94%A8-charachorder-3d-%E8%BC%B8%E5%85%A5%E8%A3%9D%E7%BD%AE%E8%8B%B1%E6%89%93%EF%BC%88%E9%80%90%E5%AD%97%E8%BC%B8%E5%85%A5%EF%BC%89%E7%9A%84%E5%BB%BA%E8%AD%B0/",
+            "text": "這篇文章中寫了關於如何在 CharaChorder 3D 輸入裝置上學習英文逐字打字的建議"
+          },
+          "。）"
+        ]
+      ]
+    },
+    "statistics-page": {
+      "title": "統計頁面",
+      "description": "在統計頁面，您可以查看您在按鍵課程中的練習統計數據，包括顯示您打字速度和連擊數隨時間變化的圖表。"
+    },
+    "chord-page": {
+      "title": "和弦頁面",
+      "description": "在和弦頁面，您可以從您的和弦庫中選擇多個和弦進行練習。"
+    },
+    "layout-viewer-page": {
+      "title": "佈局檢視頁面",
+      "description": "在佈局檢視頁面，您可以查看在特定作業系統鍵盤佈局和修飾鍵（Shift 和 Alt Graph）狀態下，您的裝置的實際輸出佈局。它還提供按鍵搜尋和佈局列印功能。"
+    },
+    "layout-song-page": {
+      "title": "佈局記憶歌頁面",
+      "description": "在佈局記憶歌頁面，有一首由 AI 生成的歌曲，可以幫助您記憶預設佈局上的字母鍵。"
+    },
+    "settings-page": {
+      "title": "設定頁面",
+      "description": "在設定頁面，您可以調整此工具的一些設定，例如某些元件的可見性、佈局預覽上的點亮邏輯、裝置佈局、隔空模式等。"
+    },
+    "disclaimers": {
+      "title": "免責聲明",
+      "description": [
+        [
+          "本網站與 CharaChorder 沒有隸屬、關聯、授權、認可，或任何正式關聯的關係。他們的官方網站可以在 ",
+          "{{charachorder url}}",
+          " 上找到。"
+        ],
+        [
+          "你的打字統計和設定資料會保存在你的瀏覽器的 ",
+          "IndexedDB",
+          " 和 ",
+          "localStorage",
+          " 之中。這些資料不會透過本工具傳送到其他任何地方。"
+        ]
+      ]
+    }
+  },
+  "layout-song-page": {
+    "title": "佈局記憶歌",
+    "mute-button-aria-label": "佈局記憶歌靜音/取消靜音按鈕",
+    "help-button-aria-label": "開啟佈局記憶歌說明視窗按鈕"
+  },
+  "layout-viewer-page": {
+    "toggle-shift-modifier": "切換 Shift 修飾鍵",
+    "toggle-alt-graph-modifier": "切換 Alt Graph 修飾鍵",
+    "device-layout": {
+      "label": "裝置佈局"
+    },
+    "os-keyboard-layout": {
+      "label": "作業系統鍵盤佈局",
+      "search-placeholder": "搜尋佈局...",
+      "search-no-entry": "找不到符合的佈局。",
+      "open-reference-button-tooltip": "開啟此佈局的參考網站",
+      "reset-button-tooltip": "重置"
+    },
+    "search-key-button-tooltip": "搜尋按鍵",
+    "print-layout-button-tooltip": "列印佈局",
+    "print-layout-title": "{{keyboardLayout}} 作業系統鍵盤佈局下的 {{deviceLayout}} 裝置佈局",
+    "hold-hint": ["（按住", "{{keys}}", "以進入此層）"],
+    "and": " 和 ",
+    "comma": "、",
+    "layer": {
+      "1": "主要層",
+      "2": "數字層",
+      "3": "功能層",
+      "4": "旗標層"
+    },
+    "dead-key-legend": "死鍵",
+    "windows-alt-code-legend": "Windows Alt 碼"
+  },
+  "lesson-page": {
+    "input-box-title": "用於練習課程的輸入框",
+    "pause-action": "暫停",
+    "start-action": "開始",
+    "previous-lesson-link": {
+      "aria-label": "前往上一個課程的連結",
+      "tooltip": "前往上一個課程"
+    },
+    "next-lesson-link": {
+      "aria-label": "前往下一個課程的連結",
+      "tooltip": "前往下一個課程"
+    }
+  },
+  "settings-page": {
+    "title": "設定",
+    "panel-header": {
+      "quick-setting": "快速設定",
+      "visibility": "顯示",
+      "layout-highlight": "佈局點亮",
+      "device-layout": "裝置佈局",
+      "lesson": "課程",
+      "air-mode": "隔空模式",
+      "data-deletion": "資料刪除",
+      "misc": "其他",
+      "ui-language": "介面語言"
+    },
+    "button": {
+      "delete-all-imported-device-layouts": "刪除所有已匯入的裝置佈局",
+      "delete-all-imported-chords": "刪除所有已匯入的和弦"
+    },
+    "message": {
+      "device-layout-deleted": "所有已匯入的裝置佈局已被刪除。",
+      "chords-deleted": "所有已匯入的和弦已被刪除。"
+    }
+  },
+  "statistics-page": {
+    "metric": "指標"
+  },
+  "layout-text-guide": "{{hand}}{{switch}}{{direction}}鍵",
+  "device-layout-import-dialog": {
+    "title": "匯入裝置佈局",
+    "name-label": "設定檔 {{profile}}"
+  },
+  "lesson-not-found-page": {
+    "title": "找不到課程",
+    "description": "您嘗試訪問的課程不存在。它可能已被刪除或 URL 錯誤。請從側邊菜單中選擇一個課程。"
+  },
+  "serial-log-dialog": {
+    "title": "序列埠日誌",
+    "no-data-message": "沒有可用的序列埠日誌資料。"
+  }
+}
