@@ -5,8 +5,6 @@ An unofficial practice tool for typing Bopomofo (Zhuyin) chords on CharaChorder 
 ## Links
 
 - [Website](https://andy23512.github.io/formosa/)
-- [Introduction & Development Note](https://andy23512.github.io/blog/formosa-a-practice-tool-of-charachorder-3d-input-devices-developed-by-tangent/)
-- [Alnilam](https://andy23512.github.io/alnilam/) (Companion project for CharaChorder Lite)
 
 ## Features
 
