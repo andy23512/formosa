@@ -26,22 +26,6 @@ export const NAV_LINKS: NavLink[] = [
     icon: 'piano',
   },
   {
-    title: 'nav.page.layout.title',
-    routerLink: '/layout-viewer',
-    routerLinkActiveOptions: { exact: false },
-    ariaLabel: 'nav.page.layout.aria-label',
-    tooltipMessage: 'nav.page.layout.tooltip',
-    icon: 'map',
-  },
-  {
-    title: 'nav.page.song.title',
-    routerLink: '/layout-song',
-    routerLinkActiveOptions: { exact: false },
-    ariaLabel: 'nav.page.song.aria-label',
-    tooltipMessage: 'nav.page.song.tooltip',
-    icon: 'music_note_2',
-  },
-  {
     title: 'nav.page.settings.title',
     routerLink: '/settings',
     routerLinkActiveOptions: { exact: false },

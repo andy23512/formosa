@@ -60,11 +60,6 @@
       "tooltip": "ホットキーのダイアログ・ボックスを開く",
       "aria-label": "ホットキーのダイアログ・ボックスを開くボタン"
     },
-    "serial-log": {
-      "title": "シリアルログ",
-      "tooltip": "シリアルログのダイアログ・ボックスを開く",
-      "aria-label": "シリアルログのダイアログ・ボックスを開くボタン"
-    },
     "page": {
       "home": {
         "title": "ホーム",
@@ -80,16 +75,6 @@
         "title": "和音",
         "tooltip": "和音ページへ移動",
         "aria-label": "和音ページリンク"
-      },
-      "layout": {
-        "title": "レイアウト",
-        "tooltip": "レイアウト表示ページへ移動",
-        "aria-label": "レイアウト表示ページリンク"
-      },
-      "song": {
-        "title": "歌曲",
-        "tooltip": "レイアウト記憶歌ページへ移動",
-        "aria-label": "レイアウト記憶歌ページリンク"
       },
       "settings": {
         "title": "設定",
@@ -210,15 +195,6 @@
       "name": "和音練習ページ",
       "start-or-resume-the-practice": "練習を開始または再開",
       "pause-the-practice": "練習を一時停止"
-    },
-    "layout-viewer-page": {
-      "name": "レイアウト表示ページ",
-      "switch-to-the-first-layer": "第一（基本）レイヤーに切り替える",
-      "switch-to-the-second-layer": "第二（数字）レイヤーに切り替える",
-      "switch-to-the-third-layer": "第三（機能）レイヤーに切り替える",
-      "switch-to-the-fourth-layer": "第四（フラグ）レイヤーに切り替える",
-      "toggle-shift-modifier": "Shift 修飾キーの切り替え",
-      "toggle-alt-graph-modifier": "Alt Graph 修飾キーの切り替え"
     }
   },
   "layout-highlight-setting": {
@@ -258,19 +234,6 @@
       "",
       "{{(左側 / 右側)}}",
       "な文字キーを選択する傾向があります。"
-    ]
-  },
-  "layout-song-help-dialog": {
-    "title": "レイアウト記憶歌",
-    "summary": "レイアウト記憶歌はAIが生成した英語の歌です。デフォルトのレイアウトで英語の文字キーを覚えるのに役立ちます。",
-    "tool-explanation": "歌詞は Kimi K2 Thinking が、楽曲全体は Suno AI が生成しました。",
-    "license-explanation": "この歌は非商用利用のみ許可されています。",
-    "download-explanation": [
-      "必要に応じて、この歌の",
-      "楽曲",
-      "または",
-      "歌詞",
-      "をダウンロードできます。商用目的での使用はご遠慮ください。"
     ]
   },
   "misc-setting": {
@@ -502,14 +465,6 @@
       "title": "和音ページ",
       "description": "和音ページでは、和音ライブラリからいくつかの和音を選択して練習できます。"
     },
-    "layout-viewer-page": {
-      "title": "レイアウト表示ページ",
-      "description": "レイアウト表示ページでは、特定のOSキーボードレイアウトと修飾キー（Shift キーと Alt Graph キー）の状態におけるデバイスの実際の出力レイアウトを確認できます。また、キー検索機能とレイアウト印刷機能も備えています。"
-    },
-    "layout-song-page": {
-      "title": "レイアウト記憶歌ページ",
-      "description": "レイアウト記憶歌ページでは、デフォルトレイアウトで英語の文字キーを覚えるのに役立つAI生成した英語の歌があります。"
-    },
     "settings-page": {
       "title": "設定ページ",
       "description": "設定ページでは、このツールのいくつかの設定を調整できます。例えば、いくつかのコンポーネントの表示、レイアウトプレビューのハイライトロジック、デバイスレイアウト、エアモードなどです。"
@@ -531,49 +486,6 @@
         ]
       ]
     }
-  },
-  "layout-song-page": {
-    "title": "レイアウト記憶歌",
-    "mute-button-aria-label": "レイアウトソングのミュートを切り替えます",
-    "help-button-aria-label": "レイアウトソングのヘルプダイアログを開きます"
-  },
-  "layout-viewer-page": {
-    "toggle-shift-modifier": "Shift 修飾キーの切り替え",
-    "toggle-alt-graph-modifier": "Alt Graph 修飾キーの切り替え",
-    "device-layout": {
-      "label": "デバイスレイアウト"
-    },
-    "os-keyboard-layout": {
-      "label": "OSキーボードレイアウト",
-      "search-placeholder": "レイアウトを検索...",
-      "search-no-entry": "一致するレイアウトが見つかりませんでした。",
-      "open-reference-button-tooltip": "このレイアウトの参照サイトを開く",
-      "reset-button-tooltip": "リセット"
-    },
-    "search-key-button-tooltip": "キーを検索",
-    "print-layout-button-tooltip": "レイアウトを印刷",
-    "print-layout-title": "{{deviceLayout}} デバイスレイアウト（{{keyboardLayout}} OSレイアウト下）",
-    "key-search": {
-      "placeholder": "キーを検索...",
-      "aria-label": "キーの検索ボックス",
-      "clear-button-aria-label": "検索クエリをクリア",
-      "search-no-entry": "一致するキーが見つかりませんでした。"
-    },
-    "hold-hint": [
-      "（このレイヤーにアクセスするには",
-      "{{keys}}",
-      "を押したままにしてください）"
-    ],
-    "and": "と",
-    "comma": "、",
-    "layer": {
-      "1": "基本レイヤー",
-      "2": "数字レイヤー",
-      "3": "機能レイヤー",
-      "4": "フラグレイヤー"
-    },
-    "dead-key-legend": "デッドキー",
-    "windows-alt-code-legend": "Windows Alt コード"
   },
   "lesson-page": {
     "input-box-title": "レッスン練習用入力ボックス",
@@ -621,9 +533,5 @@
   "lesson-not-found-page": {
     "title": "レッスンが見つかりません",
     "description": "アクセスしようとしたレッスンは見つかりませんでした。削除された可能性があります。または、URLが間違っている可能性があります。サイドメニューからレッスンを選択してください。"
-  },
-  "serial-log-dialog": {
-    "title": "シリアルログ",
-    "no-data-message": "利用可能なシリアルログデータはありません。"
   }
 }

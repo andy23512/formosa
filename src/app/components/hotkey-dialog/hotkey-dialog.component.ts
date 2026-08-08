@@ -55,35 +55,6 @@ export const HOTKEY_GROUPS = [
       },
     ],
   },
-  {
-    name: 'hotkey.layout-viewer-page.name',
-    hotkeys: [
-      {
-        key: 'alt.1',
-        description: 'hotkey.layout-viewer-page.switch-to-the-first-layer',
-      },
-      {
-        key: 'alt.2',
-        description: 'hotkey.layout-viewer-page.switch-to-the-second-layer',
-      },
-      {
-        key: 'alt.3',
-        description: 'hotkey.layout-viewer-page.switch-to-the-third-layer',
-      },
-      {
-        key: 'alt.4',
-        description: 'hotkey.layout-viewer-page.switch-to-the-fourth-layer',
-      },
-      {
-        key: 'alt.s',
-        description: 'hotkey.layout-viewer-page.toggle-shift-modifier',
-      },
-      {
-        key: 'alt.a',
-        description: 'hotkey.layout-viewer-page.toggle-alt-graph-modifier',
-      },
-    ],
-  },
 ];
 
 @Component({

@@ -59,11 +59,6 @@
       "tooltip": "開啟熱鍵對話框",
       "aria-label": "開啟熱鍵對話框的按鈕"
     },
-    "serial-log": {
-      "title": "序列埠日誌",
-      "tooltip": "開啟序列埠日誌對話框",
-      "aria-label": "開啟序列埠日誌對話框的按鈕"
-    },
     "page": {
       "home": {
         "title": "首頁",
@@ -79,16 +74,6 @@
         "title": "和弦",
         "tooltip": "前往和弦頁面",
         "aria-label": "和弦頁面連結"
-      },
-      "layout": {
-        "title": "佈局",
-        "tooltip": "前往佈局檢視頁面",
-        "aria-label": "佈局檢視頁面連結"
-      },
-      "song": {
-        "title": "歌曲",
-        "tooltip": "前往佈局記憶歌頁面",
-        "aria-label": "佈局記憶歌頁面連結"
       },
       "settings": {
         "title": "設定",
@@ -209,15 +194,6 @@
       "name": "和弦練習頁面",
       "start-or-resume-the-practice": "開始或繼續練習",
       "pause-the-practice": "暫停練習"
-    },
-    "layout-viewer-page": {
-      "name": "佈局檢視頁面",
-      "switch-to-the-first-layer": "切換到第一（主要）層",
-      "switch-to-the-second-layer": "切換到第二（數字）層",
-      "switch-to-the-third-layer": "切換到第三（功能）層",
-      "switch-to-the-fourth-layer": "切換到第四（旗標）層",
-      "toggle-shift-modifier": "開啟或關閉 Shift 修飾鍵",
-      "toggle-alt-graph-modifier": "開啟或關閉 Alt Graph 修飾鍵"
     }
   },
   "layout-highlight-setting": {
@@ -246,19 +222,6 @@
       "的 Flag-shift 鍵。"
     ],
     "character-key-side-choice": ["傾向選擇", "{{左邊 / 右邊}}", "的字元鍵。"]
-  },
-  "layout-song-help-dialog": {
-    "title": "佈局記憶歌",
-    "summary": "佈局記憶歌是一首由 AI 生成、能幫助你記憶預設佈局上的字母鍵的英文歌。",
-    "tool-explanation": "歌詞是由 Kimi K2 Thinking 生成，而整首歌是由 Suno AI 生成。",
-    "license-explanation": "這首歌僅授權用於非商業用途。",
-    "download-explanation": [
-      "如果你有需要，你可以下載這首歌的",
-      "音檔",
-      "或",
-      "歌詞",
-      "。請勿用於任何商業用途！"
-    ]
   },
   "misc-setting": {
     "thumb-rotation-angle": {
@@ -486,14 +449,6 @@
       "title": "和弦頁面",
       "description": "在和弦頁面，您可以從您的和弦庫中選擇多個和弦進行練習。"
     },
-    "layout-viewer-page": {
-      "title": "佈局檢視頁面",
-      "description": "在佈局檢視頁面，您可以查看在特定作業系統鍵盤佈局和修飾鍵（Shift 和 Alt Graph）狀態下，您的裝置的實際輸出佈局。它還提供按鍵搜尋和佈局列印功能。"
-    },
-    "layout-song-page": {
-      "title": "佈局記憶歌頁面",
-      "description": "在佈局記憶歌頁面，有一首由 AI 生成的歌曲，可以幫助您記憶預設佈局上的字母鍵。"
-    },
     "settings-page": {
       "title": "設定頁面",
       "description": "在設定頁面，您可以調整此工具的一些設定，例如某些元件的可見性、佈局預覽上的點亮邏輯、裝置佈局、隔空模式等。"
@@ -515,39 +470,6 @@
         ]
       ]
     }
-  },
-  "layout-song-page": {
-    "title": "佈局記憶歌",
-    "mute-button-aria-label": "佈局記憶歌靜音/取消靜音按鈕",
-    "help-button-aria-label": "開啟佈局記憶歌說明視窗按鈕"
-  },
-  "layout-viewer-page": {
-    "toggle-shift-modifier": "切換 Shift 修飾鍵",
-    "toggle-alt-graph-modifier": "切換 Alt Graph 修飾鍵",
-    "device-layout": {
-      "label": "裝置佈局"
-    },
-    "os-keyboard-layout": {
-      "label": "作業系統鍵盤佈局",
-      "search-placeholder": "搜尋佈局...",
-      "search-no-entry": "找不到符合的佈局。",
-      "open-reference-button-tooltip": "開啟此佈局的參考網站",
-      "reset-button-tooltip": "重置"
-    },
-    "search-key-button-tooltip": "搜尋按鍵",
-    "print-layout-button-tooltip": "列印佈局",
-    "print-layout-title": "{{keyboardLayout}} 作業系統鍵盤佈局下的 {{deviceLayout}} 裝置佈局",
-    "hold-hint": ["（按住", "{{keys}}", "以進入此層）"],
-    "and": " 和 ",
-    "comma": "、",
-    "layer": {
-      "1": "主要層",
-      "2": "數字層",
-      "3": "功能層",
-      "4": "旗標層"
-    },
-    "dead-key-legend": "死鍵",
-    "windows-alt-code-legend": "Windows Alt 碼"
   },
   "lesson-page": {
     "input-box-title": "用於練習課程的輸入框",
@@ -595,9 +517,5 @@
   "lesson-not-found-page": {
     "title": "找不到課程",
     "description": "您嘗試訪問的課程不存在。它可能已被刪除或 URL 錯誤。請從側邊菜單中選擇一個課程。"
-  },
-  "serial-log-dialog": {
-    "title": "序列埠日誌",
-    "no-data-message": "沒有可用的序列埠日誌資料。"
   }
 }
