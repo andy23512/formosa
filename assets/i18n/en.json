@@ -1,19 +1,4 @@
 {
-  "hand": {
-    "left": "left",
-    "right": "right"
-  },
-  "switch": {
-    "thumb-back": "thumb back",
-    "thumb-middle": "thumb middle",
-    "thumb-front": "thumb front",
-    "index": "index",
-    "middle": "middle",
-    "ring": "ring",
-    "pinky": "pinky",
-    "middle-secondary": "middle secondary",
-    "ring-secondary": "ring secondary"
-  },
   "direction": {
     "E": "E",
     "S": "S",
@@ -22,8 +7,7 @@
     "east": "east",
     "south": "south",
     "west": "west",
-    "north": "north",
-    "down": "down (press)"
+    "north": "north"
   },
   "device-layout": {
     "cc1-cc2-default": "CC1/CC2/CCU default",
@@ -32,8 +16,7 @@
     "cc1-cc2-left-hand-only": "CC1/CC2/CCU left-hand-only"
   },
   "general": {
-    "character-entry-speed-unit": "CPM",
-    "chord-speed-unit": "ChPM",
+    "character-entry-speed-unit": "ChPM",
     "start-action": "start",
     "submit-action": "submit",
     "character-tooltip": "Character: {{character}}",
@@ -41,8 +24,6 @@
     "dead-key-tooltip": "Dead Key: {{character}}",
     "windows-alt-code-tooltip": "Windows Alt Code: {{character}}",
     "choose-file-action": "choose file",
-    "combo-unit": "combo",
-    "combo-unit-plural": "combos",
     "cancel-action": "cancel",
     "delete-confirm-button": "Yes. Delete them.",
     "delete-single-confirm-button": "Yes. Delete it.",
@@ -71,11 +52,6 @@
         "tooltip": "Go to Statistics page",
         "aria-label": "statistics page link"
       },
-      "chord": {
-        "title": "chord",
-        "tooltip": "Go to Chord page",
-        "aria-label": "chord page link"
-      },
       "settings": {
         "title": "settings",
         "tooltip": "Go to Settings page",
@@ -87,92 +63,13 @@
         "aria-label": "information page link"
       }
     },
-    "search-lessons-input": {
-      "placeholder": "search lessons",
-      "aria-label": "search box for lesson"
-    },
-    "no-result-message": "No results were found.",
     "side-menu-toggle": {
       "aria-label": "toggle side menu",
       "icon-aria-label": "side nav toggle icon"
     }
   },
-  "settings": {
-    "air-mode": {
-      "description": "Air mode is an experimental practice mode that you can practice without a device.\nThe characters or chords will be automatically entered at the speed you set, so you can follow along and move your fingers as if you were typing or chording.",
-      "checkbox-label": "enable air mode",
-      "character-entry-speed-label": "character entry speed",
-      "chord-speed-label": "chord speed",
-      "character-entry-speed-input-aria-label": "input box for character entry speed in air mode",
-      "chord-speed-input-aria-label": "input box for chord speed in air mode"
-    },
-    "device-layout": {
-      "import-device-layout-file-step": [
-        "(Optional) Load a device layout from a file (the backup file from",
-        "CharaChorder Device Manager",
-        "website) or from a device."
-      ],
-      "file-input-aria-label": "file input for selecting a device layout file to load into this tool",
-      "select-device-layout-step": "Select a loaded device layout.",
-      "single-device-layout-deleted-message": "The device layout \"{{deviceLayoutName}}\" has been deleted.",
-      "device-layout-loading-message": "Loading device layout..."
-    },
-    "lesson": {
-      "language-label": "lesson language",
-      "os-keyboard-layout-label": "OS keyboard layout in lesson"
-    }
-  },
-  "chord-page": {
-    "chord-practice": {
-      "title": "chord - practice"
-    },
-    "chord-practice-setting": {
-      "title": "chord - practice setting",
-      "import-chord-list-file-step": [
-        "Import your chord list file (the backup file from",
-        "CharaChorder Device Manager",
-        "website). (for first time usage or updating the chord list)"
-      ],
-      "file-input-aria-label": "file input for selecting a chord list file to load into this tool",
-      "select-chords-step": "Select the chords you want to practice from the imported chord list below.",
-      "click-start-button-step": "Click the following button to start the practice."
-    }
-  },
-  "delete-chords-confirm-dialog": {
-    "description": "Are you sure to delete all the imported chords?"
-  },
-  "delete-device-layouts-confirm-dialog": {
-    "description": "Are you sure to delete all the imported device layouts?\n(After deleted, the selected device layout will be changed to CC1/CC2/CCU default.)"
-  },
-  "delete-device-layout-confirm-dialog": {
-    "description": [
-      "Are you sure to delete the device layout \"",
-      "{{deviceLayoutName}}",
-      "\"?\n(After deleted, the selected device layout will be changed to CC1/CC2/CCU default.)"
-    ]
-  },
   "hotkey-dialog": {
     "title": "hotkeys"
-  },
-  "key-notation-help-dialog": {
-    "title": "key notation",
-    "key-notation-explanation-paragraph": "In this tool, key notation is an experimental short format that represents the key locations on CharaChorder 3D input devices.",
-    "key-notation-example-paragraph": "For example, the 'Left Thumb Middle West' key is noted as 'L1bW', and the 'Right Pinky Down (3D press)' is noted as 'R5D'.",
-    "first-and-last-letters-explanation-paragraph": "The first and the last letters are the shorthands for the side (L/R) and the direction (N/E/S/W/D), respectively.",
-    "middle-part-explanation-paragraph": [
-      "The middle part indicates the switch. The number represents the finger (1 to 5: thumb to pinky), using the same way as ",
-      {
-        "url": "https://en.wikipedia.org/wiki/Fingering_(music)#Keyboard_instruments",
-        "text": "fingering notation for keyboard instruments in modern scores."
-      },
-      " The additional 'b' and 'bb', originating from the ",
-      {
-        "url": "https://en.wikipedia.org/wiki/Flat_(music)",
-        "text": "flat (♭) and double flat (𝄫) symbols"
-      },
-      " in music, are used to indicate the secondary/middle and back switch of that finger."
-    ],
-    "layout-image-explanation-paragraph": "Below is a layout image that shows the notation of each switch."
   },
   "hotkey": {
     "global": {
@@ -190,51 +87,12 @@
       "go-to-the-next-lesson": "go to the next lesson",
       "start-or-resume-the-lesson": "start/resume the lesson",
       "pause-the-lesson": "pause the lesson"
-    },
-    "chord-practice-page": {
-      "name": "chord practice page",
-      "start-or-resume-the-practice": "start/resume the practice",
-      "pause-the-practice": "pause the practice"
     }
   },
-  "layout-highlight-setting": {
-    "shift-layer": "shift layer",
-    "num-shift-layer": "num-shift layer",
-    "shift-num-shift-layer": "shift num-shift layer",
-    "fn-shift-layer": "fn-shift layer",
-    "shift-fn-shift-layer": "shift fn-shift layer",
-    "flag-shift-layer": "flag-shift layer",
-    "shift-flag-shift-layer": "shift flag-shift layer",
-    "key-combination-sides-choice": [
-      "Tend to choose the key combination from ",
-      "{{both sides / same side}}",
-      "."
-    ],
-    "shift-side-choice": [
-      "Tend to choose the ",
-      "{{(left / right)}}",
-      " Shift key."
-    ],
-    "num-shift-side-choice": [
-      "Tend to choose the ",
-      "{{(left / right)}}",
-      " Num-shift key."
-    ],
-    "fn-shift-side-choice": [
-      "Tend to choose the ",
-      "{{(left / right)}}",
-      " Fn-shift key."
-    ],
-    "flag-shift-side-choice": [
-      "Tend to choose the ",
-      "{{(left / right)}}",
-      " Flag-shift key."
-    ],
-    "character-key-side-choice": [
-      "Tend to choose the character key on the ",
-      "{{(left / right)}}",
-      " side."
-    ]
+  "layout-setting": {
+    "label": "layout",
+    "standard-bopomofo": "Standard Bopomofo",
+    "tanchord-36-v2": "TanChord 36 V2"
   },
   "misc-setting": {
     "thumb-rotation-angle": {
@@ -246,37 +104,18 @@
       "input-aria-label": "input box for rotation angle for non-thumb switches on the layout display"
     }
   },
-  "quick-setting": {
-    "cc1-cc2-default-layout": "CC1/CC2/CCU default layout",
-    "m4g-default-layout": "M4G default layout"
-  },
   "thumb-3-switch-help-dialog": {
     "title": "thumb 3 switch",
     "content": "Master Forge doesn't have the thumb 3 switches as CharaChorder One, CharaChorder Two and CCU. If you use Master Forge, or you use CharaChorder One, CharaChorder Two or CCU but don't use the thumb 3 switches, you can uncheck this setting to hide them in the layout."
   },
   "visibility-setting": {
     "thumb-3-switch-help-button-aria-label": "open help dialog for thumb 3 switch",
-    "key-notation-help-button-aria-label": "open help dialog for key notation",
     "layout": "layout",
-    "layout-text-guide": "layout - text guide",
-    "layout-key-notation-guide": "layout - key notation guide",
     "layout-thumb-3-switch": "layout - thumb 3 switch",
-    "combo-counter": "combo counter",
-    "speedometer": "speedometer",
-    "home-page-chording-animation": "home page chording animation",
-    "entry-error-tooltip": "entry error tooltip"
-  },
-  "topic": {
-    "letters": "Letters",
-    "numbers": "Numbers",
-    "symbols": "Symbols"
+    "speedometer": "speedometer"
   },
   "lesson": {
-    "review-1": "Review 1",
-    "review-2": "Review 2",
-    "review-3": "Review 3",
-    "all-letters": "All Letters",
-    "all-numbers": "All Numbers"
+    "all-chords": "All Bopomofo Chords"
   },
   "key-label": {
     "shift": "Shift",
@@ -416,11 +255,7 @@
   },
   "home-page": {
     "website-name": "Formosa",
-    "summary": [
-      "A practice tool for",
-      "Bopomofo chords",
-      ""
-    ],
+    "summary": ["A practice tool for", "Bopomofo chords", ""],
     "lesson-start-instruction": [
       "Use ",
       "space",
@@ -430,37 +265,26 @@
     "remark": "Formosa (pronunciation: /fɔːrˈmoʊzə/) is a red clump giant star in the constellation Leo, about 451 light-years from Earth."
   },
   "information-page": {
-    "description": "This website, Formosa, is an unofficial practice tool designed for CharaChorder 3D input devices, including CharaChorder One, CharaChorder Two, CCU and Master Forge.",
+    "description": "Formosa is an unofficial practice tool for typing Bopomofo (Zhuyin) chords on CharaChorder devices — CharaChorder One, CharaChorder Two, CCU and Master Forge, as well as flat keyboards using the TanChord 36 layout.",
     "about-the-name": {
       "title": "about the name",
       "description": "Formosa (pronunciation: /fɔːrˈmoʊzə/) is a red clump giant star in the constellation Leo, about 451 light-years from Earth. It was named by Taiwan during the IAU's 100th anniversary NameExoWorlds campaign — \"Formosa\" is the historical Portuguese name for Taiwan, meaning \"beautiful\"."
     },
     "page-introductions-title": "page introductions",
     "key-lesson-page": {
-      "title": "key lesson page",
+      "title": "lesson page",
       "description": [
-        "At key lesson page, you can practice typing the number, letter, or symbol keys on your CharaChorder 3D input device. The accessible lessons are listed in the side menu.",
-        [
-          "If you want a goal for your practice, you can try to achieve both 100 combos and 100 CPM at the same time under each non-review lesson. (I wrote ",
-          {
-            "url": "https://andy23512.github.io/blog/tangent-s-suggestions-for-learning-english-character-entry-on-charachorder-3d-input-devices/",
-            "text": "my suggestions for learning English character entry on CharaChorder 3D input devices in this article"
-          },
-          ".)"
-        ]
+        "At the lesson page, you practice typing Bopomofo chords — multi-symbol combinations like ㄅㄧㄥ typed as a single chord — on your CharaChorder device. Lessons are grouped by initial consonant (聲母) or medial (介音) in the side menu, plus an All Bopomofo Chords lesson covering every chord.",
+        "If you want a goal for your practice, try to reach 100 ChPM (chords per minute) in each lesson."
       ]
     },
     "statistics-page": {
       "title": "statistics page",
-      "description": "At statistics page, you can check the statistics of your practices in key lessons, including a graph that shows your typing speed and combo counts over time."
-    },
-    "chord-page": {
-      "title": "chord page",
-      "description": "At chord page, you can pick several chords in your chord library and practice them."
+      "description": "At the statistics page, you can check your practice statistics, including a graph that shows your typing speed (ChPM) over time."
     },
     "settings-page": {
       "title": "settings page",
-      "description": "At settings page, you can tweak some settings of this tool, such as the visibility of some components, the highlight logic on the layout preview, the device layout, the air mode, etc."
+      "description": "At the settings page, you can choose your Layout — the device and OS keyboard combination, such as Standard Bopomofo or TanChord 36 V2 — toggle the visibility of layout components, adjust the rotation angle of the layout preview, and switch the UI language."
     },
     "disclaimers": {
       "title": "disclaimers",
@@ -496,32 +320,14 @@
   "settings-page": {
     "title": "settings",
     "panel-header": {
-      "quick-setting": "quick setting",
+      "layout": "layout",
       "visibility": "visibility",
-      "layout-highlight": "layout highlight",
-      "device-layout": "device layout",
-      "lesson": "lesson",
-      "air-mode": "air mode",
-      "data-deletion": "data deletion",
       "misc": "misc",
       "ui-language": "UI language"
-    },
-    "button": {
-      "delete-all-imported-device-layouts": "delete all imported device layouts",
-      "delete-all-imported-chords": "delete all imported chords"
-    },
-    "message": {
-      "device-layout-deleted": "All imported device layouts have been deleted.",
-      "chords-deleted": "All imported chords have been deleted."
     }
   },
   "statistics-page": {
-    "metric": "metric"
-  },
-  "layout-text-guide": "{{hand}} {{switch}} {{direction}}",
-  "device-layout-import-dialog": {
-    "title": "import device layout",
-    "name-label": "Profile {{profile}}"
+    "overall": "overall"
   },
   "lesson-not-found-page": {
     "title": "Lesson Not Found",

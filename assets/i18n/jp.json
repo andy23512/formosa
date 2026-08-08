@@ -1,19 +1,4 @@
 {
-  "hand": {
-    "left": "左手",
-    "right": "右手"
-  },
-  "switch": {
-    "thumb-back": "親指後列",
-    "thumb-middle": "親指中列",
-    "thumb-front": "親指前列",
-    "index": "人差し指",
-    "middle": "中指",
-    "ring": "薬指",
-    "pinky": "小指",
-    "middle-secondary": "中指第二",
-    "ring-secondary": "薬指第二"
-  },
   "direction": {
     "E": "東",
     "S": "南",
@@ -22,8 +7,7 @@
     "east": "東",
     "south": "南",
     "west": "西",
-    "north": "北",
-    "down": "下 (押す)"
+    "north": "北"
   },
   "device-layout": {
     "cc1-cc2-default": "CC1/CC2/CCU のデフォルト",
@@ -32,8 +16,7 @@
     "cc1-cc2-left-hand-only": "CC1/CC2/CCU 左手のみ"
   },
   "general": {
-    "character-entry-speed-unit": "文字数毎分",
-    "chord-speed-unit": "和音毎分",
+    "character-entry-speed-unit": "和音毎分",
     "start-action": "開始",
     "submit-action": "送信",
     "character-tooltip": "文字：{{character}}",
@@ -41,8 +24,6 @@
     "dead-key-tooltip": "デッドキー：{{character}}",
     "windows-alt-code-tooltip": "Windows Alt コード：{{character}}",
     "choose-file-action": "ファイルを選択",
-    "combo-unit": "コンボ",
-    "combo-unit-plural": "コンボ",
     "cancel-action": "キャンセル",
     "delete-confirm-button": "はい、削除します。",
     "delete-single-confirm-button": "はい、削除します。",
@@ -71,11 +52,6 @@
         "tooltip": "統計ページへ移動",
         "aria-label": "統計ページリンク"
       },
-      "chord": {
-        "title": "和音",
-        "tooltip": "和音ページへ移動",
-        "aria-label": "和音ページリンク"
-      },
       "settings": {
         "title": "設定",
         "tooltip": "設定ページへ移動",
@@ -87,92 +63,13 @@
         "aria-label": "情報ページリンク"
       }
     },
-    "search-lessons-input": {
-      "placeholder": "レッスンを検索",
-      "aria-label": "レッスン検索ボックス"
-    },
-    "no-result-message": "結果が見つかりませんでした。",
     "side-menu-toggle": {
       "aria-label": "サイドメニューの切り替え",
       "icon-aria-label": "サイドメニュー切り替えアイコン"
     }
   },
-  "settings": {
-    "air-mode": {
-      "description": "エアモードは、デバイスなしでも練習できる実験的な練習モードです。設定した速度で文字や和音が自動的に入力されるので、タイピングや和音を弾くときと同じように指を動かしながら練習できます。",
-      "checkbox-label": "エアモードを有効にします",
-      "character-entry-speed-label": "文字入力速度",
-      "chord-speed-label": "和音入力速度",
-      "character-entry-speed-input-aria-label": "エアモードの文字入力速度の入力ボックス",
-      "chord-speed-input-aria-label": "エアモードの和音入力速度の入力ボックス"
-    },
-    "device-layout": {
-      "import-device-layout-file-step": [
-        "（任意）ファイル（",
-        "CharaChorder Device Manager ウェブサイト",
-        "のバックアップファイル）またはデバイスから、デバイスレイアウトをインポートしてください。"
-      ],
-      "file-input-aria-label": "このツールにインポートするデバイスレイアウトファイルを選択するためのファイル入力",
-      "select-device-layout-step": "インポートしたデバイスレイアウトを選択してください。",
-      "single-device-layout-deleted-message": "デバイスレイアウト「{{deviceLayoutName}}」が削除されました。",
-      "device-layout-loading-message": "デバイスレイアウトを読み込んでいます..."
-    },
-    "lesson": {
-      "language-label": "レッスン言語",
-      "os-keyboard-layout-label": "レッスンで使用するOSキーボードレイアウト"
-    }
-  },
-  "chord-page": {
-    "chord-practice": {
-      "title": "和音 - 練習"
-    },
-    "chord-practice-setting": {
-      "title": "和音 - 練習設定",
-      "import-chord-list-file-step": [
-        "和音リストファイル（",
-        "CharaChorder デバイスマネージャーウェブサイト",
-        "サイトのバックアップファイル）をインポートしてください。（初回使用時または和音リストを更新する場合）"
-      ],
-      "file-input-aria-label": "このツールにインポートする和音リストファイルを選択するためのファイル入力",
-      "select-chords-step": "インポートした和音リストから練習したい和音を選択してください。",
-      "click-start-button-step": "以下のボタンをクリックして練習を開始してください。"
-    }
-  },
-  "delete-chords-confirm-dialog": {
-    "description": "インポートした和音をすべて削除してもよろしいですか？"
-  },
-  "delete-device-layouts-confirm-dialog": {
-    "description": "インポートしたデバイスレイアウトをすべて削除してもよろしいですか？\n（削除後、選択されているデバイスレイアウトは CC1/CC2/CCU のデフォルトに変更されます）"
-  },
-  "delete-device-layout-confirm-dialog": {
-    "description": [
-      "デバイスレイアウト「",
-      "{{deviceLayoutName}}",
-      "」を削除してもよろしいですか？\n（削除後、選択されているデバイスレイアウトは CC1/CC2/CCU のデフォルトに変更されます）"
-    ]
-  },
   "hotkey-dialog": {
     "title": "ホットキー"
-  },
-  "key-notation-help-dialog": {
-    "title": "キー表記",
-    "key-notation-explanation-paragraph": "このツールでは、キー表記は CharaChorder 3D 入力デバイスのキーの位置を表す実験的な短縮形式です。",
-    "key-notation-example-paragraph": "例えば、「左手親指中列西キー」は「L1bW」と表記され、「右手小指下（押す）」は「R5D」と表記されます。",
-    "first-and-last-letters-explanation-paragraph": "最初の文字と最後の文字は、それぞれ左右（L/R）と方向（N/E/S/W/D）の略称です。",
-    "middle-part-explanation-paragraph": [
-      "中央の部分はスイッチを示します。数字は指を表し（1から5：親指から小指）、",
-      {
-        "url": "https://ja.wikipedia.org/wiki/%E9%81%8B%E6%8C%87#%E9%8D%B5%E7%9B%A4%E6%A5%BD%E5%99%A8",
-        "text": "現代の楽譜の鍵盤楽器の運指表記"
-      },
-      "と同じ方法で表されます。追加の「b」と「bb」は、音楽の",
-      {
-        "url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%A9%E3%83%83%E3%83%88_(%E8%A8%98%E5%8F%B7)",
-        "text": "フラット（♭）とダブルフラット（𝄫）の記号"
-      },
-      "に派生して、指の第二/中列および後列のスイッチを示すために使用されます。"
-    ],
-    "layout-image-explanation-paragraph": "以下は、各スイッチの表記を示すレイアウト画像です。"
   },
   "hotkey": {
     "global": {
@@ -190,51 +87,12 @@
       "go-to-the-next-lesson": "次のレッスンへ移動",
       "start-or-resume-the-lesson": "レッスンを開始または再開",
       "pause-the-lesson": "レッスンを一時停止"
-    },
-    "chord-practice-page": {
-      "name": "和音練習ページ",
-      "start-or-resume-the-practice": "練習を開始または再開",
-      "pause-the-practice": "練習を一時停止"
     }
   },
-  "layout-highlight-setting": {
-    "shift-layer": "shift レイヤー",
-    "num-shift-layer": "num-shift レイヤー",
-    "shift-num-shift-layer": "shift num-shift レイヤー",
-    "fn-shift-layer": "fn-shift レイヤー",
-    "shift-fn-shift-layer": "shift fn-shift レイヤー",
-    "flag-shift-layer": "flag-shift レイヤー",
-    "shift-flag-shift-layer": "shift flag-shift レイヤー",
-    "key-combination-sides-choice": [
-      "",
-      "{{(両側 / 同側)}}",
-      "からキーの組み合わせを選択する傾向があります。"
-    ],
-    "shift-side-choice": [
-      "",
-      "{{(左側 / 右側)}}",
-      "な Shift キーを選択する傾向があります。"
-    ],
-    "num-shift-side-choice": [
-      "",
-      "{{(左側 / 右側)}}",
-      "な Num-shift キーを選択する傾向があります。"
-    ],
-    "fn-shift-side-choice": [
-      "",
-      "{{(左側 / 右側)}}",
-      "な Fn-shift キーを選択する傾向があります。"
-    ],
-    "flag-shift-side-choice": [
-      "",
-      "{{(左側 / 右側)}}",
-      "な Flag-shift キーを選択する傾向があります。"
-    ],
-    "character-key-side-choice": [
-      "",
-      "{{(左側 / 右側)}}",
-      "な文字キーを選択する傾向があります。"
-    ]
+  "layout-setting": {
+    "label": "レイアウト",
+    "standard-bopomofo": "標準注音",
+    "tanchord-36-v2": "天弦 36 鍵 V2"
   },
   "misc-setting": {
     "thumb-rotation-angle": {
@@ -246,38 +104,18 @@
       "input-aria-label": "レイアウト表示上の親指以外のスイッチの回転角度を入力するボックス"
     }
   },
-  "quick-setting": {
-    "cc1-cc2-default-layout": "CC1/CC2/CCU のデフォルトレイアウト",
-    "m4g-default-layout": "M4G のデフォルトレイアウト",
-    "cc1-cc2-right-hand-only-layout": "CC1/CC2/CCU 右手のみレイアウト"
-  },
   "thumb-3-switch-help-dialog": {
     "title": "親指後列スイッチ",
     "content": "Master Forge には、CharaChorder One、CharaChorder Two および CCU のような親指後列スイッチがありません。Master Forge をご利用の場合、または CharaChorder One、CharaChorder Two または CCU をご利用で親指後列スイッチを使用しない場合は、この設定のチェックを外してレイアウトから非表示にすることができます。"
   },
   "visibility-setting": {
     "thumb-3-switch-help-button-aria-label": "親指後列スイッチのヘルプダイアログを開く",
-    "key-notation-help-button-aria-label": "キー表記のヘルプダイアログを開く",
     "layout": "レイアウト",
-    "layout-text-guide": "レイアウト - テキストガイド",
-    "layout-key-notation-guide": "レイアウト - キー表記ガイド",
     "layout-thumb-3-switch": "レイアウト - 親指後列スイッチ",
-    "combo-counter": "コンボカウンター",
-    "speedometer": "スピードメーター",
-    "home-page-chording-animation": "ホームページの和音入力アニメーション",
-    "entry-error-tooltip": "入力エラーのツールチップ"
-  },
-  "topic": {
-    "letters": "アルファベット",
-    "numbers": "数字",
-    "symbols": "記号"
+    "speedometer": "スピードメーター"
   },
   "lesson": {
-    "review-1": "復習 1",
-    "review-2": "復習 2",
-    "review-3": "復習 3",
-    "all-letters": "すべてのアルファベット",
-    "all-numbers": "すべての数字"
+    "all-chords": "すべての注音和音"
   },
   "key-label": {
     "shift": "Shift",
@@ -414,11 +252,7 @@
   },
   "home-page": {
     "website-name": "Formosa フォルモサ",
-    "summary": [
-      "",
-      "注音符号の和音",
-      "のための練習ツール"
-    ],
+    "summary": ["", "注音符号の和音", "のための練習ツール"],
     "lesson-start-instruction": [
       "",
       "space",
@@ -428,37 +262,26 @@
     "remark": "Formosa（発音：/fɔːrˈmoʊzə/）、フォルモサ、しし座に位置し地球から約451光年離れた赤色クランプ巨星。"
   },
   "information-page": {
-    "description": "このウェブサイト、「Formosa フォルモサ」は、CharaChorder One、CharaChorder Two、CCU、Master Forge などの CharaChorder 3D 入力デバイス用に設計された非公式の練習ツールです。",
+    "description": "「Formosa フォルモサ」は、CharaChorder デバイス上で注音（ボポモフォ）和音を入力練習するための非公式ツールです。CharaChorder One、CharaChorder Two、CCU、Master Forge などの 3D 入力デバイスに加え、天弦 36 鍵レイアウトを使った一般的な平型キーボードにも対応しています。",
     "about-the-name": {
       "title": "名前について",
       "description": "Formosa（発音：/fɔːrˈmoʊzə/）、フォルモサ、しし座に位置し地球から約451光年離れた赤色クランプ巨星。台湾がIAU設立100周年を記念したNameExoWorldsキャンペーンで命名した。「Formosa」は17世紀にポルトガル人が台湾を呼んだ歴史的な名称で、「美しい」という意味を持つ。"
     },
     "page-introductions-title": "ページ紹介",
     "key-lesson-page": {
-      "title": "キーレッスンページ",
+      "title": "レッスンページ",
       "description": [
-        "キーレッスンページでは、CharaChorder 3D 入力デバイスの数字、アルファベット、記号キーの入力を練習できます。レッスンはサイドメニューにリストされています。",
-        [
-          "練習の目標を立てたい場合は、復習以外のレッスンで 100 コンボと毎分 100 文字数の両方を同時に達成することを目指してください。（",
-          {
-            "url": "https://andy23512.github.io/blog/tangent-s-suggestions-for-learning-english-character-entry-on-charachorder-3d-input-devices/",
-            "text": "CharaChorder 3D 入力デバイスで英語の文字入力を学習するための私のおすすめについては、こちらの記事に書きました"
-          },
-          "。）"
-        ]
+        "レッスンページでは、CharaChorder デバイスで注音和音——「ㄅㄧㄥ」のように複数の記号を一度に入力する組み合わせ——の入力を練習できます。サイドメニューのレッスンは声母（初声）または介音でグループ分けされており、すべての注音和音を含む「すべての注音和音」レッスンもあります。",
+        "練習の目標を立てたい場合は、各レッスンで毎分 100 和音（ChPM）を目指してみてください。"
       ]
     },
     "statistics-page": {
       "title": "統計ページ",
-      "description": "統計ページでは、キーレッスンの練習統計を確認できます。タイピング速度やコンボ数の推移を示すグラフも含まれています。"
-    },
-    "chord-page": {
-      "title": "和音ページ",
-      "description": "和音ページでは、和音ライブラリからいくつかの和音を選択して練習できます。"
+      "description": "統計ページでは、練習統計を確認できます。タイピング速度（ChPM）の推移を示すグラフも含まれています。"
     },
     "settings-page": {
       "title": "設定ページ",
-      "description": "設定ページでは、このツールのいくつかの設定を調整できます。例えば、いくつかのコンポーネントの表示、レイアウトプレビューのハイライトロジック、デバイスレイアウト、エアモードなどです。"
+      "description": "設定ページでは、レイアウト（デバイスと OS キーボードの組み合わせ、例：標準注音や天弦 36 鍵 V2）を選択したり、レイアウト部品の表示・非表示を切り替えたり、レイアウトプレビューの回転角度を調整したり、UI 言語を切り替えたりできます。"
     },
     "disclaimers": {
       "title": "免責事項",
@@ -494,32 +317,14 @@
   "settings-page": {
     "title": "設定",
     "panel-header": {
-      "quick-setting": "クイック設定",
+      "layout": "レイアウト",
       "visibility": "表示",
-      "layout-highlight": "レイアウトハイライト",
-      "device-layout": "デバイスレイアウト",
-      "lesson": "レッスン",
-      "air-mode": "エアモード",
-      "data-deletion": "データ削除",
       "misc": "その他",
       "ui-language": "UI 言語"
-    },
-    "button": {
-      "delete-all-imported-device-layouts": "すべてのインポート済みデバイスレイアウトを削除",
-      "delete-all-imported-chords": "すべてのインポート済み和音を削除"
-    },
-    "message": {
-      "device-layout-deleted": "すべてのインポート済みデバイスレイアウトが削除されました。",
-      "chords-deleted": "すべてのインポート済み和音が削除されました。"
     }
   },
   "statistics-page": {
-    "metric": "メトリック"
-  },
-  "layout-text-guide": "{{hand}}{{switch}}{{direction}}キー",
-  "device-layout-import-dialog": {
-    "title": "デバイスレイアウトのインポート",
-    "name-label": "プロファイル {{profile}}"
+    "overall": "全体"
   },
   "lesson-not-found-page": {
     "title": "レッスンが見つかりません",
