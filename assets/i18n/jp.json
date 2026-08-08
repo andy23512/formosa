@@ -416,8 +416,8 @@
     "website-name": "Formosa フォルモサ",
     "summary": [
       "",
-      "CharaChorder 3D 入力デバイス",
-      "向けにカスタマイズされた非公式練習ツール"
+      "注音符号の和音",
+      "のための練習ツール"
     ],
     "lesson-start-instruction": [
       "",
@@ -425,23 +425,14 @@
       "キーで最初のレッスンに入るか、左側のリストからレッスンを選択してください。"
     ],
     "source-code": "ソースコード",
-    "dev-note": "開発ノート",
-    "dev-note-url": "https://andy23512.github.io/blog/formosa-a-practice-tool-of-charachorder-3d-input-devices-developed-by-tangent/",
-    "alnilam": "Alnilam アルニラム",
-    "current-device-layout-hint": {
-      "cc1-cc2-default": [
-        "デバイスのレイアウトは「CC1/CC2/CCUのデフォルト」に設定されています。",
-        "「M4Gのデフォルト」に切り替えます。"
-      ],
-      "m4g-default": [
-        "デバイスのレイアウトは「M4Gのデフォルト」に設定されています。",
-        "「CC1/CC2/CCUのデフォルト」に切り替えます。"
-      ]
-    },
-    "remark": "Formosa（発音：/fɔːrˈmoʊzə/）、フォルモサ、しし座に位置し地球から約451光年離れた赤色クランプ巨星。台湾がIAU設立100周年を記念したNameExoWorldsキャンペーンで命名した。「Formosa」は17世紀にポルトガル人が台湾を呼んだ歴史的な名称で、「美しい」という意味を持つ。"
+    "remark": "Formosa（発音：/fɔːrˈmoʊzə/）、フォルモサ、しし座に位置し地球から約451光年離れた赤色クランプ巨星。"
   },
   "information-page": {
     "description": "このウェブサイト、「Formosa フォルモサ」は、CharaChorder One、CharaChorder Two、CCU、Master Forge などの CharaChorder 3D 入力デバイス用に設計された非公式の練習ツールです。",
+    "about-the-name": {
+      "title": "名前について",
+      "description": "Formosa（発音：/fɔːrˈmoʊzə/）、フォルモサ、しし座に位置し地球から約451光年離れた赤色クランプ巨星。台湾がIAU設立100周年を記念したNameExoWorldsキャンペーンで命名した。「Formosa」は17世紀にポルトガル人が台湾を呼んだ歴史的な名称で、「美しい」という意味を持つ。"
+    },
     "page-introductions-title": "ページ紹介",
     "key-lesson-page": {
       "title": "キーレッスンページ",

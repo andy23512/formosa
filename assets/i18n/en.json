@@ -417,8 +417,8 @@
   "home-page": {
     "website-name": "Formosa",
     "summary": [
-      "An unofficial practice tool tailored for",
-      "CharaChorder 3D input devices",
+      "A practice tool for",
+      "Bopomofo chords",
       ""
     ],
     "lesson-start-instruction": [
@@ -427,23 +427,14 @@
       " key to enter the first lesson, or select a lesson from the list on the left."
     ],
     "source-code": "source code",
-    "dev-note": "dev note",
-    "dev-note-url": "https://andy23512.github.io/blog/formosa-a-practice-tool-of-charachorder-3d-input-devices-developed-by-tangent/",
-    "alnilam": "Alnilam",
-    "current-device-layout-hint": {
-      "cc1-cc2-default": [
-        "Device Layout is set to \"CC1/CC2/CCU default\".",
-        "Switch it to \"M4G default\""
-      ],
-      "m4g-default": [
-        "Device Layout is set to \"M4G default\".",
-        "Switch it to \"CC1/CC2/CCU default\""
-      ]
-    },
-    "remark": "Formosa (pronunciation: /fɔːrˈmoʊzə/) is a red clump giant star in the constellation Leo, about 451 light-years from Earth. It was named by Taiwan during the IAU's 100th anniversary NameExoWorlds campaign — \"Formosa\" is the historical Portuguese name for Taiwan, meaning \"beautiful\"."
+    "remark": "Formosa (pronunciation: /fɔːrˈmoʊzə/) is a red clump giant star in the constellation Leo, about 451 light-years from Earth."
   },
   "information-page": {
     "description": "This website, Formosa, is an unofficial practice tool designed for CharaChorder 3D input devices, including CharaChorder One, CharaChorder Two, CCU and Master Forge.",
+    "about-the-name": {
+      "title": "about the name",
+      "description": "Formosa (pronunciation: /fɔːrˈmoʊzə/) is a red clump giant star in the constellation Leo, about 451 light-years from Earth. It was named by Taiwan during the IAU's 100th anniversary NameExoWorlds campaign — \"Formosa\" is the historical Portuguese name for Taiwan, meaning \"beautiful\"."
+    },
     "page-introductions-title": "page introductions",
     "key-lesson-page": {
       "title": "key lesson page",
