@@ -3,6 +3,7 @@ import { AsyncPipe } from '@angular/common';
 import { Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
+import { HOTKEY_DIALOG_ID } from '../hotkey-dialog/hotkey-dialog.const';
 import { MatIcon } from '@angular/material/icon';
 import { MatListItem, MatNavList } from '@angular/material/list';
 import {
@@ -63,9 +64,10 @@ const LESSON_TABLE_ROW_IDS: (string | null)[][] = [
   ],
 })
 export class NavComponent implements OnInit, OnDestroy {
-  public readonly lessonTableCells: (Lesson | null)[] = LESSON_TABLE_ROW_IDS.flat().map(
-    (id) => LESSONS.find((lesson) => lesson.id === id) ?? null,
-  );
+  public readonly lessonTableCells: (Lesson | null)[] =
+    LESSON_TABLE_ROW_IDS.flat().map(
+      (id) => LESSONS.find((lesson) => lesson.id === id) ?? null,
+    );
   public readonly otherLessons: Lesson[] = LESSONS.filter(
     (lesson) => !LESSON_TABLE_ROW_IDS.flat().includes(lesson.id),
   );
@@ -111,6 +113,9 @@ export class NavComponent implements OnInit, OnDestroy {
     const { HotkeyDialogComponent } = await import(
       '../hotkey-dialog/hotkey-dialog.component'
     );
-    this.matDialog.open(HotkeyDialogComponent);
+    if (this.matDialog.getDialogById(HOTKEY_DIALOG_ID)) {
+      return;
+    }
+    this.matDialog.open(HotkeyDialogComponent, { id: HOTKEY_DIALOG_ID });
   }
 }
