@@ -1,5 +1,7 @@
 # Formosa
 
+[![CI](https://github.com/andy23512/formosa/actions/workflows/ci.yml/badge.svg)](https://github.com/andy23512/formosa/actions/workflows/ci.yml)
+
 A practice tool for typing Bopomofo (Zhuyin) chords on the TanChord 36 layout with CharaChorder 3D input devices — CharaChorder One, CharaChorder Two, CCU and Master Forge, as well as the Standard Bopomofo layout with flat keyboards.
 
 ## Links
